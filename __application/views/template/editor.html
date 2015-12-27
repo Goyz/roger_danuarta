@@ -1,0 +1,31 @@
+<script src="{$host}__assets/backend/tinymce/js/tinymce/tinymce.min.js"></script>
+<textarea id="{$id}" name="{$name}">{$value|default:''}</textarea>
+<!--div id="{$id}" class="wysiwyg-editor"></div-->
+
+<script>
+$(function(){
+
+		tinymce.init({
+		  selector: 'textarea',
+		  height: {$height|default:200},
+			plugins: [
+			"advlist autolink lists link image charmap print preview anchor",
+			"searchreplace visualblocks code fullscreen",
+			"insertdatetime media table contextmenu paste jbimages"
+		  ],
+			
+		  // ===========================================
+		  // PUT PLUGIN'S BUTTON on the toolbar
+		  // ===========================================
+			
+		  toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
+			
+		  // ===========================================
+		  // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
+		  // ===========================================
+			
+		  relative_urls: false
+		});
+});
+</script>
+

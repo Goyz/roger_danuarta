@@ -1,0 +1,2 @@
+{if $main eq 'reservasi'}{assign var=buton value="false"}{else}{assign var=buton value="true"}{/if}
+{include file='template/grid.html' main={$main} mod={$mod} button={$buton}  }
