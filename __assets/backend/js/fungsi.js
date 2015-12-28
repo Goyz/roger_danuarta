@@ -129,14 +129,14 @@ function genGrid(modnya, divnya, lebarnya, tingginya){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
-				{field:'judul_ind',title:'Judul. Ind',width:150, halign:'center',align:'left'},
-				{field:'judul_eng',title:'Judul. Eng',width:150, halign:'center',align:'left'},
+				{field:'judul_ind',title:'Judul. Ind',width:300, halign:'center',align:'left'},
+				{field:'judul_eng',title:'Judul. Eng',width:300, halign:'center',align:'left'},
 				
 			]
 			kolom[modnya] = [	
-				{field:'isi_berita_ind',title:'Isi. Ind',width:250, halign:'center',align:'left'},
-				{field:'isi_berita_eng',title:'Isi. Eng',width:250, halign:'center',align:'left'},
-				{field:'file_foto',title:'Foto',width:100, halign:'center',align:'left'},
+				//{field:'isi_berita_ind',title:'Isi. Ind',width:250, halign:'center',align:'left'},
+				//{field:'isi_berita_eng',title:'Isi. Eng',width:250, halign:'center',align:'left'},
+				//{field:'file_foto',title:'Foto',width:100, halign:'center',align:'left'},
 				{field:'create_by',title:'Dibuat Oleh',width:100, halign:'center',align:'left'},
 				{field:'create_date',title:'Dibuat Tgl',width:100, halign:'center',align:'center'},
 			]

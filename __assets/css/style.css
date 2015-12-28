@@ -9451,7 +9451,8 @@ header .slogan .square {
   transition: none;
 }
 .five .project {
-  width: 19.97%;
+  width: 20%;
+  height: 100px;
   float: left;
 }
 .four .project {
