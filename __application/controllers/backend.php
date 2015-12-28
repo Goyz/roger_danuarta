@@ -56,6 +56,12 @@ class backend extends CI_Controller {
 						$this->smarty->assign("data", $data);
 					}
 				break;
+				case "services":
+					if($sts_crud=='edit'){
+						$data_foto = $this->mbackend->getdata('tbl_services_foto','edit',$this->input->post('id'));
+						$this->smarty->assign("data_foto", $data_foto);
+					}
+				break;
 			}
 			
 			
@@ -89,6 +95,7 @@ class backend extends CI_Controller {
 			if(isset($post['upload_na']))unset($post['upload_na']);
 			if(isset($post['modul_detil']))unset($post['modul_detil']);
 			$id_header=$this->mbackend->simpan_data($p1, $post,'get_id');
+			unset($_FILES['file_icon_foto_services']);
 			echo $this->upload($this->input->post('modul_detil'),$id_header);
 		}
 		else{
@@ -128,7 +135,7 @@ class backend extends CI_Controller {
 						if($this->input->post('sts_crud')=='edit'){
 							$path='__repository/services/';
 							//echo $id_header;exit;
-							$this->mbackend->hapus_foto('tbl_services_foto',$path,'tbl_services_id',$id_header,'file_foto');
+							//$this->mbackend->hapus_foto('tbl_services_foto',$path,'tbl_services_id',$id_header,'file_foto');
 							unset($_POST['sts_crud']);
 							$_POST['sts_crud']='add';
 						}

@@ -1,9 +1,24 @@
 <fieldset>
 <div class="span12">
 	<!--PAGE CONTENT BEGINS-->
-	<form class="form-horizontal" id="form_berita" url="{$host}backend/simpan_data/tbl_berita" method="post">
+	<form class="form-horizontal" id="form_berita" url="{$host}backend/simpan_data/tbl_berita" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="id" value="{$data.id|default:''}">
 		<input type="hidden" name="sts_crud" value="{$sts_crud|default:'add'}">
+		<input type="hidden" name="foto_lama" value="{$data.file_foto|default:''}">
+		
+		<div class="control-group">
+			<label class="control-label" for="form-field-1">Gambar Berita</label>
+			<div class="controls">
+				{if $sts_crud == 'edit'}
+					{if $data.file_foto}
+					<img src='{$host}__repository/berita/{$data.file_foto}' width='100px' height='150px'>
+					<br/>
+					<br/>
+					{/if}
+				{/if}
+				{include file="template/file_input.html" multiple='false' id="file_foto_{$main}" }
+			</div>
+		</div>				
 		<div class="control-group">
 			<label class="control-label" for="form-field-1">Judul. Ind</label>
 			<div class="controls">

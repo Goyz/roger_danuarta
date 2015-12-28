@@ -42,6 +42,12 @@ class mbackend extends CI_Model{
 					return $this->result_query($sql,'row_array');
 				}
 			break;
+			case "tbl_services_foto":
+				$sql = " SELECT A.* FROM tbl_services_foto A ";
+				$sql .=" WHERE A.tbl_services_id = ".$p2;
+				
+				return $this->result_query($sql);
+			break;
 			case "tbl_product_foto":
 				$sql = " SELECT A.*
 						FROM tbl_product_foto A 
@@ -134,16 +140,70 @@ class mbackend extends CI_Model{
 				}
 			break;
 			case "tbl_services":
+				$path='__repository/services/';
 				$data['create_date']=date('Y-m-d H:i:s');
 				$data['create_by']=$this->auth['nama_user'];
 				if($sts_crud=='delete'){
-					$path='__repository/services/';
 					$this->hapus_foto('tbl_services_foto',$path,'tbl_services_id',$id,'file_foto');
+					$foto = $this->db->get_where('tbl_services', array('id'=>$id) )->row_array();
+					if($foto['foto_icon'] != ""){
+						$this->hapus_foto_satu($path.$foto['foto_icon']);
+					}
 				}
+				
+				if(!empty($_FILES['file_icon_foto_services']['name'])){
+					if($sts_crud == 'edit'){
+						if($data['foto_lama'] != ""){
+							$this->hapus_foto_satu($path.$data['foto_lama']);
+						}
+					}
+					
+					$file = date('YmdHis')."_".$data['nama_service_ind'];
+					$filename =  $this->lib->uploadnong($path, 'file_icon_foto_services', $file); //$file.'.'.$extension;
+					$data['foto_icon'] = $filename;
+				}else{
+					if($sts_crud == 'edit'){
+						$data['foto_icon'] = $data['foto_lama'];
+					}elseif($sts_crud == 'add'){
+						$data['foto_icon'] = null;
+					}
+					
+				}
+				
+				unset($data['foto_lama']);
 			break;
 			case "tbl_berita":
+				$path = '__repository/berita/';
+				$this->lib->makedir($path);
+				
 				$data['create_date']=date('Y-m-d H:i:s');
 				$data['create_by']=$this->auth['nama_user'];
+				if($sts_crud=='delete'){
+					$foto = $this->db->get_where('tbl_berita', array('id'=>$id) )->row_array();
+					if($foto['file_foto'] != ""){
+						$this->hapus_foto_satu($path.$foto['file_foto']);
+					}
+				}
+				
+				if(!empty($_FILES['file_foto_berita']['name'])){
+					if($sts_crud == 'edit'){
+						if($data['foto_lama'] != ""){
+							$this->hapus_foto_satu($path.$data['foto_lama']);
+						}
+					}
+					
+					$file = date('YmdHis')."_news";
+					$filename =  $this->lib->uploadnong($path, 'file_foto_berita', $file); //$file.'.'.$extension;
+					$data['file_foto'] = $filename;
+				}else{
+					if($sts_crud == 'edit'){
+						$data['file_foto'] = $data['foto_lama'];
+					}elseif($sts_crud == 'add'){
+						$data['file_foto'] = null;
+					}
+				}
+				
+				unset($data['foto_lama']);
 			break;
 			
 		}
@@ -197,6 +257,7 @@ class mbackend extends CI_Model{
 		}
 		return $bulan;
 	}
+	
 	function hapus_foto($tabel,$path,$field_id_header,$id_header,$field_foto_db){
 		/*switch($table){
 			case "tbl_product_foto":
@@ -212,6 +273,11 @@ class mbackend extends CI_Model{
 		}
 		$this->db->where($field_id_header,$id_header);
 		$this->db->delete($tabel);
+	}
+	
+	function hapus_foto_satu($path, $filename=""){
+		//chmod($path, 0777);
+		unlink($path);
 	}
 	
 	// END GOYZ CROTZZZ

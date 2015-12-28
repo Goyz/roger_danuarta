@@ -16,6 +16,42 @@ class mhome extends CI_Model{
 				";
 				//echo $sql;
 			break;
+			case "services":
+				$sql = "
+					SELECT *
+					FROM tbl_services 
+				";
+			break;
+			case "foto_services":
+				$sql = "
+					SELECT *
+					FROM tbl_services_foto 
+					WHERE tbl_services_id = '".$p1."'
+				";
+			break;
+			case "berita_home":
+				$sql = "
+					SELECT *
+					FROM tbl_berita
+					ORDER BY id DESC
+					LIMIT 0,3
+				";
+			break;
+			case "berita_detail":
+				$sql = "
+					SELECT *
+					FROM tbl_berita
+					WHERE id = '".$p1."'
+				";
+			break;
+			case "berita_lainnya":
+				$sql = "
+					SELECT *
+					FROM tbl_berita
+					WHERE id <> '".$p1."'
+				";
+			break;
+			
 		}
 		
 		if($balikan == 'json'){

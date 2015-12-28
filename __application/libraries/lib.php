@@ -90,6 +90,15 @@ class lib {
 	}
 	//end Class Upload File
 	
+	//class Make Directory
+	function makedir($dirpath="", $mode=0777){
+		if(!is_dir($dirpath)) {
+			mkdir($dirpath);
+		}
+		return true;
+	}
+	//End class Make Directory	
+	
 	//class Random String Version 1.0
 	function randomString($length,$parameter="") {
         $str = "";
@@ -111,7 +120,8 @@ class lib {
 	
 	//Class CutString
 	function cutstring($text, $length) {
-		$isi_teks = htmlentities(strip_tags($text));
+		//$isi_teks = htmlentities(strip_tags($text));
+		$isi_teks = $text;
 		$isi = substr($isi_teks,0,$length);
 		$isi = substr($isi_teks,0,strrpos($isi," "));
 		$isi = $isi.' ...';

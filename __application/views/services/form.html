@@ -6,6 +6,18 @@
 		<input type="hidden" name="sts_crud" id="sts_crud_{$main}" value="{$sts_crud|default:'add'}">
 		<input type="hidden" name="upload_na" id="upload_na_{$main}" value="services">
 		<input type="hidden" name="modul_detil" id="modul_detil_{$main}" value="tbl_services_foto">
+		<input type="hidden" name="foto_lama" value="{$data.foto_icon|default:''}">
+		<div class="control-group">
+			<label class="control-label" for="form-field-1">Foto Icon</label>
+			<div class="controls">
+				{if $sts_crud == 'edit'}
+					<img src='{$host}__repository/services/{$data.foto_icon}' width='100px' height='150px'>
+					<br/>
+					<br/>
+				{/if}
+				{include file="template/file_input.html" multiple='false' id="file_icon_foto_{$main}" }
+			</div>
+		</div>		
 		<div class="control-group">
 			<label class="control-label" for="form-field-1">Nama Service Ind</label>
 			<div class="controls">
@@ -34,9 +46,20 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="form-field-1">Foto Services</label>
+			<label class="control-label" for="form-field-1">Foto Detail</label>
 			<div class="controls">
-				{include file="template/file_input.html" id="file_foto_{$main}" value="{$data.file_foto|default:''}"}
+				{if $sts_crud eq 'edit'}
+				<div id='detail_fotonya'>
+					{foreach from=$data_foto item=riws}
+						<a href='#' title='Hapus Foto'>X</a>
+						<img src='{$host}__repository/services/{$riws.file_foto}' width='100px' height='150px'>  &nbsp;&nbsp;&nbsp;&nbsp;
+					{/foreach}
+				</div>
+				<br/>
+				<br/>
+				{/if}
+
+				{include file="template/file_input.html" multiple='true' id="file_foto_{$main}" value="{$data.file_foto|default:''}"}
 			</div>
 		</div>
 		
@@ -74,5 +97,4 @@
 		});
 
 	});
-	
 </script>

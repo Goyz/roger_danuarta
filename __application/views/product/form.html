@@ -46,7 +46,7 @@
 		<div class="control-group">
 			<label class="control-label" for="form-field-1">Foto Product</label>
 			<div class="controls">
-				{include file="template/file_input.html" id="file_foto" value="{$data.file_foto|default:''}"}
+				{include file="template/file_input.html" multiple='true' id="file_foto" value="{$data.file_foto|default:''}"}
 			</div>
 		</div>
 		

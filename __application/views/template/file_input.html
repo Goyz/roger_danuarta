@@ -1,3 +1,4 @@
+{if $multiple|default:'' eq 'true'}
 <div class="row-fluid">
 	<div class="span6">
 		<div class="widget-body">
@@ -39,3 +40,14 @@ $('#{$id}').ace_file_input({
 		console.log($(this).data('ace_input_method'));
 	});
 </script>
+{elseif $multiple|default:'' eq 'false'}
+<div class="row-fluid">
+	<div class="span6">
+		<div class="widget-body">
+			<div class="widget-main">
+				<input type="file" id="{$id}" name="{$id}" />
+			</div>
+		</div>
+	</div>
+</div>
+{/if}
