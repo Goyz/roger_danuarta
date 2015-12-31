@@ -122,7 +122,6 @@ function genGrid(modnya, divnya, lebarnya, tingginya){
 	
 	switch(modnya){
 		
-		//Tambahan data production
 		case "berita":
 			judulnya = "List New / Berita";
 			urlnya = "tbl_berita";
@@ -141,7 +140,6 @@ function genGrid(modnya, divnya, lebarnya, tingginya){
 				{field:'create_date',title:'Dibuat Tgl',width:100, halign:'center',align:'center'},
 			]
 		break;
-		
 		case "product":
 			judulnya = "List Product";
 			urlnya = "tbl_product";
@@ -195,7 +193,22 @@ function genGrid(modnya, divnya, lebarnya, tingginya){
 				{field:'request',title:'Request',width:150, halign:'center',align:'left'},
 			]
 		break;
-		//End Cost Object
+		case "gallery":
+			judulnya = "List Gallery";
+			urlnya = "tbl_gallery";
+			fitnya = true;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			kolom[modnya] = [	
+				{field:'kota',title:'Cabang',width:150, halign:'center',align:'left'},
+				{field:'file_foto',title:'Foto',width:200, halign:'center',align:'center',
+					formatter: function(value,row,index){
+						return "<img src='"+host+"__repository/gallery/"+row.file_foto+"' width='100px' style='height:60px !important'>";
+					}
+				},
+			]
+		break;
+		
+		
 	}
 	
 	grid_nya=$("#"+divnya).datagrid({
@@ -238,6 +251,16 @@ function genGrid(modnya, divnya, lebarnya, tingginya){
 			
 		},
 		toolbar: '#tb_'+modnya,
+		rowStyler: function(index,row){
+			if(modnya == 'reservasi'){
+				if (row.flag == 1){
+					return 'background-color:#C5FFC2;'; // return inline style
+				}else if(row.flag == 0){
+					return 'background-color:#FFD1BB;'; // return inline style
+				}
+			}
+			
+		}
 	});
 }
 
@@ -296,39 +319,19 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 							$('#detil_nya_'+submodulnya).html(resp).removeClass("loading");
 						}
 					});
-				}
-				else if(type=='delete'){
+				}else if(type=='delete'){
 					if(confirm("Do You Want To Delete This Data ?")){
 						loadingna();
-						$.post(urldelete, {id:row.id,'sts_crud':'delete'}, function(r){
+						$.post(urldelete, {id:row.id, 'sts_crud':'delete'}, function(r){
 							if(r==1){
 								winLoadingClose();
-								$.messager.alert('ABC System',"Row Data Was Deleted",'info');
-								$('#grid_'+submodulnya).datagrid('reload');
-								
-								var arraynya = [
-									'assign_act_employee',
-									'expense_source_employee',
-									'assign_act_expense',
-									'assign_emp_expense',
-									'assign_assets_expense',
-									'assign_act_assets',
-									'assign_exp_assets',
-								];
-								if( $.inArray(submodulnya, arraynya) > -1 ){
-									$.post(urltot, {}, function(respo){
-										var obj = $.parseJSON(respo);
-										$('#'+divtotcost).html(obj.total_cost);
-										$('#'+divtotpercent).val(obj.total_percent);
-										$('#'+divtxtpercent).val(obj.total_percent);
-									});
-								}
-								
+								$.messager.alert('Roger Salon',"Row Data Was Deleted",'info');
+								$('#grid_'+submodulnya).datagrid('reload');								
 							}
 							else{
 								winLoadingClose();
 								console.log(r)
-								$.messager.alert('ABC System',"Failed",'error');
+								$.messager.alert('Roger Salon',"Failed",'error');
 							}
 						});	
 					}
@@ -336,12 +339,28 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 				
 			}
 			else{
-				$.messager.alert('ABC System',"Select Row In Grid",'error');
+				$.messager.alert('Roger Salon',"Select Row In Grid",'error');
 			}
 		break;
 		
 	}
 }
+
+function kumpulAction(type, p1, p2){
+	switch(type){
+		case "reservation":
+			grid = $('#grid_reservasi').datagrid('getSelected');
+			$.post(host+'backend/simpan_data/tbl_reservasi_confirm', { 'id':grid.id, 'confirm':p1 }, function(rsp){
+				if(rsp == 1){
+					$.messager.alert('Roger Salon',"Confirm OK",'info');
+				}else{
+					$.messager.alert('Roger Salon',"Failed Confirm",'error');
+				}
+				$('#grid_reservasi').datagrid('reload');	
+			} );
+		break;
+	}
+}	
 
 function submit_form(frm,func){
 	var url = jQuery('#'+frm).attr("url");

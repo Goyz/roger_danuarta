@@ -4,7 +4,6 @@ function tooltipInit() {
     jQuery("[data-toggle='tooltip']").tooltip();
 };
 
-
 jQuery(document).ready(function () {
     tooltipInit();
 });
@@ -502,6 +501,7 @@ $(window).load(function () {
     }
 }(jQuery))
 
+/*
 jQuery(document).ready(function () {
     var $map = jQuery("#d3map");
     var width = parseInt($map.attr('data-width'));
@@ -527,7 +527,7 @@ jQuery(document).ready(function () {
         jQuery(window).trigger('resize');
     });
 });
-
+*/
 
 jQuery(window).on("resize", function () {
     var $map = jQuery('#d3map');
@@ -628,3 +628,76 @@ jQuery(document).ready(function () {
         }
     });
 });
+
+function sbmres(lang){
+	if(lang == 'ind'){
+		if($('#nm').val() == ""){
+			alert('Nama Harus Diisi!');
+			return false;
+		}
+		if($('#idme').val() == ""){
+			alert('ID Harus Diisi!');
+			return false;
+		}
+		if($('#serv').val() == ""){
+			alert('Layanan Harus Diisi!');
+			return false;
+		}
+		if($('#lokasi').val() == ""){
+			alert('Lokasi Cabang Harus Diisi!');
+			return false;
+		}
+		if($('#phone').val() == ""){
+			alert('No. Handphone Harus Diisi!');
+			return false;
+		}
+		if($('#mail').val() == ""){
+			alert('Email Harus Diisi!');
+			return false;
+		}
+		if($('#tanggal').val() == ""){
+			alert('Tanggal Reservasi Harus Diisi!');
+			return false;
+		}
+	}
+	
+	var url = $('#form_rsv').attr("url");
+    $('#form_rsv').form('submit',{
+        url:url,
+        onSubmit: function(){
+			return $(this).form('validate');
+        },
+        success:function(data){
+			if(data == 1){
+				alert('Submit OK.');
+			}else{
+				alert('Submit Not OK.');
+			}
+			
+			$('#form_rsv')[0].reset();
+			$('#lokasinya').html('');
+        },
+        error:function(data){
+			
+		}
+    });
+}
+
+function ceklks(lang){
+	$.post(host+'lihat-lokasi', { 'valnya':$('#lokasi').val(), 'lang':lang }, function(resp){
+		$('#lokasinya').html(resp)
+	} );
+}
+
+function sbmnl(){
+	$.post(host+'submit-subscriber', { 'valnya':$('#mail_subsc').val() }, function(resp){
+		if(resp == 1){
+			$('#sukses').css({'display':'inline'});
+			$('#gagal').css({'display':'none'});
+		}else{
+			$('#gagal').css({'display':'inline'});
+			$('#sukses').css({'display':'none'});
+		}
+		$('#mail_subsc').val('');
+	} );
+}
