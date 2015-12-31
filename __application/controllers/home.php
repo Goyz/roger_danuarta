@@ -21,14 +21,43 @@ class home extends CI_Controller {
 	public function index(){
 		$services = $this->mhome->getdata('services', 'result_array');
 		$news = $this->mhome->getdata('berita_home', 'result_array');
+		$kota = $this->mhome->getdata('kota', 'result_array');
+		$lokasi = $this->mhome->getdata('lokasi', 'result_array');
+		$gallery = $this->mhome->getdata('gallery', 'result_array');
 		
 		foreach($news as $k=>$v){
-			$news[$k]['isi_pendek'] = $this->lib->cutstring($v['isi_berita_ind'], 500);
+			$news[$k]['isi_pendek'] = $this->lib->cutstring( $v['isi_berita_ind'], 500);
 		}
 		
 		$this->smarty->assign('services', $services);
 		$this->smarty->assign('news', $news);
+		$this->smarty->assign('kota', $kota);
+		$this->smarty->assign('lokasi', $lokasi);
+		$this->smarty->assign('gallery', $gallery);
+		$this->smarty->assign('lang', 'ind');
+		
 		$this->smarty->display('index-main.html');
+	}
+	
+	function en($lang='en'){
+		$services = $this->mhome->getdata('services', 'result_array');
+		$news = $this->mhome->getdata('berita_home', 'result_array');
+		$kota = $this->mhome->getdata('kota', 'result_array');
+		$lokasi = $this->mhome->getdata('lokasi', 'result_array');
+		$gallery = $this->mhome->getdata('gallery', 'result_array');
+		
+		foreach($news as $k=>$v){
+			$news[$k]['isi_pendek'] = $this->lib->cutstring( $v['isi_berita_eng'] , 500);
+		}
+		
+		$this->smarty->assign('services', $services);
+		$this->smarty->assign('news', $news);
+		$this->smarty->assign('kota', $kota);
+		$this->smarty->assign('lokasi', $lokasi);
+		$this->smarty->assign('gallery', $gallery);
+		$this->smarty->assign('lang', 'en');
+		
+		$this->smarty->display('index-main-en.html');
 	}
 	
 	function getdisplay($type, $p1="", $p2=""){
@@ -60,6 +89,25 @@ class home extends CI_Controller {
 				
 				$this->smarty->assign('berita_detail', $berita_detail);
 				$this->smarty->assign('berita_lainnya', $berita_lainnya);
+			break;
+			case "foto_detail":
+				$path = $this->host."__repository/".$p1."/".$p2;
+				echo "<img src='".$path."' />";
+				exit;
+			break;
+			case "lihat_lokasi":
+				$lang = $this->input->post('lang');
+				$idnya = $this->input->post('valnya');
+				$lokasi = $this->db->get_where('cl_lokasi', array('id'=>$idnya) )->row_array();
+				if($lokasi){
+					if($lang == 'ind'){
+						echo $lokasi['alamat_ind'];
+					}else{
+						echo $lokasi['alamat_eng'];
+					}
+				}
+				
+				exit;
 			break;
 		}
 		

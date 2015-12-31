@@ -1,0 +1,67 @@
+<form id="form_rsv" url="{$host}submit-reservasi" method="post" enctype="multipart/form-data">
+	<input type='hidden' name='sts_crud' value='add' />
+	<fieldset>
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="textinput">Nama</label>  
+		  <input id="nm" name="nama" placeholder="Nama" class="form-control input-md" required="" type="text">
+		</div>
+
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="textinput">ID Member</label>  
+		  <input id="idme" name="id_member" placeholder="ID Member" class="form-control input-md" required="" type="text">
+		</div>
+		
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="kota">Layanan</label>
+			<select id="serv" name="cl_product_type" class="form-control input-md" style='padding:0px !important;color:#00000 !important;'>
+				<option value="" >-- Pilih --</option>
+				{foreach from=$services item=s}
+					<option value="{$s.id}" >{$s.nama_service_ind}</option>
+				{/foreach}
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="lokasi">Lokasi Cabang</label>
+			<select id="lokasi" name="cl_lokasi_id" onChange="ceklks('ind');" class="form-control input-md" style='padding:0px !important;color:#00000 !important;'>
+				<option value="" >-- Pilih --</option>
+				{foreach from=$lokasi item=i}
+					<option value="{$i.id}" >{$i.lokasi}</option>
+				{/foreach}
+			</select>
+			<label id='lokasinya'></label>
+		</div>
+
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="textinput">No. Handphone</label>  
+		  <input id="phone" name="phone" placeholder="No. Handphone" class="form-control input-md" required="" type="text">
+		</div>
+
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="textinput">Email</label>  
+		  <input id="mail" name="email" placeholder="rogers@example.com" class="form-control input-md" type="text">
+		</div>
+		
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="textinput">Tanggal</label>  
+		  <input id="tanggal" name="tgl" placeholder="Tanggal" class="form-control" type="text">
+		</div>
+		
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="textinput">Request Tambahan</label>  
+		  <textarea id="request" name="request" placeholder="Request Tambahan" class="form-control" ></textarea>
+		</div>
+		
+		
+	</fieldset>
+</form>
+<br/>
+<!-- Button -->
+<div>
+	<button type="submit" onclick="sbmres('ind');" class="btn btn-default btn-lg btn-block">Submit</button>
+</div>

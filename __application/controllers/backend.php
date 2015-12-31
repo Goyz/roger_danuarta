@@ -48,7 +48,6 @@ class backend extends CI_Controller {
 				case "product":
 					$type=$data=$this->mbackend->getdata('cl_product_type','combo');
 					$this->smarty->assign("type", $type);
-					
 				break;
 				case "berita":
 					if($sts_crud=='edit'){
@@ -62,6 +61,11 @@ class backend extends CI_Controller {
 						$this->smarty->assign("data_foto", $data_foto);
 					}
 				break;
+				case "gallery":
+					$kota = $data=$this->mbackend->getdata('cl_kota','combo');
+					$this->smarty->assign("kota", $kota);
+				break;
+				
 			}
 			
 			
@@ -91,19 +95,21 @@ class backend extends CI_Controller {
 			}
 			
 		}
+		
 		if(isset($post['upload_na'])){
 			if(isset($post['upload_na']))unset($post['upload_na']);
 			if(isset($post['modul_detil']))unset($post['modul_detil']);
 			$id_header=$this->mbackend->simpan_data($p1, $post,'get_id');
+			
 			unset($_FILES['file_icon_foto_services']);
-			echo $this->upload($this->input->post('modul_detil'),$id_header);
-		}
-		else{
+			
+			echo $this->upload($this->input->post('modul_detil'), $id_header, $post);
+		}else{
 			echo $this->mbackend->simpan_data($p1, $post);
 		}
 	}
 	
-	function upload($modul,$id_header){
+	function upload($modul, $id_header, $postnya=""){
 		$upload=new lib();
 		//print_r ($upload->uploadmultiplenong('__repository/product/'));exit;
 		$path='__repository/'.$this->input->post('upload_na').'/';
@@ -113,7 +119,6 @@ class backend extends CI_Controller {
 			foreach($file_name as $x){
 				switch($modul){
 					case "tbl_product_foto":
-						
 						$post=array('tbl_product_id'=>$id_header,
 									'file_foto'=>$x,
 									'flag'=>1
@@ -124,10 +129,8 @@ class backend extends CI_Controller {
 							unset($_POST['sts_crud']);
 							$_POST['sts_crud']='add';
 						}
-						
 					break;
 					case "tbl_services_foto":
-						
 						$post=array('tbl_services_id'=>$id_header,
 									'file_foto'=>$x,
 									'flag'=>1
@@ -139,12 +142,18 @@ class backend extends CI_Controller {
 							unset($_POST['sts_crud']);
 							$_POST['sts_crud']='add';
 						}
-						
+					break;
+					case "tbl_gallery":
+						$post = array(
+							'cl_lokasi_id' => $postnya['cl_lokasi_id'],
+							'file_foto'=> $x,
+							'flag'=>1
+						);
 					break;
 				}
 				
 				if($this->mbackend->simpan_data($modul, $post)){
-					$sts=1;
+					$sts = 1;
 				}
 			}
 		}

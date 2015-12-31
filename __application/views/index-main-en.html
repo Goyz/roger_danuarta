@@ -206,13 +206,14 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-            <li class="onepage"><a href="#MainHeader">Beranda</a></li>
-            <li class="onepage"><a href="#about-us">Tentang Kami</a></li>
-            <li class="onepage"><a href="#news">Berita</a></li>
-            <li class="onepage"><a href="#services">Layanan</a></li>
-            <li class="onepage"><a href="#gallery">Galeri</a></li>
-			<li class="onepage"><a href="#testimony">Testimoni</a></li>
-			<li class="onepage"><a href="#contact-us">Kontak Kami</a></li>
+            <li class="onepage"><a href="#MainHeader">Home</a></li>
+            <li class="onepage"><a href="#about-us">About Us</a></li>
+            <li class="onepage"><a href="#news">News</a></li>
+            <li class="onepage"><a href="#services">Services</a></li>
+            <li class="onepage"><a href="#gallery">Gallery</a></li>
+			<li class="onepage"><a href="#testimony">Testimony</a></li>
+			{*<li class="onepage"><a href="#reservation">Reservation</a></li>*}
+			<li class="onepage"><a href="#contact-us">Contact Us</a></li>
             <!--li><a href="blog-index.html">Blog</a></li>
             <li><a href="elements.html">Elements</a></li>
             <li><a href="404.html">404 Page</a></li-->
@@ -225,7 +226,7 @@
 <div class="red-semi-color-row">
 
 <div id="about-us" class="container padding-medium text-center chapter">
-	<h4>Selamat Datang di <span class="color-font light">Roger's</span></h4>
+	<h4>Welcome To <span class="color-font light">Roger's</span></h4>
 </div>
 <div class="container">
 <div class="container blog padding-bottom-medium">
@@ -261,7 +262,7 @@
 
 
 <div id="news" class="container padding-top-small text-center chapter">
-	<h4>NEWS DAN SPECIAL PROMO @ <span class="color-font light">Roger's</span></h4>
+	<h4>NEWS AND SPECIAL PROMO @ <span class="color-font light">Roger's</span></h4>
 </div>
 <div class="container">
 <div class="container blog padding-bottom-medium">
@@ -271,7 +272,7 @@
 			{foreach from=$news item=nesw}
 				<div class="row blog-post">
 					 <div class="col-md-12">
-						<h6>{$nesw.judul_ind}</h6>
+						<h6>{$nesw.judul_eng}</h6>
 					</div>
 					<div class="col-md-12">
 						<div class="tags tags-blog">
@@ -290,7 +291,7 @@
 						</p>
 					</div>
 					<div class="col-md-12">
-						<a href="{$host}news/{$nesw.id}" class="btn btn-default btn-small read-more">Lanjut Membaca</a>
+						<a href="{$host}news/{$nesw.id}" class="btn btn-default btn-small read-more">Continue reading</a>
 					</div>
 				</div>
 			{/foreach}
@@ -304,7 +305,7 @@
 <div class="pattern-green-row">
 
 <div id="services" class="container text-center padding-top-medium chapter">
-	<h3>Layanan <span class="color-font light">Roger's</span></h3>
+	<h3><span class="color-font light">Roger's</span> Services</h3>
 </div>
 <div class="container padding-small text-center">
 	<div class="row padding-top-small">
@@ -312,24 +313,21 @@
 			{foreach from=$services item=serv}
 				<div class="col-md-4 col-sm-4">
 					<a href='{$host}services'><img src='{$host}__repository/services/{$serv.foto_icon}' width='300px' height='250px;' ></a>
-					<h5>{$serv.nama_service_ind}</h5>
+					<h5>{$serv.nama_service_eng}</h5>
 				</div>
 			{/foreach}
 		{/if}	
 	</div>
 </div>
 <div id="product" class="container text-center padding-top-medium chapter">
-	<h3>Produk <span class="color-font light">Roger's</span></h3>
+	<h3><span class="color-font light">Roger's</span> Product</h3>
 </div>
-<div class="container padding-small text-center">
-	<div class="row padding-top-small">
-	</div>
-</div>
+
 
 </div>
 
 <div id="gallery" class="container text-center padding-top-small padding-bottom-small chapter">
-	<h3> Galeri <span class="color-font light">Roger's</span></h3>
+	<h3> Gallery <span class="color-font light">Roger's</span></h3>
 </div>
 <!--gallery-->
 <div id="gallery" class='container text-center padding-top-small padding-bottom-medium'>
@@ -459,7 +457,7 @@
 <div class="brown-semi-color-row">
 
 <div id="reservation" class="container text-center padding-medium chapter">
-    <h5><span class="color-font light">Form</span> Reservasi</h5>
+    <h5><span class="color-font light">Form</span> reservation</h5>
 </div>
 <div class="container padding-bottom-medium">
 	{include file='reservation.html'}
@@ -472,7 +470,7 @@
 <div class="red-semi-color-row">
 
 <div id="contact-us" class="container padding-medium text-center chapter col-md-12 animated" data-fx="tada">
-   <h4>Kontak <span class="color-font">Roger's </span></h5>
+   <h4><span class="color-font">Roger's </span> Contact</h5>
 </div>
 <div class="container padding-small">
     <div class="contactForm">
@@ -532,7 +530,7 @@
             </div>
             <div class="media-body">
                 <div class="col-md-12">
-                    <p class="h5">Berlangganan Berita & Promo Terbaru</p>
+                    <p class="h3">Join Our Newsletter</p>
                 </div>
 
                 <div id='sukses' class="successMessage alert alert-success" style="display: none">

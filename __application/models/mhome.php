@@ -49,6 +49,27 @@ class mhome extends CI_Model{
 					SELECT *
 					FROM tbl_berita
 					WHERE id <> '".$p1."'
+					ORDER BY id DESC
+					LIMIT 0,3
+				";
+			break;
+			case "gallery":
+				$sql = " 
+					SELECT A.*, B.kota 
+					FROM tbl_gallery A 
+					LEFT JOIN cl_kota B ON B.id = A.cl_lokasi_id
+				";				
+			break;
+			case "kota":
+				$sql = "
+					SELECT A.kota, A.id
+					FROM cl_kota A 
+				";
+			break;
+			case "lokasi":
+				$sql = "
+					SELECT A.lokasi, A.id
+					FROM cl_lokasi A 
 				";
 			break;
 			

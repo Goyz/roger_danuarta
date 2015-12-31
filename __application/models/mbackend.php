@@ -34,9 +34,20 @@ class mbackend extends CI_Model{
 					return $this->result_query($sql,'row_array');
 				}
 			break;
+			case "tbl_gallery":
+				$sql = " 
+					SELECT A.*, B.kota 
+					FROM tbl_gallery A 
+					LEFT JOIN cl_kota B ON B.id = A.cl_lokasi_id
+				";
+				
+				if($p1=='edit'){
+					$sql .=" WHERE A.id=".$p2;
+					return $this->result_query($sql,'row_array');
+				}
+			break;
 			case "tbl_services":
 				$sql = " SELECT A.* FROM tbl_services A ";
-						
 				if($p1=='edit'){
 					$sql .=" WHERE A.id=".$p2;
 					return $this->result_query($sql,'row_array');
@@ -76,6 +87,17 @@ class mbackend extends CI_Model{
 			break;
 			case "cl_product_type":
 				$sql = "SELECT A.* FROM cl_product_type A ";
+				//echo $sql;
+				if($p1=='edit'){
+					$sql .=" WHERE A.id=".$p2;
+					return $this->result_query($sql,'row_array');
+				}
+				if($p1=='combo'){
+					return $this->db->query($sql)->result_array();
+				}
+			break;
+			case "cl_kota":
+				$sql = "SELECT A.* FROM cl_kota A ";
 				//echo $sql;
 				if($p1=='edit'){
 					$sql .=" WHERE A.id=".$p2;
@@ -204,6 +226,46 @@ class mbackend extends CI_Model{
 				}
 				
 				unset($data['foto_lama']);
+			break;
+			case "tbl_gallery_header":
+				return 1;
+				exit;
+			break;
+			case "tbl_gallery":
+				$path = '__repository/gallery/';
+				if($sts_crud=='delete'){
+					$foto = $this->db->get_where('tbl_gallery', array('id'=>$id) )->row_array();
+					if($foto['file_foto'] != ""){
+						$this->hapus_foto_satu($path.$foto['file_foto']);
+					}
+				}
+			break;
+			case "tbl_reservasi_frontend":
+				$table = 'tbl_reservasi';
+				$data['create_date'] = date('Y-m-d H:i:s');
+			break;
+			case "tbl_reservasi_confirm":
+				$table = 'tbl_reservasi';
+				$sts_crud = 'edit';
+				
+				if($data['confirm'] == 'ok'){
+					$data['flag'] = 1;
+				}elseif($data['confirm'] == 'notok'){
+					$data['flag'] = 0;
+				}
+				
+				unset($data['confirm']);
+			break;
+			
+			case "newsletter_frontend":
+				$table = 'tbl_newslatter';
+				$sts_crud = 'add';
+				
+				$data['create_date'] = date('Y-m-d H:i:s');
+				$data['create_by'] = "User Online";
+				$data['email'] = $data['valnya'];
+				
+				unset($data['valnya']);
 			break;
 			
 		}
