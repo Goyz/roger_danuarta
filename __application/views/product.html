@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content=" ">
+    <meta name="author" content="CreateIT">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="{$host}__assets/js/modernizr.js"></script>
+    <script src="{$host}__assets/js/device.min.js"></script>
+
+    <title>:: Roger's ::</title>
+
+    <link rel="stylesheet" type="text/css" href="{$host}__assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{$host}__assets/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="{$host}__assets/css/blue.css">
+    <link rel="stylesheet" type="text/css" href="{$host}__assets/css/font-awesome.css">
+
+    <!--[if lt IE 9]>
+    <script src="bootstrap/js/html5shiv.js"></script>
+    <script src="bootstrap/js/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+	<script>
+		var host = "{$host}";
+	</script>
+	
+</head>
+<body class="initAnimate" data-spy="scroll">
+
+<!-- Main Container -->
+<div class="container">
+
+</div>
+
+<!-- Begin Navigation -->
+<nav id="navigation" class="navbar navbar-inverse navbar-fixed-top navbar-info-top remove-left-red" role="navigation">
+    <div class="top-info">
+        <div class="pull-left">
+        </div>
+        <div class="pull-right hidden-xs">
+            <div class="social">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
+                                 title="Facebook">
+                                <p><i class="fa fa-facebook"></i></p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
+                                 title="Twitter">
+                                <p><i class="fa fa-twitter"></i></p>
+                            </div>
+                        </a>
+                    </li>
+					<li>
+                        <a href="#">
+                            <div class="circle-btn" data-toggle="tooltip" data-placement="bottom" title="Instagram">
+                                <p><i class="fa fa-instagram"></i></p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <!--a class="navbar-brand" href="#"><strong>Roger's</strong>Salon</a-->
+		<img src="{$host}__assets/images/content/logo.png"   class="navbar-brand" href="#">
+    </div>
+    <div class="triangle visible-md visible-lg"></div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="{$host}">Home</a></li>
+        </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+</nav>
+<!-- End Navigation -->
+<div id="head" class="container padding-small pattern-green-row">
+</div>
+
+	<div class="pattern-green-row">
+		<div class="container padding-medium text-center chapter">
+			<h4>{$nama_type}</h4>
+		</div>
+		
+		<div class='container text-center padding-top-small padding-bottom-medium'>
+			<div class="form-group">
+				<fieldset>
+				<select id="prod_tp" onChange="prd();" class="form-control input-md" style='padding:0px !important;color:#00000 !important;'>
+					{foreach from=$data_product item=s}
+						<option value="{$s.id}" >{$s.nama_product_ind}</option>
+					{/foreach}
+					<input type='hidden' id='id-atas' value='{$data_product.0.id}' />
+				</select>
+				</fieldset>
+			</div>
+		</div>
+		
+		<div id='detail_product' class='container padding-bottom-medium'>
+		</div>
+	</div>
+
+<div class="container padding-small pattern-green-row">
+</div>
+
+
+<footer class="jingga-semi-color-row ">
+    <div class="container text-center">
+        <p class="h4">Roger's<span class="light"> Salon</span></p>
+
+        <div class="social-unit">
+            <div class="container text-center">
+                <div class="social">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
+                                     title="Facebook">
+                                    <p><i class="fa fa-facebook"></i></p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
+                                     title="Twitter">
+                                    <p><i class="fa fa-twitter"></i></p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="circle-btn" data-toggle="tooltip" data-placement="bottom" title="Pinterest">
+                                    <p><i class="fa fa-pinterest"></i></p>
+                                </div>
+                            </a>
+                        </li>						
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <p style='font-weight:bold;'>&copy; Roger's 2015 - by Jingga Sinergi Idea</p>
+    </div>
+</footer>
+
+<a href="#head" id="toTop" class="btn-scroll"><i class="fa fa-chevron-up"></i> Back to top</a>
+<!-- End Main Container -->
+<script src="{$host}__assets/js/jquery.min.js"></script>
+<script src="{$host}__assets/plugin/bootstrap/js/bootstrap.min.js"></script>
+
+<script src="{$host}__assets/js/jquery.parallax.js"></script>
+<script src="{$host}__assets/js/jquery.pagescroller.lite.js"></script>
+<script src="{$host}__assets/js/jquery.easy-pie-chart.js"></script>
+<script src="{$host}__assets/js/jquery.isotope.min.js"></script>
+<script src="{$host}__assets/js/jquery.ba-bbq.min.js"></script>
+<script src="{$host}__assets/js/gmap3.min.js"></script>
+<script src="{$host}__assets/js/d3.v3.min.js"></script>
+<script src="{$host}__assets/js/topojson.v1.min.js"></script>
+<script src="{$host}__assets/js/jquery.sticky.js"></script>
+<script src="{$host}__assets/js/jquery.colorbox-min.js"></script>
+<script src="{$host}__assets/plugin/flexslider/jquery.flexslider.js"></script>
+<script src="{$host}__assets/js/jquery.fitvids.js"></script>
+<script src="{$host}__assets/js/jquery.appear.js"></script>
+<script src="{$host}__assets/js/imgloaded.js"></script>
+<script src="{$host}__assets/js/classie.js"></script>
+<script src="{$host}__assets/js/masonry.js"></script>
+
+
+<script>
+    jQuery(document).ready(function () {
+		/*
+		jQuery('body').pageScroller({
+			navigation: '#navigation .onepage',
+			sectionClass: 'chapter',
+			animationType: 'easeOutExpo',
+			animationSpeed: 750,
+			keyboardControl: true,
+			scrollOffset: '-80'
+		});
+		*/
+		prd('awal');
+    });
+</script>
+<script src="{$host}__assets/js/main.js"></script>
+
+</body>
+</html>

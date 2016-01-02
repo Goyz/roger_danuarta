@@ -8,6 +8,8 @@ $route['backend'] = "backend";
 $route['login/backend'] = "backend";
 
 $route['services'] = "home/getdisplay/services";
+$route['product/(:any)'] = "home/getdisplay/product/$1";
+$route['product-detail'] = "home/getdisplay/product_detail";
 $route['news/(:any)'] = "home/getdisplay/news/$1";
 
 $route['submit-reservasi'] = "backend/simpan_data/tbl_reservasi_frontend";

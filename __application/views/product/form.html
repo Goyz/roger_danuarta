@@ -46,6 +46,17 @@
 		<div class="control-group">
 			<label class="control-label" for="form-field-1">Foto Product</label>
 			<div class="controls">
+				{if $sts_crud eq 'edit'}
+				<div id='detail_fotonya'>
+					{foreach from=$data_foto item=riws}
+						<a href='#' title='Hapus Foto'>X</a>
+						<img src='{$host}__repository/services/{$riws.file_foto}' width='100px' height='150px'>  &nbsp;&nbsp;&nbsp;&nbsp;
+					{/foreach}
+				</div>
+				<br/>
+				<br/>
+				{/if}
+				
 				{include file="template/file_input.html" multiple='true' id="file_foto" value="{$data.file_foto|default:''}"}
 			</div>
 		</div>

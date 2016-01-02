@@ -48,6 +48,10 @@ class backend extends CI_Controller {
 				case "product":
 					$type=$data=$this->mbackend->getdata('cl_product_type','combo');
 					$this->smarty->assign("type", $type);
+					if($sts_crud=='edit'){
+						$data_foto = $this->mbackend->getdata('tbl_product_foto','edit',$this->input->post('id'));
+						$this->smarty->assign("data_foto", $data_foto);
+					}
 				break;
 				case "berita":
 					if($sts_crud=='edit'){
@@ -125,7 +129,7 @@ class backend extends CI_Controller {
 						);
 						if($this->input->post('sts_crud')=='edit'){
 							$path='__repository/product/';
-							$this->mbackend->hapus_foto('tbl_product_foto',$path,'tbl_product_id',$id_header,'file_foto');
+							//$this->mbackend->hapus_foto('tbl_product_foto',$path,'tbl_product_id',$id_header,'file_foto');
 							unset($_POST['sts_crud']);
 							$_POST['sts_crud']='add';
 						}

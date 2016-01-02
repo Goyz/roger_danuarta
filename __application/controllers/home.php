@@ -109,6 +109,31 @@ class home extends CI_Controller {
 				
 				exit;
 			break;
+			case "product":
+				$parameter = str_replace('-', " ", $p1);
+				$content = "product.html";
+				$data_type = $this->db->get_where('cl_product_type', array('product_type'=>$parameter))->row_array();
+				if($data_type){
+					$data_product = $this->db->get_where('tbl_product', array('cl_product_type_id'=>$data_type['id']) )->result_array();
+					$this->smarty->assign('data_product', $data_product);
+					$this->smarty->assign('nama_type', strtoupper($parameter));
+				}else{
+					header("Location: ".$this->host."");
+				}
+			break;
+			case "product_detail":
+				$id = $this->input->post('idp');
+				$data_header = $this->db->get_where('tbl_product', array('id'=>$id) )->row_array();
+				$data_detail = $this->db->get_where('tbl_product_foto', array('tbl_product_id'=>$id) )->result_array();
+				$this->smarty->assign('data_header', $data_header);
+				$this->smarty->assign('data_detail', $data_detail);
+				$content = $this->smarty->fetch('product-detail.html');
+				$kembalian = array(
+					'konten' => $content
+				);
+				echo json_encode($kembalian);
+				exit;
+			break;
 		}
 		
 		$this->smarty->display($content);
