@@ -701,3 +701,16 @@ function sbmnl(){
 		$('#mail_subsc').val('');
 	} );
 }
+
+function prd(ixx){
+	if(ixx == 'awal'){
+		var idp = $('#id-atas').val();
+	}else{
+		var idp = $('#prod_tp').val();
+	}
+	
+	$.post(host+'product-detail', { 'idp':idp }, function(resp){
+		var response = $.parseJSON(resp);
+		$('#detail_product').html(response.konten);
+	} );
+}
