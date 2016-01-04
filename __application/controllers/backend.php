@@ -56,6 +56,10 @@ class backend extends CI_Controller {
 						$this->smarty->assign("data_foto", $data_foto);
 					}
 				break;
+				case "lokasi":
+					$kota=$data=$this->mbackend->getdata('cl_kota','combo');
+					$this->smarty->assign("kota", $kota);
+				break;
 				case "berita":
 					$this->smarty->assign("acak_ind", md5(date('YmdHis').'ind') );
 					$this->smarty->assign("acak_en", md5(date('YmdHis').'en') );

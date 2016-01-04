@@ -1,0 +1,101 @@
+<fieldset>
+<div class="span12">
+	<!--PAGE CONTENT BEGINS-->
+	<form class="form-horizontal" id="form_berita" url="{$host}backend/simpan_data/tbl_{$main}" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="id" value="{$data.id|default:''}">
+		<input type="hidden" name="sts_crud" value="{$sts_crud|default:'add'}">
+		<!--input type="hidden" name="upload_na" value="product">
+		<input type="hidden" name="modul_detil" value="tbl_product_foto"-->
+		<div class="control-group">
+			<label class="control-label" for="form-field-1">UserId</label>
+			<div class="controls">
+				<input type="text" class="span8" name="nama_user" id="nama_user" value="{$data.nama_user|default:''}" />
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<label class="control-label" for="form-field-1">Password</label>
+			<div class="controls">
+				{if $sts_crud eq 'add'}
+				<input type="password" class="span8" name="password" id="password" value="{$data.password|default:''}" />
+				{else}
+				{$data.password|default:''}
+				{/if}
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="form-field-1">Nama Lengkap</label>
+			<div class="controls">
+				<input type="text" class="span8" name="nama_lengkap" id="nama_lengkap" value="{$data.nama_lengkap|default:''}" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="form-field-1">Email</label>
+			<div class="controls">
+				<input type="text" class="span8" name="email" id="email" value="{$data.email|default:''}" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="form-field-1">Jenis Kelamin</label>
+			<div class="controls">
+				<label>
+					<input name="jenis_kelamin" type="radio" value="L" checked />
+					<span class="lbl">&nbsp;&nbsp;Laki-laki</span>
+				</label>
+
+				<label>
+					<input name="jenis_kelamin" type="radio" value="W" />
+					<span class="lbl">&nbsp;&nbsp;Wanita</span>
+				</label>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="form-field-1">Telp</label>
+			<div class="controls">
+				<input type="text" class="span8" name="tlp" id="tlp" value="{$data.tlp|default:''}" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="form-field-1">Status</label>
+			<div class="controls">
+				<label>
+					<input name="status" type="checkbox" />
+					<span class="lbl">&nbsp;&nbsp;Aktif</span>
+				</label>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="form-field-1"></label>
+			<div class="controls">
+				{include file="template/button_save.html" id_simpan="simpan_{$main}" id_batal="batal_{$main}" }
+			</div>
+		</div>
+		
+	</form>
+</div>
+</fieldset>
+
+
+<script>
+	$('#batal_{$main}').click(function(){
+		$('#grid_nya_{$main}').show();
+		$('#detil_nya_{$main}').html('').hide();
+	});
+	$('#simpan_{$main}').click(function(){
+
+		submit_form('form_berita',function(r){
+			if(r==1){
+				$.messager.alert('Roger Salon',"User Tersimpan",'info');
+				$('#grid_{$main}').datagrid('reload');
+				$('#grid_nya_{$main}').show();
+				$('#detil_nya_{$main}').html('').hide();
+			}
+			else{
+				$.messager.alert('Roger Salon',"Gagal",'error');
+				console.log(r);
+			}
+		});
+
+	});
+	
+</script>

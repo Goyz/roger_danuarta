@@ -118,6 +118,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya){
 	var doble_klik=false;
 	var pagesizeboy = 10;
 	var singleSelek = true;
+	var nowrap_nya = true;
 	var footer=false;
 	
 	switch(modnya){
@@ -208,7 +209,75 @@ function genGrid(modnya, divnya, lebarnya, tingginya){
 			]
 		break;
 		
-		
+		case "kota":
+			judulnya = "List Cabang Kota";
+			urlnya = "cl_kota";
+			fitnya = true;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			kolom[modnya] = [	
+				{field:'kota',title:'Kota',width:250, halign:'center',align:'left'},
+				{field:'create_by',title:'Dibuat Oleh',width:150, halign:'center',align:'left'},
+				{field:'create_date',title:'Dibuat Tgl',width:150, halign:'center',align:'center'},
+			]
+		break;
+		case "product_type":
+			judulnya = "List Product Kategori/Type";
+			urlnya = "cl_product_type";
+			fitnya = true;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			kolom[modnya] = [	
+				{field:'product_type',title:'Product Type',width:250, halign:'center',align:'left'},
+				{field:'create_by',title:'Dibuat Oleh',width:150, halign:'center',align:'left'},
+				{field:'create_date',title:'Dibuat Tgl',width:150, halign:'center',align:'center'},
+			]
+		break;
+		case "lokasi":
+			judulnya = "List Cabang Lokasi Kota";
+			urlnya = "cl_lokasi";
+			fitnya = true;
+			nowrap_nya=false;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [	
+				{field:'kota',title:'Kota',width:250, halign:'center',align:'left'},
+				{field:'lokasi',title:'Lokasi',width:250, halign:'center',align:'left'}
+			],
+			kolom[modnya] = [	
+				{field:'alamat_ind',title:'Alamat Ind',width:250, halign:'center',align:'left'},
+				{field:'alamat_eng',title:'Alamat Eng',width:250, halign:'center',align:'left'},
+				{field:'tlp',title:'Telp',width:150, halign:'center',align:'left'},
+				{field:'fax',title:'Fax',width:150, halign:'center',align:'left'},
+				{field:'email',title:'Email',width:150, halign:'center',align:'left'},
+				{field:'create_by',title:'Dibuat Oleh',width:150, halign:'center',align:'left'},
+				{field:'create_date',title:'Dibuat Tgl',width:150, halign:'center',align:'center'},
+			]
+		break;
+		case "user":
+			judulnya = "User Management";
+			urlnya = "tbl_user";
+			fitnya = true;
+			nowrap_nya=false;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [	
+				{field:'nama_user',title:'UserId',width:250, halign:'center',align:'left'},
+				{field:'nama_lengkap',title:'Nama Lengkap',width:250, halign:'center',align:'left'}
+			],
+			kolom[modnya] = [	
+				{field:'email',title:'Email',width:150, halign:'center',align:'left'},
+				{field:'jenis_kelamin',title:'Jenis Kelamin',width:150, halign:'center',align:'left',
+					formatter: function(value,row,index){
+						if(value=='L'){return 'Laki-laki';}
+						else{return 'Wanita';}
+					}
+				},
+				{field:'tlp',title:'Telp',width:150, halign:'center',align:'left'},
+				{field:'status',title:'Status',width:150, halign:'center',align:'left',
+					formatter: function(value,row,index){
+						if(value==1){return 'Aktif';}
+						else{return 'Tidak Aktif';}
+					}
+				},
+			]
+		break;
 	}
 	
 	grid_nya=$("#"+divnya).datagrid({
@@ -224,7 +293,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya){
 		showFooter:footer,
 		singleSelect:singleSelek,
         url: urlglobal,		
-		nowrap: true,
+		nowrap: nowrap_nya,
 		pageSize:pagesizeboy,
 		pageList:[10,20,30,40,50,75,100,200],
 		queryParams:param,

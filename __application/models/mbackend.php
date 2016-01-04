@@ -46,6 +46,56 @@ class mbackend extends CI_Model{
 					return $this->result_query($sql,'row_array');
 				}
 			break;
+			case "cl_kota":
+			case "tbl_kota":
+				$sql = " 
+					SELECT A.*
+					FROM cl_kota A
+				";
+				
+				if($p1=='edit'){
+					$sql .=" WHERE A.id=".$p2;
+					return $this->result_query($sql,'row_array');
+				}
+				if($p1=='combo'){
+					return $this->db->query($sql)->result_array();
+				}
+			break;
+			case "cl_lokasi":
+			case "tbl_lokasi":
+				$sql = " 
+					SELECT A.*,B.kota
+					FROM cl_lokasi A LEFT JOIN cl_kota B ON A.cl_kota_id=B.id
+				";
+				
+				if($p1=='edit'){
+					$sql .=" WHERE A.id=".$p2;
+					return $this->result_query($sql,'row_array');
+				}
+			break;
+			case "cl_product_type":
+			case "tbl_product_type":
+				$sql = " 
+					SELECT A.*
+					FROM cl_product_type A
+				";
+				
+				if($p1=='edit'){
+					$sql .=" WHERE A.id=".$p2;
+					return $this->result_query($sql,'row_array');
+				}
+			break;
+			case "tbl_user":
+				$sql = " 
+					SELECT A.*
+					FROM tbl_user A
+				";
+				
+				if($p1=='edit'){
+					$sql .=" WHERE A.id=".$p2;
+					return $this->result_query($sql,'row_array');
+				}
+			break;
 			case "tbl_services":
 				$sql = " SELECT A.* FROM tbl_services A ";
 				if($p1=='edit'){
@@ -105,7 +155,7 @@ class mbackend extends CI_Model{
 					return $this->db->query($sql)->result_array();
 				}
 			break;
-			case "cl_kota":
+			case "tbl_kota":
 				$sql = "SELECT A.* FROM cl_kota A ";
 				//echo $sql;
 				if($p1=='edit'){
@@ -162,6 +212,37 @@ class mbackend extends CI_Model{
 		unset($data['sts_crud']);
 		//print_r($_POST);exit;
 		switch ($table){
+			case "tbl_user":
+				$this->load->library('encrypt');
+				if(isset($data['status'])){unset($data['status']);$data['status']=1;}
+				if(isset($data['password'])){
+					if($data['password']!=''){
+						unset($data['password']);
+						$pass=$this->encrypt->encode($this->input->post('password'));
+						$data['password']=$pass;
+					}
+				}
+				
+				
+			break;
+			case "cl_product_type":
+			case "tbl_product_type":
+				$table="cl_product_type";
+				$data['create_date']=date('Y-m-d H:i:s');
+				$data['create_by']=$this->auth['nama_user'];
+			break;
+			case "cl_kota":
+			case "tbl_kota":
+				$table="cl_kota";
+				$data['create_date']=date('Y-m-d H:i:s');
+				$data['create_by']=$this->auth['nama_user'];
+			break;
+			case "cl_lokasi":
+			case "tbl_lokasi":
+				$table="cl_lokasi";
+				$data['create_date']=date('Y-m-d H:i:s');
+				$data['create_by']=$this->auth['nama_user'];
+			break;
 			case "tbl_product":
 				$data['create_date']=date('Y-m-d H:i:s');
 				$data['create_by']=$this->auth['nama_user'];
