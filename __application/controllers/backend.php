@@ -48,18 +48,27 @@ class backend extends CI_Controller {
 				case "product":
 					$type=$data=$this->mbackend->getdata('cl_product_type','combo');
 					$this->smarty->assign("type", $type);
+					$this->smarty->assign("acak_ind", md5(date('YmdHis').'ind') );
+					$this->smarty->assign("acak_en", md5(date('YmdHis').'en') );
+					
 					if($sts_crud=='edit'){
 						$data_foto = $this->mbackend->getdata('tbl_product_foto','edit',$this->input->post('id'));
 						$this->smarty->assign("data_foto", $data_foto);
 					}
 				break;
 				case "berita":
+					$this->smarty->assign("acak_ind", md5(date('YmdHis').'ind') );
+					$this->smarty->assign("acak_en", md5(date('YmdHis').'en') );
+					
 					if($sts_crud=='edit'){
 						$data=$this->mbackend->getdata('tbl_'.$p1,'edit',$this->input->post('id'));
 						$this->smarty->assign("data", $data);
 					}
 				break;
 				case "services":
+					$this->smarty->assign("acak_ind", md5(date('YmdHis').'ind') );
+					$this->smarty->assign("acak_en", md5(date('YmdHis').'en') );
+
 					if($sts_crud=='edit'){
 						$data_foto = $this->mbackend->getdata('tbl_services_foto','edit',$this->input->post('id'));
 						$this->smarty->assign("data_foto", $data_foto);

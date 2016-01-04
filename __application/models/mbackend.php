@@ -60,6 +60,14 @@ class mbackend extends CI_Model{
 				return $this->result_query($sql);
 			break;
 			case "tbl_product_foto":
+				$sql = " SELECT A.* FROM tbl_product_foto A ";
+				$sql .=" WHERE A.tbl_product_id = ".$p2;
+				
+				return $this->result_query($sql);
+			break;
+
+			/*
+			case "tbl_product_foto":
 				$sql = " SELECT A.*
 						FROM tbl_product_foto A 
 						LEFT JOIN tbl_product B ON A.tbl_product_id=B.id ";
@@ -72,14 +80,6 @@ class mbackend extends CI_Model{
 					return $this->result_query($sql);
 				}
 			break;
-			case "tbl_product_foto":
-				$sql = " SELECT A.* FROM tbl_product_foto A ";
-				$sql .=" WHERE A.tbl_product_id = ".$p2;
-				
-				return $this->result_query($sql);
-			break;
-
-			/*
 			case "tbl_services_foto":
 				$sql = " SELECT A.*
 						FROM tbl_services_foto A 

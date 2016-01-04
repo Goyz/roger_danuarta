@@ -32,14 +32,14 @@
 		<div class="control-group">
 			<label class="control-label" for="form-field-1">Deskripsi Ind</label>
 			<div class="controls">
-				{include file="template/editor.html" id="desc_{$main}_ind" name="deskripsi_ind" height="150" value="{$data.deskripsi_ind|default:''}" }
+				{include file="template/editor.html" id="desc_{$main}_ind_{$acak_ind}" name="deskripsi_ind" height="150" value="{$data.deskripsi_ind|default:''}" }
 				<!--textarea class="span10" id="isi_berita_ind" name="isi_berita_ind"></textarea-->
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label" for="form-field-1">Deskripsi Eng</label>
 			<div class="controls">
-				{include file="template/editor.html" id="desc_{$main}_eng" name="deskripsi_eng" height="150" value="{$data.deskripsi_eng|default:''}"}
+				{include file="template/editor.html" id="desc_{$main}_eng_{$acak_en}" name="deskripsi_eng" height="150" value="{$data.deskripsi_eng|default:''}"}
 				<!--textarea class="span10" id="isi_berita_eng" name="isi_berita_eng"></textarea-->
 			</div>
 		</div>
@@ -50,7 +50,7 @@
 				<div id='detail_fotonya'>
 					{foreach from=$data_foto item=riws}
 						<a href='#' title='Hapus Foto'>X</a>
-						<img src='{$host}__repository/services/{$riws.file_foto}' width='100px' height='150px'>  &nbsp;&nbsp;&nbsp;&nbsp;
+						<img src='{$host}__repository/product/{$riws.file_foto}' width='100px' height='150px'>  &nbsp;&nbsp;&nbsp;&nbsp;
 					{/foreach}
 				</div>
 				<br/>

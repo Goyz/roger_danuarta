@@ -34,14 +34,14 @@
 		<div class="control-group">
 			<label class="control-label" for="form-field-1">Isi Berita. Ind</label>
 			<div class="controls">
-				{include file="template/editor.html" id="isi_{$main}_ind" name="isi_berita_ind" height="150" value="{$data.isi_berita_ind|default:''}" }
+				{include file="template/editor.html" id="isi_{$main}_ind_{$acak_ind}" name="isi_berita_ind" height="150" value="{$data.isi_berita_ind|default:''}" }
 				<!--textarea class="span10" id="isi_berita_ind" name="isi_berita_ind"></textarea-->
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label" for="form-field-1">Isi Berita. Eng</label>
 			<div class="controls">
-				{include file="template/editor.html" id="isi_{$main}_eng" name="isi_berita_eng" height="150" value="{$data.isi_berita_eng|default:''}"}
+				{include file="template/editor.html" id="isi_{$main}_eng_{$acak_en}" name="isi_berita_eng" height="150" value="{$data.isi_berita_eng|default:''}"}
 				<!--textarea class="span10" id="isi_berita_eng" name="isi_berita_eng"></textarea-->
 			</div>
 		</div>
