@@ -131,28 +131,78 @@ class lib {
 	
 	//Class Kirim Email
 	function kirimemail($type="", $email="", $p1="", $p2="", $p3=""){
-		$ci =& get_instance();
+		//$ci =& get_instance();
+		//$ci->load->library('email');
 		
-		$ci->load->library('email');
 		$html = "";
 		$subject = "";
 		switch($type){
-			case "email_test":
-				
+			case "email_news":
+				$subject = "Roger's Newsletter Notification";
+				$html = "
+					<img src='http://www.rogersalon.com/__assets/images/content/logo.png' />
+					<br/>
+					<br/>
+					<b>".$p1."</b>
+					<br/>
+					<a href='http://www.rogersalon.com/#news'>Continue</a>
+				";
 			break;
 		}
 		
+		$ci =& get_instance();
+		$ci->load->library('My_PHPMailer');
+		
+		try{
+			$mail = new PHPMailer();
+			$email_body = $html;
+			
+			if($ci->config->item('SMTP')) $mail->IsSMTP();
+			$mail->SMTPAuth   = TRUE;       
+			$mail->SMTPSecure = "tls";
+			$mail->Port       = 465; //$ci->config->item('Port');                    
+			$mail->Host       = "mail.gmail.com"; //$ci->config->item('Host'); 
+			$mail->Username   = "triwahyunugros@gmail.com"; //$ci->config->item('Username');     
+			$mail->Password   = "ms6713saa"; //$ci->config->item('Password');            
+
+			$mail->AddReplyTo("news@rogersalon.com", "Roger's Newsletter");
+			$mail->SetFrom    = "news@rogersalon.com"; //$ci->config->item('EmaiFrom');
+			$mail->FromName   = "Roger's Newsletter"; //$ci->config->item('EmaiFromName');			
+			$mail->AddAddress($email);
+			
+			$mail->Subject   = $subject;
+			$mail->AltBody   = "To view the message, please use an HTML compatible email viewer!"; 
+			$mail->WordWrap  = 100; 
+			$mail->MsgHTML($email_body);
+			$mail->IsHTML(true);			
+			$mail->SMTPDebug=1;
+			
+			if($mail->Send()){
+				return 1;
+			}else{
+				return 0;
+			}
+			
+		} catch (phpmailerException $e) {
+			return 0;
+		}
+
+		/*
 		$config = array(
 			"protocol"	=>"smtp"
 			,"mailtype" => "html"
-			,"smtp_host" => "smtp.gmail.com"
+			,"smtp_host" => "mail.gmail.com"
 			,"smtp_user" => "triwahyunugros@gmail.com"
 			,"smtp_pass" => "ms6713saa"
-			,"smtp_port" => 465
+			,"smtp_port" => 25
+			,'mailtype' => 'html'
+            ,'charset' => 'iso-8859-1'
+            ,'wordwrap' => TRUE
 		);
 		
+		
 		$ci->email->initialize($config);
-		$ci->email->from("triwahyunugros@gmail.com");
+		$ci->email->from("news@rogersalon.com", "NEWSLETTER ROGERSALON");
 		$ci->email->to($email);
 		$ci->email->subject($subject);
 		$ci->email->message($html);
@@ -163,6 +213,7 @@ class lib {
 		else
 			//echo $this->email->print_debugger();
 			return $ci->email->print_debugger();
+		*/
 	}	
 	//End Class KirimEmail
 	

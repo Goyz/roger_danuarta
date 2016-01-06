@@ -36,9 +36,9 @@ class mbackend extends CI_Model{
 			break;
 			case "tbl_gallery":
 				$sql = " 
-					SELECT A.*, B.kota 
+					SELECT A.*, B.lokasi 
 					FROM tbl_gallery A 
-					LEFT JOIN cl_kota B ON B.id = A.cl_lokasi_id
+					LEFT JOIN cl_lokasi B ON B.id = A.cl_lokasi_id
 				";
 				
 				if($p1=='edit'){
@@ -71,6 +71,9 @@ class mbackend extends CI_Model{
 				if($p1=='edit'){
 					$sql .=" WHERE A.id=".$p2;
 					return $this->result_query($sql,'row_array');
+				}
+				if($p1=='combo'){
+					return $this->db->query($sql)->result_array();
 				}
 			break;
 			case "cl_product_type":
@@ -314,6 +317,15 @@ class mbackend extends CI_Model{
 						$data['file_foto'] = null;
 					}
 				}
+				
+				/*
+				if($sts_crud == 'add'){
+					$newsletter = $this->db->get('tbl_newslatter')->result_array();
+					foreach($newsletter as $k => $v){ 
+						$this->lib->kirimemail('email_news', $v['email'], $data['judul_ind']);
+					}
+				}
+				*/
 				
 				unset($data['foto_lama']);
 			break;

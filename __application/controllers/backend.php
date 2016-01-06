@@ -79,8 +79,8 @@ class backend extends CI_Controller {
 					}
 				break;
 				case "gallery":
-					$kota = $data=$this->mbackend->getdata('cl_kota','combo');
-					$this->smarty->assign("kota", $kota);
+					$lokasi = $data=$this->mbackend->getdata('cl_lokasi','combo');
+					$this->smarty->assign("lokasi", $lokasi);
 				break;
 				
 			}
@@ -177,6 +177,57 @@ class backend extends CI_Controller {
 		return $sts;
 	}
 	
+	function hapusfoto_detail($type, $p1="", $p2=""){
+		$html = "";
+		switch($type){
+			case "produk":
+				$path = '__repository/product/';
+				$id = $this->input->post('id');
+				$nama_file = $this->input->post('nama_file');
+				$id_header = $this->input->post('id_header');
+				
+				$delete = $this->db->delete('tbl_product_foto', array('id'=>$id) );
+				if($delete){
+					unlink($path.$nama_file);
+				}
+				
+				$data_gambar = $this->db->get_where('tbl_product_foto', array('tbl_product_id'=>$id_header) )->result_array();
+				foreach($data_gambar as $k=>$v){
+					$html .= "
+						<a href='#' onClick=\"kumpulAction('hapus_produk', '".$v['id']."', '".$v['file_foto']."', '".$id_header."' );\" title='Hapus Foto'>X</a>
+						<img src='".$this->host."__repository/product/".$v['file_foto']."' width='100px' height='150px'>  &nbsp;&nbsp;&nbsp;&nbsp;
+					";
+				}
+			break;
+			case "service":
+				$path = '__repository/services/';
+				$id = $this->input->post('id');
+				$nama_file = $this->input->post('nama_file');
+				$id_header = $this->input->post('id_header');
+				
+				$delete = $this->db->delete('tbl_services_foto', array('id'=>$id) );
+				if($delete){
+					unlink($path.$nama_file);
+				}
+				
+				$data_gambar = $this->db->get_where('tbl_services_foto', array('tbl_services_id'=>$id_header) )->result_array();
+				foreach($data_gambar as $k=>$v){
+					$html .= "
+						<a href='#' onClick=\"kumpulAction('hapus_service', '".$v['id']."', '".$v['file_foto']."', '".$id_header."' );\" title='Hapus Foto'>X</a>
+						<img src='".$this->host."__repository/services/".$v['file_foto']."' width='100px' height='150px'>  &nbsp;&nbsp;&nbsp;&nbsp;
+					";
+				}
+			break;
+		}
+		
+		echo $html;
+	}
 	
+	function kirimemailbro(){
+		$email = "triwahyunugroho11@gmail.com";
+		$pesan = "Promo Akhir Tahun";
+		
+		echo $this->lib->kirimemail('kirimemail', $email, $pesan);
+	}
 	
 }

@@ -49,7 +49,7 @@
 				{if $sts_crud eq 'edit'}
 				<div id='detail_fotonya'>
 					{foreach from=$data_foto item=riws}
-						<a href='#' title='Hapus Foto'>X</a>
+						<a href='javascript:void(0)' onClick="kumpulAction('hapus_produk', '{$riws.id}', '{$riws.file_foto}', '{$data.id}' );" title='Hapus Foto'>X</a>
 						<img src='{$host}__repository/product/{$riws.file_foto}' width='100px' height='150px'>  &nbsp;&nbsp;&nbsp;&nbsp;
 					{/foreach}
 				</div>

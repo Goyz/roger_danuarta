@@ -10,8 +10,8 @@
 				<div class="controls">
 					<select id="form-field-select-1" name="cl_lokasi_id">
 						<option value="" >-- Pilih --</option>
-						{foreach from=$kota item=i}
-							<option value="{$i.id}" {if $sts_crud eq 'edit' }{if $data.cl_lokasi_id eq $i.id}selected{/if}{/if} >{$i.kota}</option>
+						{foreach from=$lokasi item=i}
+							<option value="{$i.id}" {if $sts_crud eq 'edit' }{if $data.cl_lokasi_id eq $i.id}selected{/if}{/if} >{$i.lokasi}</option>
 						{/foreach}
 					</select>
 				</div>

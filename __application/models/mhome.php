@@ -55,9 +55,9 @@ class mhome extends CI_Model{
 			break;
 			case "gallery":
 				$sql = " 
-					SELECT A.*, B.kota 
+					SELECT A.*, B.lokasi 
 					FROM tbl_gallery A 
-					LEFT JOIN cl_kota B ON B.id = A.cl_lokasi_id
+					LEFT JOIN cl_lokasi B ON B.id = A.cl_lokasi_id
 				";				
 			break;
 			case "kota":

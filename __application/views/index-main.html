@@ -172,7 +172,7 @@
             <div class="social">
                 <ul>
                     <li>
-                        <a href="#">
+                        <a href="http://www.facebook.com/RogersSalonClinicandSpa" target='_blank'>
                             <div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
                                  title="Facebook">
                                 <p><i class="fa fa-facebook"></i></p>
@@ -180,7 +180,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="http://www.twitter.com/RogersSalon" target='_blank'>
                             <div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
                                  title="Twitter">
                                 <p><i class="fa fa-twitter"></i></p>
@@ -188,7 +188,7 @@
                         </a>
                     </li>
 					<li>
-                        <a href="#">
+                        <a href="http://www.instagram.com/rogers.salon.clinic.spa" target='_blank'>
                             <div class="circle-btn" data-toggle="tooltip" data-placement="bottom" title="Instagram">
                                 <p><i class="fa fa-instagram"></i></p>
                             </div>
@@ -356,9 +356,9 @@
             <div class="portfolioFilter">
 
                 <a href="#" data-filter="*" class="current">Semua Cabang</a>
-				{if $kota}
-					{foreach from=$kota item=kt}
-						<a href="#" data-filter=".{$kt.kota}">Rogers's {$kt.kota}</a>
+				{if $lokasi}
+					{foreach from=$lokasi item=kt}
+						<a href="#" data-filter=".{$kt.id}">Rogers's {$kt.lokasi}</a>
 					{/foreach}
 				{/if}	
             </div>
@@ -369,7 +369,7 @@
     <div class="projects five">
 		{if $gallery}
 			{foreach from=$gallery item=glr}
-				<div class="project {$glr.kota}">
+				<div class="project {$glr.cl_lokasi_id}">
 					<img src="{$host}__repository/gallery/{$glr.file_foto}" alt="image">
 
 					<div class="item-hover">
@@ -590,29 +590,29 @@
             <div class="container text-center">
                 <div class="social">
                     <ul>
-                        <li>
-                            <a href="#">
-                                <div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
-                                     title="Facebook">
-                                    <p><i class="fa fa-facebook"></i></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
-                                     title="Twitter">
-                                    <p><i class="fa fa-twitter"></i></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="circle-btn" data-toggle="tooltip" data-placement="bottom" title="Pinterest">
-                                    <p><i class="fa fa-pinterest"></i></p>
-                                </div>
-                            </a>
-                        </li>						
+						<li>
+							<a href="http://www.facebook.com/RogersSalonClinicandSpa" target='_blank'>
+								<div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
+									 title="Facebook">
+									<p><i class="fa fa-facebook"></i></p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="http://www.twitter.com/RogersSalon" target='_blank'>
+								<div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
+									 title="Twitter">
+									<p><i class="fa fa-twitter"></i></p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="http://www.instagram.com/rogers.salon.clinic.spa" target='_blank'>
+								<div class="circle-btn" data-toggle="tooltip" data-placement="bottom" title="Instagram">
+									<p><i class="fa fa-instagram"></i></p>
+								</div>
+							</a>
+						</li>
                     </ul>
                 </div>
             </div>
