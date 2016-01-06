@@ -87,6 +87,9 @@ class mbackend extends CI_Model{
 					$sql .=" WHERE A.id=".$p2;
 					return $this->result_query($sql,'row_array');
 				}
+				if($p1=='combo'){
+					return $this->db->query($sql)->result_array();
+				}
 			break;
 			case "tbl_user":
 				$sql = " 
@@ -147,17 +150,7 @@ class mbackend extends CI_Model{
 				}
 			break;
 			*/
-			case "cl_product_type":
-				$sql = "SELECT A.* FROM cl_product_type A ";
-				//echo $sql;
-				if($p1=='edit'){
-					$sql .=" WHERE A.id=".$p2;
-					return $this->result_query($sql,'row_array');
-				}
-				if($p1=='combo'){
-					return $this->db->query($sql)->result_array();
-				}
-			break;
+			
 			case "tbl_kota":
 				$sql = "SELECT A.* FROM cl_kota A ";
 				//echo $sql;
