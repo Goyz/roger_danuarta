@@ -706,11 +706,12 @@ function prd(ixx){
 	if(ixx == 'awal'){
 		var idp = $('#id-atas').val();
 	}else{
-		var idp = $('#prod_tp').val();
+		var idp = ixx; //$('#prod_tp').val();
 	}
 	
+	$('#detail_fotonya').empty().addClass("loading");
 	$.post(host+'product-detail', { 'idp':idp }, function(resp){
 		var response = $.parseJSON(resp);
-		$('#detail_product').html(response.konten);
+		$('#detail_product').html(response.konten).removeClass("loading");
 	} );
 }

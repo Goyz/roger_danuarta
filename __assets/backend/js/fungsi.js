@@ -200,7 +200,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			kolom[modnya] = [	
-				{field:'kota',title:'Cabang',width:150, halign:'center',align:'left'},
+				{field:'lokasi',title:'Cabang',width:150, halign:'center',align:'left'},
 				{field:'file_foto',title:'Foto',width:200, halign:'center',align:'center',
 					formatter: function(value,row,index){
 						return "<img src='"+host+"__repository/gallery/"+row.file_foto+"' width='100px' style='height:60px !important'>";
@@ -415,7 +415,7 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 	}
 }
 
-function kumpulAction(type, p1, p2){
+function kumpulAction(type, p1, p2, p3, p4, p5){
 	switch(type){
 		case "reservation":
 			grid = $('#grid_reservasi').datagrid('getSelected');
@@ -426,6 +426,18 @@ function kumpulAction(type, p1, p2){
 					$.messager.alert('Roger Salon',"Failed Confirm",'error');
 				}
 				$('#grid_reservasi').datagrid('reload');	
+			} );
+		break;
+		case "hapus_produk":
+			$('#detail_fotonya').empty().addClass("loading");
+			$.post(host+'backend/hapusfoto_detail/produk', { 'id':p1, 'nama_file':p2, 'id_header':p3  }, function(rsp){
+				$('#detail_fotonya').html(rsp).removeClass("loading");
+			} );
+		break;
+		case "hapus_service":
+			$('#detail_fotonya').empty().addClass("loading");
+			$.post(host+'backend/hapusfoto_detail/service', { 'id':p1, 'nama_file':p2, 'id_header':p3  }, function(rsp){
+				$('#detail_fotonya').html(rsp).removeClass("loading");
 			} );
 		break;
 	}
