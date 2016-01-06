@@ -6,6 +6,19 @@
 		<input type="hidden" name="sts_crud" value="{$sts_crud|default:'add'}">
 		<input type="hidden" name="upload_na" value="product">
 		<input type="hidden" name="modul_detil" value="tbl_product_foto">
+		<input type="hidden" name="foto_lama" value="{$data.foto_icon|default:''}">
+		
+		<div class="control-group">
+			<label class="control-label" for="form-field-1">Foto Icon</label>
+			<div class="controls">
+				{if $sts_crud == 'edit'}
+					<img src='{$host}__repository/product/{$data.foto_icon}' width='100px' height='150px'>
+					<br/>
+					<br/>
+				{/if}
+				{include file="template/file_input.html" multiple='false' id="file_icon_foto_{$main}" }
+			</div>
+		</div>				
 		<div class="control-group">
 			<label class="control-label" for="form-field-1">Product Ind</label>
 			<div class="controls">
@@ -79,7 +92,8 @@
 		$('#detil_nya_{$main}').html('').hide();
 	});
 	$('#simpan_{$main}').click(function(){
-		tinyMCE.triggerSave();
+		tinyMCE.get("desc_{$main}_ind_{$acak_ind}").save();
+		tinyMCE.get("desc_{$main}_eng_{$acak_en}").save();
 		//$('#isi_berita_ind').val()
 		submit_form('form_berita',function(r){
 			if(r==1){

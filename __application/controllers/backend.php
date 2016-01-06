@@ -119,6 +119,7 @@ class backend extends CI_Controller {
 			$id_header=$this->mbackend->simpan_data($p1, $post,'get_id');
 			
 			unset($_FILES['file_icon_foto_services']);
+			unset($_FILES['file_icon_foto_product']);
 			
 			echo $this->upload($this->input->post('modul_detil'), $id_header, $post);
 		}else{
@@ -227,7 +228,7 @@ class backend extends CI_Controller {
 		$email = "triwahyunugroho11@gmail.com";
 		$pesan = "Promo Akhir Tahun";
 		
-		echo $this->lib->kirimemail('kirimemail', $email, $pesan);
+		echo $this->lib->kirimemail('email_news', $email, $pesan);
 	}
 	
 }

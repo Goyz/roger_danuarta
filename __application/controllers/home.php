@@ -29,6 +29,12 @@ class home extends CI_Controller {
 			$news[$k]['isi_pendek'] = $this->lib->cutstring( $v['isi_berita_ind'], 500);
 		}
 		
+		foreach($services as $s => $y){
+			$link = preg_replace('/[^A-Za-z0-9\-]/', '', $y['nama_service_ind']);
+			$link = str_replace(' ', '-', $link);
+			$services[$s]['linknya'] = strtolower($link);
+		}
+		
 		$this->smarty->assign('services', $services);
 		$this->smarty->assign('news', $news);
 		$this->smarty->assign('kota', $kota);
@@ -50,6 +56,12 @@ class home extends CI_Controller {
 			$news[$k]['isi_pendek'] = $this->lib->cutstring( $v['isi_berita_eng'] , 500);
 		}
 		
+		foreach($services as $s => $y){
+			$link = preg_replace('/[^A-Za-z0-9\-]/', '', $y['nama_service_eng']);
+			$link = str_replace(' ', '-', $link);
+			$services[$s]['linknya'] = strtolower($link);
+		}
+		
 		$this->smarty->assign('services', $services);
 		$this->smarty->assign('news', $news);
 		$this->smarty->assign('kota', $kota);
@@ -60,27 +72,17 @@ class home extends CI_Controller {
 		$this->smarty->display('index-main-en.html');
 	}
 	
-	function getdisplay($type, $p1="", $p2=""){
+	function getdisplay($type, $p1="", $p2="", $p3=""){
 		switch($type){
 			case "services":
 				$content = "services.html";
-				$services = $this->mhome->getdata('services', 'result_array');
+				$services = $this->mhome->getdata('services_detail', 'row_array', $p1);
+				$foto_services = $this->mhome->getdata('foto_services', 'result_array', $p1);
 				
-				$array = array();
-				foreach($services as $k =>$v){
-					$array[$k]['id'] = $v['id'];
-					$array[$k]['nama_services'] = $v['nama_service_ind'];
-					$array[$k]['desc_services'] = $v['deskripsi_ind'];
-					$array[$k]['foto'] = $v['foto_icon'];
-					$array[$k]['detail'] = array();
-					$foto_services = $this->mhome->getdata('foto_services', 'result_array', $v['id']);
-					foreach($foto_services as $t => $c){
-						$array[$k]['detail'][$t]['foto_detail'] = $c['file_foto'];
-					}
-				}
 				
 				$this->smarty->assign('services', $services);
-				$this->smarty->assign('data_detail', $array);
+				$this->smarty->assign('foto_services', $foto_services);
+				$this->smarty->assign('lang', $p2);
 			break;
 			case "news":
 				$content = "news.html";
@@ -110,29 +112,39 @@ class home extends CI_Controller {
 				exit;
 			break;
 			case "product":
-				$parameter = str_replace('-', " ", $p1);
 				$content = "product.html";
-				$data_type = $this->db->get_where('cl_product_type', array('product_type'=>$parameter))->row_array();
+				$data_type = $this->db->get('cl_product_type')->result_array();
 				if($data_type){
-					$data_product = $this->db->get_where('tbl_product', array('cl_product_type_id'=>$data_type['id']) )->result_array();
-					$this->smarty->assign('data_product', $data_product);
-					$this->smarty->assign('nama_type', strtoupper($parameter));
+					$this->smarty->assign('data_type', $data_type);
 				}else{
 					header("Location: ".$this->host."");
 				}
 			break;
 			case "product_detail":
 				$id = $this->input->post('idp');
-				$data_header = $this->db->get_where('tbl_product', array('id'=>$id) )->row_array();
-				$data_detail = $this->db->get_where('tbl_product_foto', array('tbl_product_id'=>$id) )->result_array();
+				$data_header = $this->db->get_where('tbl_product', array('cl_product_type_id'=>$id) )->result_array();
+				foreach($data_header as $s => $y){
+					$link = preg_replace('/[^A-Za-z0-9\-]/', '', $y['nama_product_ind']);
+					$link = str_replace(' ', '-', $link);
+					$data_header[$s]['linknya'] = strtolower($link);
+				}
+				
 				$this->smarty->assign('data_header', $data_header);
-				$this->smarty->assign('data_detail', $data_detail);
 				$content = $this->smarty->fetch('product-detail.html');
+				
 				$kembalian = array(
 					'konten' => $content
 				);
 				echo json_encode($kembalian);
 				exit;
+			break;
+			case "product_detail_2":
+				$content = "product-detail-2.html";
+				$data_header = $this->db->get_where('tbl_product', array('id'=>$p1) )->row_array();
+				$data_detail = $this->db->get_where('tbl_product_foto', array('tbl_product_id'=>$p1) )->result_array();
+				
+				$this->smarty->assign('data_header', $data_header);
+				$this->smarty->assign('data_detail', $data_detail);
 			break;
 		}
 		

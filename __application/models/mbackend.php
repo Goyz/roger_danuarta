@@ -240,12 +240,38 @@ class mbackend extends CI_Model{
 				$data['create_by']=$this->auth['nama_user'];
 			break;
 			case "tbl_product":
+				$path='__repository/product/';
 				$data['create_date']=date('Y-m-d H:i:s');
 				$data['create_by']=$this->auth['nama_user'];
 				if($sts_crud=='delete'){
-					$path='__repository/product/';
 					$this->hapus_foto('tbl_product_foto',$path,'tbl_product_id',$id,'file_foto');
+					$foto = $this->db->get_where('tbl_product', array('id'=>$id) )->row_array();
+					if($foto['foto_icon'] != ""){
+						$this->hapus_foto_satu($path.$foto['foto_icon']);
+					}
 				}
+				
+				if(!empty($_FILES['file_icon_foto_product']['name'])){
+					if($sts_crud == 'edit'){
+						if($data['foto_lama'] != ""){
+							$this->hapus_foto_satu($path.$data['foto_lama']);
+						}
+					}
+					
+					$nm = str_replace(' ', '', $data['nama_product_ind']);
+					$file = date('YmdHis')."_".$nm;
+					$filename =  $this->lib->uploadnong($path, 'file_icon_foto_product', $file); //$file.'.'.$extension;
+					$data['foto_icon'] = $filename;
+				}else{
+					if($sts_crud == 'edit'){
+						$data['foto_icon'] = $data['foto_lama'];
+					}elseif($sts_crud == 'add'){
+						$data['foto_icon'] = null;
+					}
+					
+				}
+				
+				unset($data['foto_lama']);
 			break;
 			case "tbl_services":
 				$path='__repository/services/';
@@ -265,8 +291,8 @@ class mbackend extends CI_Model{
 							$this->hapus_foto_satu($path.$data['foto_lama']);
 						}
 					}
-					
-					$file = date('YmdHis')."_".$data['nama_service_ind'];
+					$nm = str_replace(' ', '', $data['nama_service_ind']);
+					$file = date('YmdHis')."_".$nm;
 					$filename =  $this->lib->uploadnong($path, 'file_icon_foto_services', $file); //$file.'.'.$extension;
 					$data['foto_icon'] = $filename;
 				}else{

@@ -22,6 +22,13 @@ class mhome extends CI_Model{
 					FROM tbl_services 
 				";
 			break;
+			case "services_detail":
+				$sql = "
+					SELECT *
+					FROM tbl_services 
+					WHERE id = '".$p1."'
+				";
+			break;
 			case "foto_services":
 				$sql = "
 					SELECT *

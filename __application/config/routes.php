@@ -7,9 +7,10 @@ $route['404_override'] = '';
 $route['backend'] = "backend";
 $route['login/backend'] = "backend";
 
-$route['services'] = "home/getdisplay/services";
-$route['product/(:any)'] = "home/getdisplay/product/$1";
+$route['services/(:any)/(:any)/(:any)'] = "home/getdisplay/services/$1/$2/$3";
+$route['product'] = "home/getdisplay/product";
 $route['product-detail'] = "home/getdisplay/product_detail";
+$route['detail-product/(:any)/(:any)'] = "home/getdisplay/product_detail_2/$1/$2";
 $route['news/(:any)'] = "home/getdisplay/news/$1";
 
 $route['submit-reservasi'] = "backend/simpan_data/tbl_reservasi_frontend";

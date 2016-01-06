@@ -1,34 +1,12 @@
-<div class="container">
-	<div class="container blog padding-bottom-small">
-		<div class="col-md-12">
-			<div class="container">
-				{$data_header.deskripsi_ind}
-			</div>
-		</div>
-	</div>
-</div>
-{if $data_detail}
-<div id="gallery-{$data_header.id}" class='container text-center'>
-	<div class="container text-center">
-		<div class="row">
-			<div class="portfolioFilter">
-				<a href="#" class="current">Gallery {$data_header.nama_product_ind}</a>			
-			</div>
-			<!-- #galleryOptions -->
-		</div>
-	</div>
-	<div class="projects five">
-		{foreach from=$data_detail item=defot}
-			<div class="project">
-				<img src="{$host}__repository/product/{$defot.file_foto}" alt="{$data_header.nama_product_ind}" width='300px' height='250px;'>
-				<div class="item-hover">
-					<ul class="item-icons">
-						<li><a href="{$host}__repository/product/{$defot.file_foto}" class="portfolio"><i class="fa fa-search"></i></a></li>
-					</ul>
+<div class="container padding-small text-center">
+	<div class="row">
+		{if $data_header}
+			{foreach from=$data_header item=serv}
+				<div class="col-md-4 col-sm-4">
+					<a href='{$host}detail-product/{$serv.id}/{$serv.linknya}'><img src='{$host}__repository/product/{$serv.foto_icon}' width='300px' height='250px;' ></a>
+					<h5>{$serv.nama_product_ind}</h5>
 				</div>
-			</div>
-		{/foreach}
+			{/foreach}
+		{/if}
 	</div>
 </div>
-{/if}
-<script src="{$host}__assets/js/main.js"></script>

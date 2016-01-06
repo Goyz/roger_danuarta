@@ -62,7 +62,8 @@
 		$('#detil_nya_{$main}').html('').hide();
 	});
 	$('#simpan_{$main}').click(function(){
-		tinyMCE.triggerSave();
+		tinyMCE.get("isi_{$main}_ind_{$acak_ind}").save();
+		tinyMCE.get("isi_{$main}_eng_{$acak_en}").save();
 		//$('#isi_berita_ind').val()
 		submit_form('form_berita',function(r){
 			if(r==1){

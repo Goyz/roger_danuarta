@@ -46,6 +46,14 @@ $config['proxy_ips'] = '';
 $config['user_data'] = 'r063125470n';
 $config['modeling'] = 'G0yz-cUyz1987';
 
+$config["SMTPAuth"]				= TRUE;
+$config["SMTP"]					= TRUE;
+$config["Port"]					= 465;
+$config["Host"]					= 'smtp.gmail.com';
+$config["Username"]				= 'jinggasinergiidea@gmail.com';
+$config["Password"]				= '7in664it50k';
+$config["EmaiFrom"]				= 'news@rogersalon.com';
+$config["EmaiFromName"]			= "Roger's Newsletter";
 
 
 /* End of file config.php */

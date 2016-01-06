@@ -83,12 +83,13 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
             <li><a href="{$host}">Home</a></li>
-            {if $services}
+            {*
+			{if $services}
 				{foreach from=$services item=serv}
 					<li class="onepage"><a href="#{$serv.id}">{$serv.nama_service_ind}</a></li>
 				{/foreach}
 			{/if}
-			
+			*}
         </ul>
     </div>
     <!-- /.navbar-collapse -->
@@ -96,7 +97,33 @@
 <!-- End Navigation -->
 <div id="head" class="container padding-small pattern-green-row">
 </div>
+<div class="pattern-green-row">
+	<div id="" class="container padding-medium text-center chapter">
+		{if $lang eq 'ind'}
+			<h4>Layanan {$services.nama_service_ind}</h4>
+		{elseif $lang eq 'en'}
+			<h4>Services {$services.nama_service_eng}</h4>
+		{/if}
+	</div>
+	{if $foto_services}
+	<div id="gallery-{$services.nama_service_ind}" class='container text-center'>
+		<div class="projects five">
+			{foreach from=$foto_services item=defot}
+				<div class="project">
+					<img src="{$host}__repository/services/{$defot.file_foto}" alt="{$services.nama_service_ind}" width='300px' height='250px;'>
+					<div class="item-hover">
+						<ul class="item-icons">
+							<li><a href="{$host}__repository/services/{$defot.file_foto}" class="portfolio"><i class="fa fa-search"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			{/foreach}
+		</div>
+	</div>
+	{/if}
+</div>
 
+{*
 {if $data_detail}
 	{foreach from=$data_detail item=det}
 		<div class="pattern-green-row">
@@ -144,7 +171,7 @@
 		</div>
 	{/foreach}
 {/if}
-
+*}
 <div class="container padding-small pattern-green-row">
 </div>
 

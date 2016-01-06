@@ -319,18 +319,14 @@
 		{if $services}
 			{foreach from=$services item=serv}
 				<div class="col-md-4 col-sm-4">
-					<a href='{$host}services'><img src='{$host}__repository/services/{$serv.foto_icon}' width='300px' height='250px;' ></a>
+					<a href='{$host}services/{$serv.id}/en/{$serv.linknya}'><img src='{$host}__repository/services/{$serv.foto_icon}' width='300px' height='250px;' ></a>
 					<h5>{$serv.nama_service_eng}</h5>
 				</div>
 			{/foreach}
 		{/if}	
 		<div class="col-md-4 col-sm-4">
-			<a href='{$host}product/bruno-vassari'><img src='{$host}__assets/images/brunovassari.png' width='300px' height='250px;' ></a>
-			<h5>Bruno Vassari</h5>
-		</div>
-		<div class="col-md-4 col-sm-4">
-			<a href='{$host}product/novaestetyc'><img src='{$host}__assets/images/novaestetyc.png' width='300px' height='250px;' ></a>
-			<h5>Novaestetyc</h5>
+			<a href='{$host}product'><img src='{$host}__assets/images/produk.png' width='300px' height='250px;' ></a>
+			<h5>Product</h5>
 		</div>
 
 	</div>
@@ -348,9 +344,9 @@
         <div class="row">
             <div class="portfolioFilter">
 
-                <a href="#" data-filter="*" class="current">Semua Cabang</a>
+                <a href="#" data-filter="*" class="current">All</a>
 				{if $lokasi}
-					{foreach from=$kota item=kt}
+					{foreach from=$lokasi item=kt}
 						<a href="#" data-filter=".{$kt.id}">Rogers's {$kt.lokasi}</a>
 					{/foreach}
 				{/if}	
@@ -378,6 +374,7 @@
 
 </div>
 <!-- / gallery -->
+
 <div id="Parallax1" class="parallax padding-big" style="background-image: url('{$host}__repository/background/background-2.jpg')">
     <div class="container text-center animated" data-fx="bounceIn">
         <p class="h3 quote">
