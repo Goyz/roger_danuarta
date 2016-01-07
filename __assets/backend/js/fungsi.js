@@ -208,6 +208,19 @@ function genGrid(modnya, divnya, lebarnya, tingginya){
 				},
 			]
 		break;
+		case "testimony":
+			judulnya = "List Testimony";
+			urlnya = "tbl_testimony";
+			fitnya = true;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			nowrap_nya=false;
+			kolom[modnya] = [	
+				{field:'nama',title:'Nama',width:150, halign:'center',align:'left'},
+				{field:'testimony_ind',title:'Testimony',width:300, halign:'center',align:'left'},
+				{field:'testimony_eng',title:'Testimony',width:300, halign:'center',align:'left'},
+			]
+		break;
+		
 		
 		case "kota":
 			judulnya = "List Cabang Kota";
