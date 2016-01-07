@@ -24,6 +24,7 @@ class home extends CI_Controller {
 		$kota = $this->mhome->getdata('kota', 'result_array');
 		$lokasi = $this->mhome->getdata('lokasi', 'result_array');
 		$gallery = $this->mhome->getdata('gallery', 'result_array');
+		$testimony = $this->mhome->getdata('testimony', 'result_array');
 		
 		foreach($news as $k=>$v){
 			$news[$k]['isi_pendek'] = $this->lib->cutstring( $v['isi_berita_ind'], 500);
@@ -40,6 +41,7 @@ class home extends CI_Controller {
 		$this->smarty->assign('kota', $kota);
 		$this->smarty->assign('lokasi', $lokasi);
 		$this->smarty->assign('gallery', $gallery);
+		$this->smarty->assign('testimony', $testimony);
 		$this->smarty->assign('lang', 'ind');
 		
 		$this->smarty->display('index-main.html');
@@ -51,6 +53,8 @@ class home extends CI_Controller {
 		$kota = $this->mhome->getdata('kota', 'result_array');
 		$lokasi = $this->mhome->getdata('lokasi', 'result_array');
 		$gallery = $this->mhome->getdata('gallery', 'result_array');
+		$testimony = $this->mhome->getdata('testimony', 'result_array');
+
 		
 		foreach($news as $k=>$v){
 			$news[$k]['isi_pendek'] = $this->lib->cutstring( $v['isi_berita_eng'] , 500);
@@ -67,6 +71,7 @@ class home extends CI_Controller {
 		$this->smarty->assign('kota', $kota);
 		$this->smarty->assign('lokasi', $lokasi);
 		$this->smarty->assign('gallery', $gallery);
+		$this->smarty->assign('testimony', $testimony);		
 		$this->smarty->assign('lang', 'en');
 		
 		$this->smarty->display('index-main-en.html');

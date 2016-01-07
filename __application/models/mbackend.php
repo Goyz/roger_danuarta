@@ -46,6 +46,14 @@ class mbackend extends CI_Model{
 					return $this->result_query($sql,'row_array');
 				}
 			break;
+			case "tbl_testimony":
+				$sql = " SELECT * FROM tbl_testimony";
+				if($p1=='edit'){
+					$sql .=" WHERE id=".$p2;
+					return $this->result_query($sql,'row_array');
+				}
+			break;			
+			
 			case "cl_kota":
 			case "tbl_kota":
 				$sql = " 
@@ -361,6 +369,39 @@ class mbackend extends CI_Model{
 					}
 				}
 			break;
+			case "tbl_testimony":
+				$path = '__repository/testimony/';
+				$this->lib->makedir($path);
+				
+				if($sts_crud=='delete'){
+					$foto = $this->db->get_where('tbl_testimony', array('id'=>$id) )->row_array();
+					if($foto['file_foto'] != ""){
+						$this->hapus_foto_satu($path.$foto['file_foto']);
+					}
+				}
+				
+				if(!empty($_FILES['file_foto_testimony']['name'])){
+					if($sts_crud == 'edit'){
+						if($data['foto_lama'] != ""){
+							$this->hapus_foto_satu($path.$data['foto_lama']);
+						}
+					}
+					
+					$file = date('YmdHis')."_".$data['nama'];
+					$filename =  $this->lib->uploadnong($path, 'file_foto_testimony', $file); //$file.'.'.$extension;
+					$data['file_foto'] = $filename;
+				}else{
+					if($sts_crud == 'edit'){
+						$data['file_foto'] = $data['foto_lama'];
+					}elseif($sts_crud == 'add'){
+						$data['file_foto'] = null;
+					}
+				}
+				
+				$data['create_date']=date('Y-m-d H:i:s');
+				$data['create_by']=$this->auth['nama_user'];
+			break;
+			
 			case "tbl_reservasi_frontend":
 				$table = 'tbl_reservasi';
 				$data['create_date'] = date('Y-m-d H:i:s');

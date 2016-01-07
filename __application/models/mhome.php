@@ -67,6 +67,12 @@ class mhome extends CI_Model{
 					LEFT JOIN cl_lokasi B ON B.id = A.cl_lokasi_id
 				";				
 			break;
+			case "testimony":
+				$sql = " 
+					SELECT A.*
+					FROM tbl_testimony A 
+				";				
+			break;
 			case "kota":
 				$sql = "
 					SELECT A.kota, A.id

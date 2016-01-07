@@ -393,63 +393,49 @@
 <div class="container padding-bottom-medium">
 <div class='row'>
     <div class='col-md-12'>
-      <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+      {if $testimony}
+	  <div class="carousel slide" data-ride="carousel" id="quote-carousel">
         <!-- Bottom Carousel Indicators -->
         <ol class="carousel-indicators">
-          <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
-          <li data-target="#quote-carousel" data-slide-to="1"></li>
-          <li data-target="#quote-carousel" data-slide-to="2"></li>
+        {assign var=val_car value=0}
+		{foreach from=$testimony item=testi}
+			{if $val_car eq 0}
+				<li data-target="#quote-carousel" data-slide-to="{$val_car}" class="active"></li>
+			{else}
+				<li data-target="#quote-carousel" data-slide-to="{$val_car}"></li>
+			{/if}
+			{assign var=val_car value=$val_car+1}
+		{/foreach}		  
         </ol>
         
         <!-- Carousel Slides / Quotes -->
         <div class="carousel-inner">
-        
-          <!-- Quote 1 -->
-          <div class="item active">
-            <blockquote>
-              <div class="row">
-                <div class="col-sm-3 text-center">
-                  <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg" style="width: 100px;height:100px;">
-                </div>
-                <div class="col-sm-9">
-                  <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit!</p>
-                  <small>Someone famous</small>
-                </div>
-              </div>
-            </blockquote>
-          </div>
-          <!-- Quote 2 -->
-          <div class="item">
-            <blockquote>
-              <div class="row">
-                <div class="col-sm-3 text-center">
-                  <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/mijustin/128.jpg" style="width: 100px;height:100px;">
-                </div>
-                <div class="col-sm-9">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor nec lacus ut tempor. Mauris.</p>
-                  <small>Someone famous</small>
-                </div>
-              </div>
-            </blockquote>
-          </div>
-          <!-- Quote 3 -->
-          <div class="item">
-            <blockquote>
-              <div class="row">
-                <div class="col-sm-3 text-center">
-                  <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/keizgoesboom/128.jpg" style="width: 100px;height:100px;">
-                </div>
-                <div class="col-sm-9">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.</p>
-                  <small>Someone famous</small>
-                </div>
-              </div>
-            </blockquote>
-          </div>
-		  
+		{assign var=val_cars value=0}
+        {foreach from=$testimony item=testi}
+			{if $val_cars eq 0}
+				{assign var=classnya value='active'}
+			{else}
+				{assign var=classnya value=''}
+			{/if}
+			<div class="item {$classnya|default:''}">
+				<blockquote>
+				<div class="row">
+					<div class="col-sm-3 text-center">
+					<img class="img-circle" src="{$host}__repository/testimony/{$testi.file_foto}" style="width: 100px;height:100px;">
+					</div>
+					<div class="col-sm-9">
+					{$testi.testimony_ind}
+					<small>{$testi.nama}</small>
+					</div>
+				</div>
+				</blockquote>
+			</div>
+			{assign var=val_cars value=$val_cars+1}
+		{/foreach}		
         </div>
          
-      </div>                          
+      </div> 
+	{/if}
     </div>
   </div>
 </div>

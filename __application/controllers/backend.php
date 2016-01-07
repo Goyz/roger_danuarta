@@ -82,7 +82,15 @@ class backend extends CI_Controller {
 					$lokasi = $data=$this->mbackend->getdata('cl_lokasi','combo');
 					$this->smarty->assign("lokasi", $lokasi);
 				break;
-				
+				case "testimony":
+					$this->smarty->assign("acak_ind", md5(date('YmdHis').'ind') );
+					$this->smarty->assign("acak_en", md5(date('YmdHis').'en') );
+
+					if($sts_crud=='edit'){
+						$data = $this->mbackend->getdata('tbl_testimony','edit',$this->input->post('id'));
+						$this->smarty->assign("data", $data);
+					}
+				break;
 			}
 			
 			
