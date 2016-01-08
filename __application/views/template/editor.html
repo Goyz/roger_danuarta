@@ -3,7 +3,6 @@
 
 <script>
 $(function(){
-
 		tinymce.init({
 		  selector: '#{$id}',
 		  height: 200,
@@ -25,6 +24,18 @@ $(function(){
 			
 		  relative_urls: false
 		});
+		
+		tinyMCE.execCommand('mceRemoveControl', false, '#{$id}');
+		tinyMCE.execCommand('mceAddControl', false, '#{$id}');
+		
+		/*
+		var editor = tinyMCE.get ("{$id}");
+		if(editor) {
+		  if(editor.isHidden()) tinyMCE.remove(editor);
+		  tinyMCE.execCommand('mceRemoveControl', true, "{$id}");
+		}
+		*/
+		
 });
 </script>
 

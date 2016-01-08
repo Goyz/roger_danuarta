@@ -108,25 +108,36 @@ class home extends CI_Controller {
 				$lokasi = $this->db->get_where('cl_lokasi', array('id'=>$idnya) )->row_array();
 				if($lokasi){
 					if($lang == 'ind'){
-						echo $lokasi['alamat_ind'];
+						$cetak = $lokasi['alamat_ind'];
 					}else{
-						echo $lokasi['alamat_eng'];
+						$cetak = $lokasi['alamat_eng'];
 					}
+					
+					$cetak .= "
+						<br />
+						Telp. : ".$lokasi['tlp']." <br />
+						Fax.  : ".$lokasi['fax']." <br />
+						Email : ".$lokasi['email']." <br />
+					";
+					echo $cetak;
 				}
 				
 				exit;
 			break;
 			case "product":
 				$content = "product.html";
+				$lang = $p1;
 				$data_type = $this->db->get('cl_product_type')->result_array();
 				if($data_type){
 					$this->smarty->assign('data_type', $data_type);
+					$this->smarty->assign('lang', $lang);
 				}else{
 					header("Location: ".$this->host."");
 				}
 			break;
 			case "product_detail":
 				$id = $this->input->post('idp');
+				$lang = $this->input->post('lang');
 				$data_header = $this->db->get_where('tbl_product', array('cl_product_type_id'=>$id) )->result_array();
 				foreach($data_header as $s => $y){
 					$link = preg_replace('/[^A-Za-z0-9\-]/', '', $y['nama_product_ind']);
@@ -135,6 +146,7 @@ class home extends CI_Controller {
 				}
 				
 				$this->smarty->assign('data_header', $data_header);
+				$this->smarty->assign('lang', $lang);
 				$content = $this->smarty->fetch('product-detail.html');
 				
 				$kembalian = array(
@@ -145,11 +157,18 @@ class home extends CI_Controller {
 			break;
 			case "product_detail_2":
 				$content = "product-detail-2.html";
+				$lokasi = $this->mhome->getdata('lokasi', 'result_array');
+				$services = $this->mhome->getdata('services', 'result_array');
 				$data_header = $this->db->get_where('tbl_product', array('id'=>$p1) )->row_array();
 				$data_detail = $this->db->get_where('tbl_product_foto', array('tbl_product_id'=>$p1) )->result_array();
 				
 				$this->smarty->assign('data_header', $data_header);
 				$this->smarty->assign('data_detail', $data_detail);
+				$this->smarty->assign('lokasi', $lokasi);
+				$this->smarty->assign('services', $services);
+				$this->smarty->assign('id', $p1);
+				$this->smarty->assign('lang', $p2);
+				$this->smarty->assign('linknya', $p3);
 			break;
 		}
 		

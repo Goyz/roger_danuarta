@@ -88,6 +88,8 @@
 
 <script>
 	$('#batal_{$main}').click(function(){
+		tinyMCE.get("desc_{$main}_ind_{$acak_ind}").save();
+		tinyMCE.get("desc_{$main}_eng_{$acak_en}").save();		
 		$('#grid_nya_{$main}').show();
 		$('#detil_nya_{$main}').html('').hide();
 	});

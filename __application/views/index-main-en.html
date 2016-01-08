@@ -128,24 +128,6 @@
 					   <a href='#reservation' class="btn btn-white btn-lg">RESERVATION</a>	 
         </div>
     </li>
-	<!-- SLIDE  -->	
-	    <li data-transition="fade" data-slotamount="5" data-masterspeed="1000" >
-        <!-- MAIN IMAGE -->
-        <img src="{$host}__assets/images/content/revslider/background5.jpg"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
-		<div class="tp-caption text-right customin customout curly rev-big text-right"
-             data-x="center"
-             data-y="bottom"
-             data-voffset="-97"
-             data-speed="800"
-             data-start="2000"
-             data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-             data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-             data-easing="Back.easeInOut"
-             data-endspeed="300"
-             style="z-index: 7">
-                <a href='#reservation' class="btn btn-white btn-lg btn-block">RESERVATION</a>	   
-        </div>
-    </li>
     </ul>
     <div class="tp-bannertimer"></div>
     </div>
@@ -325,7 +307,7 @@
 			{/foreach}
 		{/if}	
 		<div class="col-md-4 col-sm-4">
-			<a href='{$host}product'><img src='{$host}__assets/images/produk.png' width='300px' height='250px;' ></a>
+			<a href='{$host}product/en'><img src='{$host}__assets/images/produk.png' width='300px' height='250px;' ></a>
 			<h5>Product</h5>
 		</div>
 
@@ -453,11 +435,18 @@
 <!---- reservation-->
 <div class="brown-semi-color-row">
 
-<div id="reservation" class="container text-center padding-medium chapter">
+<div id="reservation" class="container text-center padding-medium">
     <h5><span class="color-font light">Form</span> reservation</h5>
 </div>
 <div class="container padding-bottom-medium">
-	{include file='reservation.html'}
+	 <div class="row">
+        <div class="col-md-6 col-sm-6">		
+			{include file='reservation.html' lang='en'}
+		</div>
+        <div class="col-md-6 col-sm-6">		
+			<label id='lokasinya'></label>
+		</div>
+	</div>
 	<br/>
 </div>
 
@@ -485,31 +474,25 @@
         <form role="form" action="form/send.php" method="post" class="contactForm validateIt" data-email-subject="Contact Form" data-show-errors="true">
             <div class="row">
                 <div class="col-md-6 col-sm-6">
-					
+					<a href='#gallery'><img src='{$host}__assets/images/rogers_salon.png' width='200px' height='150px;' style='margin-bottom:5px;'></a>
+					<a href='#gallery'><img src='{$host}__assets/images/rogers_clinic.png' width='200px' height='150px;' style='margin-bottom:5px;'></a>
+					<a href='#gallery'><img src='{$host}__assets/images/rogers_spa.png' width='200px' height='150px;' style='margin-bottom:5px;'></a>
+					<a href='#gallery'><img src='{$host}__assets/images/rogers_wellness.png' width='200px' height='150px;' style='margin-bottom:5px;'></a>
+					<a href='#gallery'><img src='{$host}__assets/images/rogers_cafelounge.png' width='200px' height='150px;' style='margin-bottom:5px;'></a>
 				</div>
                 <div class="col-md-6">
-				<h5>Alamat Kami :</h5>
-				<div>Jl. Senopati No. 48-50, Kebayoran Baru, Jakarta Selatan.<br>
-				Tel : 021-7203992, 7269025<br>
-				email: senopati@rogersalon.com<br><br>
-				</div>
-
-				Jl. Gunawarman No. 59, Kebayoran Baru, Jakarta Selatan.<br>
-				Tel : 021-7258652, 7258653<br>
-				email: gunawarman@rogersalon.com<br><br>
-
-				Jl. Wolter Monginsidi No. 21, Kebayoran Baru, Jakarta Selatan.<br>
-				Tel : 021-72780276, 72792939<br>
-				email: wolter@rogersalon.com<br><br>
-
-				Jl. Ir. H. Juanda No. 97, Dago, Bandung.<br>
-				Tel : 022-2502662, 2534287<br>
-				email: dago@rogersalon.com<br><br>
-
-				Jl. Pelajar Pejuang 45 No. 76, Lingkar Selatan, Bandung.<br>
-				Tel : 022-7319154, 7319193<br>
-				email: lingkar@rogersalon.com <br><br>
-
+					<h5>Our's Address :</h5>
+					
+					{foreach from=$lokasi item=alamat}
+						<div>
+							{$alamat.alamat_eng} <br/>
+							Telp. : {$alamat.tlp} <br/>
+							Fax. : {$alamat.fax} <br/>
+							Email : {$alamat.email} <br/>
+							<br/>
+						</div>
+					{/foreach}
+					
                 </div>
             </div>
         </form>

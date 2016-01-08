@@ -39,7 +39,15 @@
 <nav id="navigation" class="navbar navbar-inverse navbar-fixed-top navbar-info-top remove-left-red" role="navigation">
     <div class="top-info">
         <div class="pull-left">
-        </div>
+            <div class="searchWrapper">
+                <a class="pull-left" href='{$host}product/ind' style='padding-top:-5px !important;margin-top:-5px; !important;'>
+					<img src='{$host}__assets/images/indo.png' width='35px' height='18px'; />
+				</a>
+                <a class="pull-left" href='{$host}product/en' style='padding-top:-5px !important;margin-top:-5px; !important;'>
+					<img src='{$host}__assets/images/inggris.png' width='40px' height='20px'; />
+				</a>
+            </div>
+		</div>
         <div class="pull-right hidden-xs">
             <div class="social">
                 <ul>
@@ -183,7 +191,7 @@
 			scrollOffset: '-80'
 		});
 		*/
-		prd('awal');
+		prd('awal', '{$lang}');
     });
 </script>
 <script src="{$host}__assets/js/main.js"></script>

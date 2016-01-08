@@ -345,14 +345,14 @@ class mbackend extends CI_Model{
 					}
 				}
 				
-				/*
+				
 				if($sts_crud == 'add'){
 					$newsletter = $this->db->get('tbl_newslatter')->result_array();
 					foreach($newsletter as $k => $v){ 
-						$this->lib->kirimemail('email_news', $v['email'], $data['judul_ind']);
+						$this->lib->kirimemail('email_news', $v['email'], $data['judul_ind'], $data['isi_berita_ind']);
 					}
 				}
-				*/
+				
 				
 				unset($data['foto_lama']);
 			break;

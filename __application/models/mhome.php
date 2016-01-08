@@ -81,7 +81,7 @@ class mhome extends CI_Model{
 			break;
 			case "lokasi":
 				$sql = "
-					SELECT A.lokasi, A.id
+					SELECT A.*
 					FROM cl_lokasi A 
 				";
 			break;

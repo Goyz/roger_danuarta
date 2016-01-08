@@ -57,10 +57,33 @@
 </div>
 </fieldset>
 <script>
+	
+	$(document).ready(function () {
+		/*
+		if(typeof(tinyMCE) !== 'undefined') {
+			var length = tinyMCE.editors.length;
+			for (var i=length; i>0; i--) {
+				tinyMCE.editors[i-1].remove();
+			};
+		}
+		
+		if(typeof(tinyMCE) !== 'undefined') {
+			myEds = tinyMCE.editors;
+			for( edd in myEds ) {
+				myEds[ edd ].remove();
+			} 
+		}
+		*/
+	});
+	//*/
+	
 	$('#batal_{$main}').click(function(){
+		tinyMCE.get("isi_{$main}_ind_{$acak_ind}").save();
+		tinyMCE.get("isi_{$main}_eng_{$acak_en}").save();		
 		$('#grid_nya_{$main}').show();
 		$('#detil_nya_{$main}').html('').hide();
 	});
+	
 	$('#simpan_{$main}').click(function(){
 		tinyMCE.get("isi_{$main}_ind_{$acak_ind}").save();
 		tinyMCE.get("isi_{$main}_eng_{$acak_en}").save();

@@ -2,8 +2,8 @@
 	<input type='hidden' name='sts_crud' value='add' />
 	<fieldset>
 		<div class="form-group">
-		  <label class="col-md-4 control-label" for="textinput">Nama</label>  
-		  <input id="nm" name="nama" placeholder="Nama" class="form-control input-md" required="" type="text">
+		  <label class="col-md-4 control-label" for="textinput">{if $lang eq 'ind'}Nama{else}Name{/if}</label>  
+		  <input id="nm" name="nama" placeholder="{if $lang eq 'ind'}Nama{else}Name{/if}" class="form-control input-md" required="" type="text">
 		</div>
 
 		<!-- Text input-->
@@ -15,7 +15,7 @@
 		
 		<!-- Select Basic -->
 		<div class="form-group">
-		  <label class="col-md-4 control-label" for="kota">Layanan</label>
+		  <label class="col-md-4 control-label" for="kota">{if $lang eq 'ind'}Layanan{else}Service{/if}</label>
 			<select id="serv" name="cl_product_type" class="form-control input-md" style='padding:0px !important;color:#00000 !important;'>
 				<option value="" >-- Pilih --</option>
 				{foreach from=$services item=s}
@@ -25,14 +25,13 @@
 		</div>
 		
 		<div class="form-group">
-			<label class="col-md-4 control-label" for="lokasi">Lokasi Cabang</label>
-			<select id="lokasi" name="cl_lokasi_id" onChange="ceklks('ind');" class="form-control input-md" style='padding:0px !important;color:#00000 !important;'>
+			<label class="col-md-4 control-label" for="lokasi">{if $lang eq 'ind'}Lokasi Cabang{else}Rogers Branch{/if}</label>
+			<select id="lokasi" name="cl_lokasi_id" onChange="ceklks('{$lang}');" class="form-control input-md" style='padding:0px !important;color:#00000 !important;'>
 				<option value="" >-- Pilih --</option>
 				{foreach from=$lokasi item=i}
 					<option value="{$i.id}" >{$i.lokasi}</option>
 				{/foreach}
 			</select>
-			<label id='lokasinya'></label>
 		</div>
 
 		<!-- Text input-->
@@ -48,13 +47,13 @@
 		</div>
 		
 		<div class="form-group">
-		  <label class="col-md-4 control-label" for="textinput">Tanggal</label>  
-		  <input id="tanggal" name="tgl" placeholder="Tanggal" class="form-control" type="text">
+		  <label class="col-md-4 control-label" for="textinput">{if $lang eq 'ind'}Tanggal{else}Date{/if}</label>  
+		  <input id="tanggal" name="tgl" placeholder="{if $lang eq 'ind'}Tanggal{else}Date{/if}" class="form-control" type="text">
 		</div>
 		
 		<div class="form-group">
-		  <label class="col-md-4 control-label" for="textinput">Request Tambahan</label>  
-		  <textarea id="request" name="request" placeholder="Request Tambahan" class="form-control" ></textarea>
+		  <label class="col-md-4 control-label" for="textinput">{if $lang eq 'ind'}Permintaan Tambahan{else}Additional Request{/if}</label>  
+		  <textarea id="request" name="request" placeholder="{if $lang eq 'ind'}Permintaan Tambahan{else}Additional Request{/if}" class="form-control" ></textarea>
 		</div>
 		
 		

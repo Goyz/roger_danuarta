@@ -140,10 +140,13 @@ class lib {
 			case "email_news":
 				$subject = "Roger's Newsletter Notification";
 				$html = "
-					<img src='http://www.rogersalon.com/__assets/images/content/logo.png' />
+					<center><img src='http://www.rogersalon.com/__assets/images/logo-email.png' /></center>
 					<br/>
 					<br/>
-					<b>".$p1."</b>
+					<h1>".$p1."</h1>
+					<br/>
+					".$p2."
+					<br/>
 					<br/>
 					<a href='http://www.rogersalon.com/#news'>Continue</a>
 				";

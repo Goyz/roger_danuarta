@@ -39,7 +39,15 @@
 <nav id="navigation" class="navbar navbar-inverse navbar-fixed-top navbar-info-top remove-left-red" role="navigation">
     <div class="top-info">
         <div class="pull-left">
-        </div>
+            <div class="searchWrapper">
+				<a class="pull-left" href='{$host}detail-product/{$id}/ind/{$linknya}' style='padding-top:-5px !important;margin-top:-5px; !important;'>
+					<img src='{$host}__assets/images/indo.png' width='35px' height='18px'; />
+				</a>
+				<a class="pull-left" href='{$host}detail-product/{$id}/en/{$linknya}' style='padding-top:-5px !important;margin-top:-5px; !important;'>
+					<img src='{$host}__assets/images/inggris.png' width='40px' height='20px'; />
+				</a>
+			</div>
+		</div>
         <div class="pull-right hidden-xs">
             <div class="social">
                 <ul>
@@ -86,7 +94,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="{$host}product">Produk</a></li>
+            <li><a href="{$host}product/{$lang}">Produk</a></li>
         </ul>
     </div>
     <!-- /.navbar-collapse -->
@@ -97,7 +105,11 @@
 
 <div class="pattern-green-row">
 	<div class="container padding-medium text-center chapter">
-		<h4>{$data_header.nama_product_ind}</h4>
+		{if $lang eq 'ind'}
+			<h4>{$data_header.nama_product_ind}</h4>
+		{else}
+			<h4>{$data_header.nama_product_eng}</h4>
+		{/if}
 	</div>
 	<div class="container blog padding-bottom-small">
 		<div class="col-md-6">
@@ -107,7 +119,11 @@
 		</div>
 		<div class="col-md-6">
 			<div class="container">
-				{$data_header.deskripsi_ind}
+				{if $lang eq 'ind'}
+					{$data_header.deskripsi_ind}
+				{else}
+					{$data_header.deskripsi_eng}
+				{/if}
 			</div>
 		</div>
 	</div>
@@ -115,7 +131,11 @@
 		<div class="container text-center">
 			<div class="row">
 				<div class="portfolioFilter">
-					<a href="#" data-filter="*" class="current">Galeri {$data_header.nama_product_ind}</a>
+					{if $lang eq 'ind'}
+						<a href="#" data-filter="*" class="current">Galeri {$data_header.nama_product_ind}</a>
+					{else}
+						<a href="#" data-filter="*" class="current">Gallery {$data_header.nama_product_eng}</a>
+					{/if}
 				</div>
 				<!-- #galleryOptions -->
 			</div>
@@ -142,8 +162,14 @@
 		<h5><span class="color-font light">Form</span> reservation</h5>
 	</div>
 	<div class="container padding-bottom-medium">
-		{include file='reservation.html'}
-		<br/>
+		<div class="row">
+			<div class="col-md-6 col-sm-6">		
+				{include file='reservation.html' lang={$lang} }
+			</div>
+			<div class="col-md-6 col-sm-6">		
+				<label id='lokasinya'></label>
+			</div>
+		</div>
 	</div>
 
 </div>
