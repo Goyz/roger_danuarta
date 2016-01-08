@@ -702,7 +702,7 @@ function sbmnl(){
 	} );
 }
 
-function prd(ixx){
+function prd(ixx, lang){
 	if(ixx == 'awal'){
 		var idp = $('#id-atas').val();
 	}else{
@@ -710,7 +710,7 @@ function prd(ixx){
 	}
 	
 	$('#detail_fotonya').empty().addClass("loading");
-	$.post(host+'product-detail', { 'idp':idp }, function(resp){
+	$.post(host+'product-detail', { 'idp':idp, 'lang':lang }, function(resp){
 		var response = $.parseJSON(resp);
 		$('#detail_product').html(response.konten).removeClass("loading");
 	} );
