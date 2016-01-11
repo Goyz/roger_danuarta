@@ -685,8 +685,42 @@ function sbmres(lang){
 
 function ceklks(lang){
 	$.post(host+'lihat-lokasi', { 'valnya':$('#lokasi').val(), 'lang':lang }, function(resp){
-		$('#lokasinya').html(resp)
+		var respon=JSON.parse(resp);
+		$('#lokasinya').html(respon.cetak);
+		var myLatlng = new google.maps.LatLng(respon.lat,respon.longi);
+        var myOptions = {
+            zoom: 13,
+            center: myLatlng
+        };
+              
+//              menampilkan output pada element
+        var map = new google.maps.Map(document.getElementById("map"), myOptions);
+              
+//              menambahkan marker
+        var marker = new google.maps.Marker({
+             position: myLatlng,
+             map: map,
+             title:"Monas"
+        });
+
 	} );
+}
+function initMap() {
+  var myLatlng = new google.maps.LatLng(-6.176587,106.827115);
+  var myOptions = {
+      zoom: 13,
+      center: myLatlng
+  };
+              
+//              menampilkan output pada element
+  var map = new google.maps.Map(document.getElementById("map"), myOptions);
+              
+//              menambahkan marker
+  var marker = new google.maps.Marker({
+       position: myLatlng,
+       map: map,
+       title:"Monas"
+  });
 }
 
 function sbmnl(){

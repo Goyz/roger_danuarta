@@ -54,6 +54,18 @@
 			</div>
 		</div>
 		<div class="control-group">
+			<label class="control-label" for="form-field-1">Longitude</label>
+			<div class="controls">
+				<input type="text" class="span8" name="longitude" id="longitude" value="{$data.longitude|default:''}" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="form-field-1">Latitude</label>
+			<div class="controls">
+				<input type="text" class="span8" name="latitude" id="latitude" value="{$data.latitude|default:''}" />
+			</div>
+		</div>
+		<div class="control-group">
 			<label class="control-label" for="form-field-1"></label>
 			<div class="controls">
 				{include file="template/button_save.html" id_simpan="simpan_{$main}" id_batal="batal_{$main}" }

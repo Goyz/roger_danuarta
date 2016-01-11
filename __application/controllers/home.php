@@ -119,7 +119,8 @@ class home extends CI_Controller {
 						Fax.  : ".$lokasi['fax']." <br />
 						Email : ".$lokasi['email']." <br />
 					";
-					echo $cetak;
+					$data=array('cetak'=>$cetak,'longi'=>($lokasi['longitude']!="" ? (float)$lokasi['longitude'] : (float)106.827115),'lat'=>($lokasi['latitude']!="" ? (float)$lokasi['latitude'] : (float)-6.176587));
+					echo json_encode($data);
 				}
 				
 				exit;
