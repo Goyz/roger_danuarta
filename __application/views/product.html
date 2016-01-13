@@ -41,10 +41,10 @@
         <div class="pull-left">
             <div class="searchWrapper">
                 <a class="pull-left" href='{$host}product/ind' style='padding-top:-5px !important;margin-top:-5px; !important;'>
-					<img src='{$host}__assets/images/indo.png' width='35px' height='18px'; />
+					<img src='{$host}__assets/images/indo.png' width='80%' />
 				</a>
                 <a class="pull-left" href='{$host}product/en' style='padding-top:-5px !important;margin-top:-5px; !important;'>
-					<img src='{$host}__assets/images/inggris.png' width='40px' height='20px'; />
+					<img src='{$host}__assets/images/inggris.png' width='80%' />
 				</a>
             </div>
 		</div>
@@ -103,20 +103,17 @@
 <div id="head" class="container padding-small pattern-green-row">
 </div>
 	<input type='hidden' id='id-atas' value='{$data_type.0.id}'>
-	<div class="pattern-green-row">
+	<div class="red-semi-color-row">
 		<div id="" class="container padding-medium text-center chapter">
 			{foreach from=$data_type item=riws}
-				<a href="javascript:void(0)" id='type_{$riws.id}' onClick="prd('{$riws.id}');" class="btn btn-default btn-small read-more">{$riws.product_type}</a>
+				<a href="javascript:void(0)" id='type_{$riws.id}' onClick="prd('{$riws.id}', '{$lang}');" class="btn btn-default btn-small read-more">{$riws.product_type}</a>
 				&nbsp;&nbsp;&nbsp;&nbsp;
 			{/foreach}
 		</div>
 		<div id='detail_product'>
 		</div>
 	</div>
-
-<div class="container padding-small pattern-green-row">
-</div>
-
+	
 <footer class="jingga-semi-color-row ">
     <div class="container text-center">
         <p class="h4">Roger's<span class="light"> Salon</span></p>

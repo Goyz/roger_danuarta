@@ -81,13 +81,16 @@ class home extends CI_Controller {
 		switch($type){
 			case "services":
 				$content = "services.html";
-				$services = $this->mhome->getdata('services_detail', 'row_array', $p1);
+				$servicess = $this->mhome->getdata('services_detail', 'row_array', $p1);
 				$foto_services = $this->mhome->getdata('foto_services', 'result_array', $p1);
+				$lokasi = $this->mhome->getdata('lokasi', 'result_array');				
+				$services = $this->mhome->getdata('services', 'result_array');				
 				
-				
-				$this->smarty->assign('services', $services);
+				$this->smarty->assign('servicess', $servicess);
 				$this->smarty->assign('foto_services', $foto_services);
 				$this->smarty->assign('lang', $p2);
+				$this->smarty->assign('lokasi', $lokasi);
+				$this->smarty->assign('services', $services);				
 			break;
 			case "news":
 				$content = "news.html";

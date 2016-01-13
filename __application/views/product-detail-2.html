@@ -41,10 +41,10 @@
         <div class="pull-left">
             <div class="searchWrapper">
 				<a class="pull-left" href='{$host}detail-product/{$id}/ind/{$linknya}' style='padding-top:-5px !important;margin-top:-5px; !important;'>
-					<img src='{$host}__assets/images/indo.png' width='35px' height='18px'; />
+					<img src='{$host}__assets/images/indo.png' width='80%' />
 				</a>
 				<a class="pull-left" href='{$host}detail-product/{$id}/en/{$linknya}' style='padding-top:-5px !important;margin-top:-5px; !important;'>
-					<img src='{$host}__assets/images/inggris.png' width='40px' height='20px'; />
+					<img src='{$host}__assets/images/inggris.png' width='80%' />
 				</a>
 			</div>
 		</div>
@@ -103,7 +103,7 @@
 <div id="head" class="container padding-small pattern-green-row">
 </div>
 
-<div class="pattern-green-row">
+<div class="red-semi-color-row">
 	<div class="container padding-medium text-center chapter">
 		{if $lang eq 'ind'}
 			<h4>{$data_header.nama_product_ind}</h4>
@@ -158,7 +158,7 @@
 		</div>
     </div>
 	
-	<div id="reservation" class="container text-center padding-medium chapter">
+	<div id="reservation" class="container text-center padding-medium">
 		<h5><span class="color-font light">Form</span> reservation</h5>
 	</div>
 	<div class="container padding-bottom-medium">
@@ -168,6 +168,7 @@
 			</div>
 			<div class="col-md-6 col-sm-6">		
 				<label id='lokasinya'></label>
+				<div id="map" class="col-md-12 col-sm-12" style="height:400px;" ></div> 
 			</div>
 		</div>
 	</div>

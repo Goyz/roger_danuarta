@@ -23,6 +23,10 @@
 
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="http://d3js.org/topojson.v1.min.js"></script>
+	<script>
+		var host = "{$host}";
+	</script>
+	
 </head>
 <body class="initAnimate" data-spy="scroll">
 
@@ -97,82 +101,57 @@
 <!-- End Navigation -->
 <div id="head" class="container padding-small pattern-green-row">
 </div>
-<div class="pattern-green-row">
-	<div id="" class="container padding-medium text-center chapter">
-		{if $lang eq 'ind'}
-			<h4>Layanan {$services.nama_service_ind}</h4>
-		{elseif $lang eq 'en'}
-			<h4>Services {$services.nama_service_eng}</h4>
-		{/if}
-	</div>
-	{if $foto_services}
-	<div id="gallery-{$services.nama_service_ind}" class='container text-center'>
-		<div class="projects five">
-			{foreach from=$foto_services item=defot}
-				<div class="project">
-					<img src="{$host}__repository/services/{$defot.file_foto}" alt="{$services.nama_service_ind}" width='300px' height='250px;'>
-					<div class="item-hover">
-						<ul class="item-icons">
-							<li><a href="{$host}__repository/services/{$defot.file_foto}" class="portfolio"><i class="fa fa-search"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			{/foreach}
-		</div>
-	</div>
-	{/if}
-</div>
 
-{*
-{if $data_detail}
-	{foreach from=$data_detail item=det}
-		<div class="pattern-green-row">
-			<div id="{$det.id}" class="container padding-medium text-center chapter">
-				<h4>{$det.nama_services}</h4>
-			</div>
-			<div class="container">
-				<div class="container blog padding-bottom-small">
-					<div class="col-md-6">
-						<div class="container">
-							{$det.desc_services}
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="container">
-							<img src='{$host}__repository/services/{$det.foto}' width='400px' height='350px;' style='margin-bottom:5px;'>
-						</div>
-					</div>
-				</div>
-			</div>
-			{if $det.detail}
-			<div id="gallery-{$det.id}" class='container text-center'>
-				<div class="container text-center">
-					<div class="row">
-						<div class="portfolioFilter">
-							<a href="#" class="current">Gallery {$det.nama_services}</a>			
-						</div>
-						<!-- #galleryOptions -->
-					</div>
-				</div>
-				<div class="projects five">
-					{foreach from=$det.detail item=defot}
-						<div class="project">
-							<img src="{$host}__repository/services/{$defot.foto_detail}" alt="{$det.nama_services}" width='300px' height='250px;'>
-							<div class="item-hover">
-								<ul class="item-icons">
-									<li><a href="{$host}__application/views/project.html" class="portfolio"><i class="fa fa-search"></i></a></li>
-								</ul>
-							</div>
-						</div>
-					{/foreach}
-				</div>
-			</div>
+{if $servicess.id eq 2}
+<div class="white-color-row">
+{else}
+<div class="red-semi-color-row">
+{/if}
+
+	<div class="container padding-small">
+		<div id="" class="container padding-medium text-center chapter">
+			{if $lang eq 'ind'}
+				<h4>Layanan {$servicess.nama_service_ind}</h4>
+			{elseif $lang eq 'en'}
+				<h4>Services {$servicess.nama_service_eng}</h4>
 			{/if}
 		</div>
-	{/foreach}
-{/if}
-*}
-<div class="container padding-small pattern-green-row">
+		{if $foto_services}
+		<div id="gallery-{$servicess.nama_service_ind}" class='container text-center'>
+			<div class="projects five">
+				{foreach from=$foto_services item=defot}
+					<div class="project">
+						<img src="{$host}__repository/services/{$defot.file_foto}" alt="{$servicess.nama_service_ind}" width='300px' height='250px;'>
+						<div class="item-hover">
+							<ul class="item-icons">
+								<li><a href="{$host}__repository/services/{$defot.file_foto}" class="portfolio"><i class="fa fa-search"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				{/foreach}
+			</div>
+		</div>
+		{/if}
+	</div>
+
+</div>
+
+<div class="red-semi-color-row">
+	<div id="reservation" class="container text-center padding-small">
+		<h5><span class="color-font light">Form</span> Reservasi</h5>
+	</div>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-sm-6">		
+				{include file='reservation.html' lang={$lang} }
+			</div>
+			<div class="col-md-6 col-sm-6">		
+				<label id='lokasinya'></label>
+				<div id="map" class="col-md-12 col-sm-12" style="height:400px;" ></div> 
+			</div>
+		</div>
+	</div>
 </div>
 
 

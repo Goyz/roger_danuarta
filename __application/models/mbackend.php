@@ -272,7 +272,11 @@ class mbackend extends CI_Model{
 					$data['foto_icon'] = $filename;
 				}else{
 					if($sts_crud == 'edit'){
-						$data['foto_icon'] = $data['foto_lama'];
+						if(isset($data['foto_lama'])){
+							$data['foto_icon'] = $data['foto_lama'];
+						}else{
+							$data['foto_icon'] = null;
+						}
 					}elseif($sts_crud == 'add'){
 						$data['foto_icon'] = null;
 					}
@@ -305,7 +309,11 @@ class mbackend extends CI_Model{
 					$data['foto_icon'] = $filename;
 				}else{
 					if($sts_crud == 'edit'){
-						$data['foto_icon'] = $data['foto_lama'];
+						if(isset($data['foto_lama'])){
+							$data['foto_icon'] = $data['foto_lama'];
+						}else{
+							$data['foto_icon'] = null;
+						}
 					}elseif($sts_crud == 'add'){
 						$data['foto_icon'] = null;
 					}
@@ -339,7 +347,11 @@ class mbackend extends CI_Model{
 					$data['file_foto'] = $filename;
 				}else{
 					if($sts_crud == 'edit'){
-						$data['file_foto'] = $data['foto_lama'];
+						if(isset($data['foto_lama'])){
+							$data['file_foto'] = $data['foto_lama'];
+						}else{
+							$data['file_foto'] = null;
+						}
 					}elseif($sts_crud == 'add'){
 						$data['file_foto'] = null;
 					}
@@ -392,7 +404,11 @@ class mbackend extends CI_Model{
 					$data['file_foto'] = $filename;
 				}else{
 					if($sts_crud == 'edit'){
-						$data['file_foto'] = $data['foto_lama'];
+						if(isset($data['foto_lama'])){
+							$data['file_foto'] = $data['foto_lama'];
+						}else{
+							$data['file_foto'] = null;
+						}
 					}elseif($sts_crud == 'add'){
 						$data['file_foto'] = null;
 					}
@@ -400,6 +416,7 @@ class mbackend extends CI_Model{
 				
 				$data['create_date']=date('Y-m-d H:i:s');
 				$data['create_by']=$this->auth['nama_user'];
+				unset($data['foto_lama']);
 			break;
 			
 			case "tbl_reservasi_frontend":

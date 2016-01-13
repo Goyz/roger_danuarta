@@ -11,7 +11,7 @@
 			<div class="controls">
 				{if $sts_crud == 'edit'}
 					{if $data.file_foto}
-					<img src='{$host}__repository/berita/{$data.file_foto}' width='100px' height='150px'>
+					<img src='{$host}__repository/testimony/{$data.file_foto}' width='100px' height='150px'>
 					<br/>
 					<br/>
 					{/if}
@@ -52,6 +52,8 @@
 </fieldset>
 <script>
 	$('#batal_{$main}').click(function(){
+		tinyMCE.get("testi_{$main}_ind_{$acak_ind}").save();
+		tinyMCE.get("testi_{$main}_eng_{$acak_en}").save();		
 		$('#grid_nya_{$main}').show();
 		$('#detil_nya_{$main}').html('').hide();
 	});

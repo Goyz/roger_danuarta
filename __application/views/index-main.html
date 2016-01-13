@@ -143,10 +143,10 @@
         <div class="pull-left">
             <div class="searchWrapper">
                <a class="pull-left" href='{$host}' style='padding-top:-5px !important;margin-top:-5px; !important;'>
-					<img src='{$host}__assets/images/indo.png' width='80%'; />
+					<img src='{$host}__assets/images/indo.png' width='80%' />
 				</a>
                 <a class="pull-left" href='{$host}en' style='padding-top:-5px !important;margin-top:-5px; !important;'>
-					<img src='{$host}__assets/images/inggris.png' width='80%'; />
+					<img src='{$host}__assets/images/inggris.png' width='80%' />
 				</a>
             </div>
             <!-- / searchWrapper -->
@@ -257,12 +257,14 @@
 <div class="container">
 <div class="container blog padding-bottom-medium">
     <div class="col-md-12">
-        
 		{if $news}
 			{foreach from=$news item=nesw}
 				<div class="row blog-post">
-					 <div class="col-md-12">
+					<div class="col-md-12">
 						<h6>{$nesw.judul_ind}</h6>
+					</div>
+					<div class="col-md-12">
+						<img src='{$host}__repository/berita/{$nesw.file_foto}' width='400px' style='margin-bottom:5px;'>
 					</div>
 					<div class="col-md-12">
 						<div class="tags tags-blog">
@@ -292,7 +294,7 @@
 </div>
 
 
-<div class="pattern-green-row">
+<div class="red-semi-color-row">
 
 <div id="services" class="container text-center padding-top-medium chapter">
 	<h3>Layanan & Produk <span class="color-font light">Roger's</span></h3>
@@ -324,11 +326,13 @@
     <div class="container text-center">
         <div class="row">
             <div class="portfolioFilter">
-
-                <a href="#" data-filter="*" class="current">Semua Cabang</a>
 				{if $lokasi}
 					{foreach from=$lokasi item=kt}
-						<a href="#" data-filter=".{$kt.id}">Roger's {$kt.lokasi}</a>
+						{if $kt.id eq 3}
+							<a href="#" id='roger_{$kt.id}' data-filter=".{$kt.id}" class="current" >Roger's {$kt.lokasi}</a>
+						{else}
+							<a href="#" data-filter=".{$kt.id}">Roger's {$kt.lokasi}</a>
+						{/if}
 					{/foreach}
 				{/if}	
             </div>
@@ -618,6 +622,10 @@
 			scrollOffset: '-80'
 		});
     });
+	
+	$(window).load(function () {
+		$('#roger_3').trigger('click');
+	});
 	
 	$('#tanggal').Zebra_DatePicker();
 </script>

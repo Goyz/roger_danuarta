@@ -142,10 +142,10 @@
         <div class="pull-left">
             <div class="searchWrapper">
                 <a class="pull-left" href='{$host}' style='padding-top:-5px !important;margin-top:-5px; !important;'>
-					<img src='{$host}__assets/images/indo.png' width='80%'; />
+					<img src='{$host}__assets/images/indo.png' width='80%' />
 				</a>
                 <a class="pull-left" href='{$host}en' style='padding-top:-5px !important;margin-top:-5px; !important;'>
-					<img src='{$host}__assets/images/inggris.png' width='80%'; />
+					<img src='{$host}__assets/images/inggris.png' width='80%' />
 				</a>
             </div>
             <!-- / searchWrapper -->
@@ -285,13 +285,14 @@
 				</div>
 			{/foreach}
 		{/if}
+		
     </div>
 
 </div>
 </div>
 
 
-<div class="pattern-green-row">
+<div class="red-semi-color-row">
 
 <div id="services" class="container text-center padding-top-medium chapter">
 	<h3><span class="color-font light">Roger's</span> Services & Product</h3>
@@ -326,10 +327,13 @@
         <div class="row">
             <div class="portfolioFilter">
 
-                <a href="#" data-filter="*" class="current">All</a>
 				{if $lokasi}
 					{foreach from=$lokasi item=kt}
-						<a href="#" data-filter=".{$kt.id}">Rogers's {$kt.lokasi}</a>
+						{if $kt.id eq 3}
+							<a href="#" id='roger_{$kt.id}' data-filter=".{$kt.id}" class="current" >Roger's {$kt.lokasi}</a>
+						{else}
+							<a href="#" data-filter=".{$kt.id}">Roger's {$kt.lokasi}</a>
+						{/if}
 					{/foreach}
 				{/if}	
             </div>
@@ -340,7 +344,7 @@
     <div class="projects five">
 		{if $gallery}
 			{foreach from=$gallery item=glr}
-				<div class="project {$glr.cl_lokasi_id}">
+				<div class="project {$glr.cl_lokasi_id} isotope-item isotope-hidden">
 					<img src="{$host}__repository/gallery/{$glr.file_foto}" alt="image">
 
 					<div class="item-hover">
@@ -622,6 +626,10 @@
 			scrollOffset: '-80'
 		});
     });
+	
+	$(window).load(function () {
+		$('#roger_3').trigger('click');
+	});	
 	
 	$('#tanggal').Zebra_DatePicker();
 </script>

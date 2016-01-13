@@ -4,7 +4,7 @@
 			{foreach from=$data_header item=serv}
 				<div class="col-md-4 col-sm-4">
 					<a href='{$host}detail-product/{$serv.id}/{$lang}/{$serv.linknya}'><img src='{$host}__repository/product/{$serv.foto_icon}' width='300px' height='250px;' ></a>
-					<h5>{$serv.nama_product_ind}</h5>
+					<h6>{$serv.nama_product_ind}</h6>
 				</div>
 			{/foreach}
 		{/if}
