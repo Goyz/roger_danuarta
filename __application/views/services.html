@@ -112,8 +112,10 @@
 		<div id="" class="container padding-medium text-center chapter">
 			{if $lang eq 'ind'}
 				<h4>Layanan {$servicess.nama_service_ind}</h4>
+				<p>{$servicess.deskripsi_ind}</p>
 			{elseif $lang eq 'en'}
 				<h4>Services {$servicess.nama_service_eng}</h4>
+				<p>{$servicess.deskripsi_eng}</p>
 			{/if}
 		</div>
 		{if $foto_services}

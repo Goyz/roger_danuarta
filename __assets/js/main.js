@@ -671,6 +671,7 @@ function sbmres(lang){
 			if(data == 1){
 				alert('Submit OK.');
 			}else{
+				console.log(data);
 				alert('Submit Not OK.');
 			}
 			
