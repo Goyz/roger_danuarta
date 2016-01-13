@@ -187,7 +187,7 @@ a:focus {
 }
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
-    color: #ffffff;
+    color: #F1DC87;
     background-color: transparent;
 }
 .navbar-inverse .navbar-text {
@@ -198,13 +198,13 @@ a:focus {
 }
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
-    color: #ffffff;
+    color: #F1DC87;
     background-color: transparent;
 }
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > .active > a:hover,
 .navbar-inverse .navbar-nav > .active > a:focus {
-    color: #ffffff;
+    color: #F1DC87;
     background-color: #e6e6e6;
 }
 .navbar-inverse .navbar-nav > .disabled > a,
@@ -597,8 +597,10 @@ header .slogan .square {
     color: #000000;
 }
 .brown-semi-color-row {
-    background-color: #F3D5AF;
-    color: #000000;
+    //background-color: #F3D5AF;
+    //color: #000000;
+    background-image: url("../images/crissXcross.png");
+    color: #ffffff;
 }
 .jingga-semi-color-row {
     background-color: #F7941D;

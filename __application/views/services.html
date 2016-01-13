@@ -15,6 +15,8 @@
     <link rel="stylesheet" type="text/css" href="{$host}__assets/css/animate.css">
     <link rel="stylesheet" type="text/css" href="{$host}__assets/css/blue.css">
     <link rel="stylesheet" type="text/css" href="{$host}__assets/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="{$host}__assets/plugin/zebradate/css/default.css">
+	
 
     <!--[if lt IE 9]>
     <script src="bootstrap/js/html5shiv.js"></script>
@@ -39,7 +41,9 @@
 <nav id="navigation" class="navbar navbar-inverse navbar-fixed-top navbar-info-top remove-left-red" role="navigation">
     <div class="top-info">
         <div class="pull-left">
-        </div>
+			<div class="searchWrapper">
+			</div>
+		</div>
         <div class="pull-right hidden-xs">
             <div class="social">
                 <ul>
@@ -87,13 +91,6 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
             <li><a href="{$host}">Home</a></li>
-            {*
-			{if $services}
-				{foreach from=$services item=serv}
-					<li class="onepage"><a href="#{$serv.id}">{$serv.nama_service_ind}</a></li>
-				{/foreach}
-			{/if}
-			*}
         </ul>
     </div>
     <!-- /.navbar-collapse -->
@@ -111,10 +108,10 @@
 	<div class="container padding-small">
 		<div id="" class="container padding-medium text-center chapter">
 			{if $lang eq 'ind'}
-				<h4>Layanan {$servicess.nama_service_ind}</h4>
+				{* <h4>Layanan {$servicess.nama_service_ind}</h4> *}
 				<p>{$servicess.deskripsi_ind}</p>
 			{elseif $lang eq 'en'}
-				<h4>Services {$servicess.nama_service_eng}</h4>
+				{* <h4>Services {$servicess.nama_service_eng}</h4> *}
 				<p>{$servicess.deskripsi_eng}</p>
 			{/if}
 		</div>
@@ -138,12 +135,12 @@
 
 </div>
 
-<div class="red-semi-color-row">
+<div class="brown-semi-color-row">
 	<div id="reservation" class="container text-center padding-small">
 		<h5><span class="color-font light">Form</span> Reservasi</h5>
 	</div>
 	
-	<div class="container">
+	<div class="container padding-bottom-small">
 		<div class="row">
 			<div class="col-md-6 col-sm-6">		
 				{include file='reservation.html' lang={$lang} }
@@ -218,11 +215,12 @@
 <script src="{$host}__assets/plugin/form/js/contact-form.js"></script>
 <script src="{$host}__assets/plugin/twitter/js/jquery.tweet.js"></script>
 <script src="{$host}__assets/js/jquery.appear.js"></script>
+<script src="{$host}__assets/plugin/zebradate/js/zebra_datepicker.js"></script>
 <script src="{$host}__assets/js/imgloaded.js"></script>
 <script src="{$host}__assets/js/gridscroll.js"></script>
 <script src="{$host}__assets/js/classie.js"></script>
 <script src="{$host}__assets/js/masonry.js"></script>
-
+<script src="{$host}__assets/js/jquery.form.js"></script>
 
 <script>
     jQuery(document).ready(function () {
@@ -235,6 +233,7 @@
 			scrollOffset: '-80'
 		});
     });
+	$('#tanggal').Zebra_DatePicker();
 </script>
 <script src="{$host}__assets/js/main.js"></script>
 
