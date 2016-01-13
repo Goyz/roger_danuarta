@@ -194,7 +194,7 @@ jQuery('.pie-chart').each(function () {
 
 //End Progress Bar
 //Begin Gallery
-$(window).load(function () {
+//$(window).load(function () {
 
     /*function myfunc() {
      jQuery("#MainHeader").parallax("50%", 0.2);
@@ -237,7 +237,7 @@ $(window).load(function () {
     });
 
     //myfunc();
-});
+//});
 
 //End Gallery
 

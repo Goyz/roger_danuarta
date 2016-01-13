@@ -604,10 +604,16 @@ header .slogan .square {
     background-color: #F7941D;
     color: #ffffff;
 }
+.white-color-row {
+    background-color: #ffffff;
+    color: #000000;
+}
 .pattern-green-row {
     background-image: url("../images/floral-pattern.jpg");
 	background-repeat: repeat;
 }
+
+
 .quote .quote-mark-left {
     color: #1a9dd3;
 }
