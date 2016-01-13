@@ -1,11 +1,19 @@
 {if $main eq 'reservasi'}
 	{assign var=buton value="false"}
 	{assign var=button_reservation value="true"}
+{else if $main eq 'newslatter'}
+	{assign var=buton value="false"}
+	{assign var=button_reservation value="false"}
+	{assign var=buton2 value="false"}
 {else}
 	{assign var=buton value="true"}
 	{assign var=button_reservation value="false"}
 {/if}
 
-{if $main eq 'gallery'}{assign var=buton2 value="true"}{assign var=buton value="false"}{else}{assign var=buton2 value="false"}{/if}
+{if $main eq 'gallery'}{assign var=buton2 value="true"}
+	{assign var=buton value="false"}
+{else}
+	{assign var=buton2 value="false"}
+{/if}
 
 {include file='template/grid.html' main={$main} mod={$mod} button={$buton}  button_2={$buton2}  }

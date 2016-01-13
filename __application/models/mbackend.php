@@ -16,6 +16,13 @@ class mbackend extends CI_Model{
 					return $this->result_query($sql,'row_array');
 				}
 			break;
+			case "tbl_newslatter":
+				$sql = " SELECT * FROM tbl_newslatter";
+				/*if($p1=='edit'){
+					$sql .=" WHERE id=".$p2;
+					return $this->result_query($sql,'row_array');
+				}*/
+			break;
 			case "tbl_reservasi":
 				$sql = " SELECT A.*,D.kota,B.lokasi,C.product_type FROM tbl_reservasi A
 						LEFT JOIN cl_lokasi B ON A.cl_lokasi_id=B.id

@@ -220,7 +220,17 @@ function genGrid(modnya, divnya, lebarnya, tingginya){
 				{field:'testimony_eng',title:'Testimony',width:300, halign:'center',align:'left'},
 			]
 		break;
-		
+		case "newslatter":
+			judulnya = "List Pendaftar Email NewsLatter";
+			urlnya = "tbl_newslatter";
+			fitnya = true;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			nowrap_nya=false;
+			kolom[modnya] = [	
+				{field:'email',title:'Email',width:350, halign:'center',align:'left'},
+				{field:'create_date',title:'Tgl. Submit',width:200, halign:'center',align:'center'}
+			]
+		break;
 		
 		case "kota":
 			judulnya = "List Cabang Kota";
