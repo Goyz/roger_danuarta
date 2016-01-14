@@ -249,6 +249,7 @@ function validateDataAttr($attr) {
 
 };
 
+/*
 // init gmap - Asynchronous Loading
 function initmap() {
     "use strict";
@@ -300,7 +301,7 @@ function initmap() {
                      $this.data('idle', true);
                      }
                      }
-                     }*/
+                     }
                 },
                 overlay: {
                     //latLng: [40.616439, -74.035540],
@@ -329,6 +330,7 @@ function initmap() {
 
     });
 };
+*/
 
 function loadScript() {
     "use strict";
@@ -725,6 +727,18 @@ function initMap() {
 }
 
 function sbmnl(){
+	var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+	
+	if($('#mail_subsc').val() == ""){
+		alert('Email Harus Diisi!');
+		return false;
+	}
+	
+	if(emailReg.test($('#mail_subsc').val()) == false){
+		alert('Email Tidak Valid!');
+		return false;
+	}
+	
 	$.post(host+'submit-subscriber', { 'valnya':$('#mail_subsc').val() }, function(resp){
 		if(resp == 1){
 			$('#sukses').css({'display':'inline'});
