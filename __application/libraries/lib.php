@@ -130,7 +130,7 @@ class lib {
 	//end Class CutString
 	
 	//Class Kirim Email
-	function kirimemail($type="", $email="", $p1="", $p2="", $p3=""){
+	function kirimemail($type="", $email="", $p1="", $p2="", $p3="", $p4=""){
 		$ci =& get_instance();
 		$ci->load->library('My_PHPMailer');
 				
@@ -149,6 +149,55 @@ class lib {
 					<br/>
 					<br/>
 					<a href='http://www.rogersalon.com/#news'>Continue</a>
+				";
+			break;
+			case "email_reservasi":
+				$subject = "Rogers Reservation Notification";
+				$html = "
+					<h1>Roger's Reservasi Untuk Cabang ".$p1."</h1>
+					<br/>
+					<br/>
+					<table width='100%'>
+						<tr>
+							<td width='20%'>Nama</td>
+							<td width='5%'>:</td>
+							<td width='75%'>".$p2['nama']."</td>
+						</tr>
+						<tr>
+							<td>ID Member</td>
+							<td>:</td>
+							<td>".$p2['id_member']."</td>
+						</tr>
+						<tr>
+							<td>No. Handphone</td>
+							<td>:</td>
+							<td>".$p2['phone']."</td>
+						</tr>
+						<tr>
+							<td>Email</td>
+							<td>:</td>
+							<td>".$p2['email']."</td>
+						</tr>
+						<tr>
+							<td>Tanggal</td>
+							<td>:</td>
+							<td>".date('d-m-Y',strtotime($p2['tgl']))."</td>
+						</tr>
+						<tr>
+							<td>Layanan</td>
+							<td>:</td>
+							<td>".$p3."</td>
+						</tr>
+						<tr>
+							<td>Request Tambahan</td>
+							<td>:</td>
+							<td>".$p2['request']."</td>
+						</tr>
+					</table>
+					<br/>
+					<br/>
+					Silahkan Mengkonfirmasi Ke Customer terkait Terima Kasih.
+					
 				";
 			break;
 		}

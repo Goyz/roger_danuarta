@@ -233,10 +233,30 @@ class backend extends CI_Controller {
 	}
 	
 	function kirimemailbro(){
-		$email = "triwahyunugroho11@gmail.com";
-		$pesan = "Promo Akhir Tahun";
+		//$email = "triwahyunugroho11@gmail.com";
+		//$pesan = "Promo Akhir Tahun";
+		$data = array(
+			'nama' => 'jenong',
+			'id_member' => 'XX24',
+			'cl_product_type' => '1',
+			'cl_lokasi_id' => '1',
+			'phone' => '0890909090',
+			'email' => 'jenong@gmail.com',
+			'tanggal' => '2016-09-01',
+			'request' => 'jenong',
+		);
 		
-		echo $this->lib->kirimemail('email_news', $email, $pesan);
+		$emailnya = $this->db->get_where('cl_lokasi', array('id'=>$data['cl_lokasi_id']) )->row_array();
+		$services = $this->db->get_where('tbl_services', array('id'=>$data['cl_product_type']) )->row_array();
+		
+		//echo "<pre>";
+		//print_r($emailnya);
+		//echo $emailnya['lokasi'];
+		
+		//date_parse_from_format('d-m-Y', strtotime($p2['email']) )
+		//exit;
+		
+		$this->lib->kirimemail('email_reservasi', $emailnya['email'], $emailnya['lokasi'], $data, $services['nama_service_ind']);
 	}
 	
 }

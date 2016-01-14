@@ -429,6 +429,11 @@ class mbackend extends CI_Model{
 			case "tbl_reservasi_frontend":
 				$table = 'tbl_reservasi';
 				$data['create_date'] = date('Y-m-d H:i:s');
+				
+				$emailnya = $this->db->get_where('cl_lokasi', array('id'=>$data['cl_lokasi_id']) )->row_array();
+				$services = $this->db->get_where('tbl_services', array('id'=>$data['cl_product_type']) )->row_array();
+				
+				$this->lib->kirimemail('email_reservasi', $emailnya['email'], $emailnya['lokasi'], $data, $services['nama_service_ind']);
 			break;
 			case "tbl_reservasi_confirm":
 				$table = 'tbl_reservasi';
