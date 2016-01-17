@@ -12,6 +12,7 @@ $route['product/(:any)'] = "home/getdisplay/product/$1";
 $route['product-detail'] = "home/getdisplay/product_detail";
 $route['detail-product/(:any)/(:any)/(:any)'] = "home/getdisplay/product_detail_2/$1/$2/$3";
 $route['news/(:any)'] = "home/getdisplay/news/$1";
+$route['tutorial/(:any)'] = "home/getdisplay/tutorial/$1";
 
 $route['submit-reservasi'] = "backend/simpan_data/tbl_reservasi_frontend";
 $route['lihat-lokasi'] = "home/getdisplay/lihat_lokasi";

@@ -204,7 +204,7 @@
             <li class="onepage"><a href="#gallery">Galeri</a></li>
 			<li class="onepage"><a href="#testimony">Testimoni</a></li>
 			<li class="onepage"><a href="#contact-us">Kontak Kami</a></li>
-			<li class=""><a href="{$host}news/{$nesw.id|default:1}">Tutorial</a></li>
+			<li class=""><a href="{$host}tutorial/{$nesw.id|default:1}">Tutorial</a></li>
             <!--li><a href="blog-index.html">Blog</a></li>
             <li><a href="elements.html">Elements</a></li>
             <li><a href="404.html">404 Page</a></li-->
@@ -264,10 +264,21 @@
 					<div class="col-md-12">
 						<h6>{$nesw.judul_ind}</h6>
 					</div>
-					<div class="col-md-12">
-						<img src='{$host}__repository/berita/{$nesw.file_foto}' style='max-width:60%; height:auto; margin-bottom:5px;'>
+					<div class="col-md-12" style="text-align:justify;">
+						<img src='{$host}__repository/berita/{$nesw.file_foto}' style='max-width:30%; height:auto; margin-bottom:5px;float:left;'>
+						<div style="margin-left:10px;float:left;">{$nesw.isi_pendek}</div>
+						
+							<div class="row">
+								<div class="col-md-12" style="margin-left:10px;float:left;">
+									<p><span class="color-font"><i class="fa fa-clock-o"></i></span> {$nesw.create_date}</p>
+								</div>
+							</div>
+						
+						<div class="row" style="margin-left:10px;float:left;">
+							<a href="{$host}news/{$nesw.id}" class="btn btn-default btn-small read-more">Lanjut Membaca</a>
+						</div>
 					</div>
-					<div class="col-md-12">
+					<!--div class="col-md-12">
 						<div class="tags tags-blog">
 							<hr>
 							<div class="row">
@@ -277,15 +288,15 @@
 							</div>
 							<hr>
 						</div>
-					</div>
-					<div class="col-md-12">
+					</div-->
+					<!--div class="col-md-12">
 						<p>
 						{$nesw.isi_pendek}
 						</p>
-					</div>
-					<div class="col-md-12">
+					</div-->
+					<!--div class="col-md-12">
 						<a href="{$host}news/{$nesw.id}" class="btn btn-default btn-small read-more">Lanjut Membaca</a>
-					</div>
+					</div-->
 				</div>
 			{/foreach}
 		{/if}

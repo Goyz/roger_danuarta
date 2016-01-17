@@ -100,6 +100,11 @@ class home extends CI_Controller {
 				$this->smarty->assign('berita_detail', $berita_detail);
 				$this->smarty->assign('berita_lainnya', $berita_lainnya);
 			break;
+			case "tutorial":
+				$content = "tutorial.html";
+				$tutor = $this->mhome->getdata('tutorial', 'result_array', $p1);
+				$this->smarty->assign('tutor', $tutor);
+			break;
 			case "foto_detail":
 				$path = $this->host."__repository/".$p1."/".$p2;
 				echo "<img src='".$path."' />";

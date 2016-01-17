@@ -1,0 +1,111 @@
+<fieldset>
+<div class="span12">
+	<!--PAGE CONTENT BEGINS-->
+	<form class="form-horizontal" id="form_berita" url="{$host}backend/simpan_data/tbl_{$main}" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="id" value="{$data.id|default:''}">
+		<input type="hidden" name="sts_crud" value="{$sts_crud|default:'add'}">
+		<input type="hidden" name="foto_lama" value="{$data.file_foto|default:''}">
+		
+		<!--div class="control-group">
+			<label class="control-label" for="form-field-1">Gambar Berita</label>
+			<div class="controls">
+				{if $sts_crud == 'edit'}
+					{if $data.file_foto}
+					<img src='{$host}__repository/berita/{$data.file_foto}' width='100px' height='150px'>
+					<br/>
+					<br/>
+					{/if}
+				{/if}
+				{include file="template/file_input.html" multiple='false' id="file_foto_{$main}" }
+			</div>
+		</div-->				
+		<div class="control-group">
+			<label class="control-label" for="form-field-1">Judul. Ind</label>
+			<div class="controls">
+				<input type="text" class="span8" name="judul_ind" id="judul_ind" value="{$data.judul_ind|default:''}" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="form-field-1">Judul. Eng</label>
+			<div class="controls">
+				<input type="text" class="span8" name="judul_eng" id="judul_eng" value="{$data.judul_eng|default:''}" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="form-field-1">Deskripsi. Ind</label>
+			<div class="controls">
+				{include file="template/editor.html" id="deskripsi_{$main}_ind_{$acak_ind}" name="deskripsi_ind" height="150" value="{$data.deskripsi_ind|default:''}" }
+				<!--textarea class="span10" id="isi_berita_ind" name="isi_berita_ind"></textarea-->
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="form-field-1">Deskripsi. Eng</label>
+			<div class="controls">
+				{include file="template/editor.html" id="deskripsi_{$main}_eng_{$acak_en}" name="deskripsi_eng" height="150" value="{$data.deskripsi_eng|default:''}"}
+				<!--textarea class="span10" id="isi_berita_eng" name="isi_berita_eng"></textarea-->
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="form-field-1">URL (Referensi URL Video)</label>
+			<div class="controls">
+				<input type="text" class="span8" name="url_nya" id="url_nya" value="{$data.url_nya|default:''}" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="form-field-1"></label>
+			<div class="controls">
+				{include file="template/button_save.html" id_simpan="simpan_{$main}" id_batal="batal_{$main}" }
+			</div>
+		</div>
+		
+	</form>
+</div>
+</fieldset>
+<script>
+	
+	$(document).ready(function () {
+		/*
+		if(typeof(tinyMCE) !== 'undefined') {
+			var length = tinyMCE.editors.length;
+			for (var i=length; i>0; i--) {
+				tinyMCE.editors[i-1].remove();
+			};
+		}
+		
+		if(typeof(tinyMCE) !== 'undefined') {
+			myEds = tinyMCE.editors;
+			for( edd in myEds ) {
+				myEds[ edd ].remove();
+			} 
+		}
+		*/
+	});
+	//*/
+	
+	$('#batal_{$main}').click(function(){
+		tinyMCE.get("deskripsi_{$main}_ind_{$acak_ind}").save();
+		tinyMCE.get("deskripsi_{$main}_eng_{$acak_en}").save();		
+		$('#grid_nya_{$main}').show();
+		$('#detil_nya_{$main}').html('').hide();
+	});
+	
+	$('#simpan_{$main}').click(function(){
+		tinyMCE.get("deskripsi_{$main}_ind_{$acak_ind}").save();
+		tinyMCE.get("deskripsi_{$main}_eng_{$acak_en}").save();
+		//$('#isi_berita_ind').val()
+		submit_form('form_berita',function(r){
+			if(r==1){
+				$.messager.alert('Roger Salon',"Berita Tersimpan",'info');
+				$('#grid_{$main}').datagrid('reload');
+				$('#grid_nya_{$main}').show();
+				$('#detil_nya_{$main}').html('').hide();
+			}
+			else{
+				$.messager.alert('Roger Salon',"Gagal",'error');
+				console.log(r);
+			}
+		});
+
+	});
+	
+</script>

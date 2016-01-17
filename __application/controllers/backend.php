@@ -69,6 +69,15 @@ class backend extends CI_Controller {
 						$this->smarty->assign("data", $data);
 					}
 				break;
+				case "tutorial":
+					$this->smarty->assign("acak_ind", md5(date('YmdHis').'ind') );
+					$this->smarty->assign("acak_en", md5(date('YmdHis').'en') );
+					
+					if($sts_crud=='edit'){
+						$data=$this->mbackend->getdata('tbl_'.$p1,'edit',$this->input->post('id'));
+						$this->smarty->assign("data", $data);
+					}
+				break;
 				case "services":
 					$this->smarty->assign("acak_ind", md5(date('YmdHis').'ind') );
 					$this->smarty->assign("acak_en", md5(date('YmdHis').'en') );

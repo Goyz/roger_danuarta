@@ -689,8 +689,10 @@ function sbmres(lang){
 function ceklks(lang){
 	$.post(host+'lihat-lokasi', { 'valnya':$('#lokasi').val(), 'lang':lang }, function(resp){
 		var respon=JSON.parse(resp);
+		console.log(respon.lat);
+		console.log(respon.longi);
 		$('#lokasinya').html(respon.cetak);
-		var myLatlng = new google.maps.LatLng(respon.lat,respon.longi);
+		var myLatlng = new google.maps.LatLng(respon.longi,respon.lat);
         var myOptions = {
             zoom: 13,
             center: myLatlng

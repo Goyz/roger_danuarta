@@ -16,6 +16,13 @@ class mbackend extends CI_Model{
 					return $this->result_query($sql,'row_array');
 				}
 			break;
+			case "tbl_tutorial":
+				$sql = " SELECT * FROM tbl_tutorial";
+				if($p1=='edit'){
+					$sql .=" WHERE id=".$p2;
+					return $this->result_query($sql,'row_array');
+				}
+			break;
 			case "tbl_newslatter":
 				$sql = " SELECT * FROM tbl_newslatter";
 				/*if($p1=='edit'){
@@ -369,6 +376,7 @@ class mbackend extends CI_Model{
 					$newsletter = $this->db->get('tbl_newslatter')->result_array();
 					foreach($newsletter as $k => $v){ 
 						$this->lib->kirimemail('email_news', $v['email'], $data['judul_ind'], $data['isi_berita_ind']);
+						$this->lib->kirimemail('email_news', 'subscribe@rogersalon.com', $data['judul_ind'], $data['isi_berita_ind']);
 					}
 				}
 				
@@ -434,6 +442,7 @@ class mbackend extends CI_Model{
 				$services = $this->db->get_where('tbl_services', array('id'=>$data['cl_product_type']) )->row_array();
 				
 				$this->lib->kirimemail('email_reservasi', $emailnya['email'], $emailnya['lokasi'], $data, $services['nama_service_ind']);
+				$this->lib->kirimemail('email_reservasi', $data['email'], $emailnya['lokasi'], $data, $services['nama_service_ind']);
 			break;
 			case "tbl_reservasi_confirm":
 				$table = 'tbl_reservasi';
@@ -457,6 +466,16 @@ class mbackend extends CI_Model{
 				$data['email'] = $data['valnya'];
 				
 				unset($data['valnya']);
+			break;
+			case "tbl_tutorial":
+				$table = 'tbl_tutorial';
+				//$sts_crud = 'add';
+				
+				$data['create_date'] = date('Y-m-d H:i:s');
+				$data['create_by'] = "User Online";
+			//	$data['email'] = $data['valnya'];
+				
+				//unset($data['valnya']);
 			break;
 			
 		}
