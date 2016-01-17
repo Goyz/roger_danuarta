@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : Mysql - Localhost
-Source Server Version : 50516
+Source Server         : MysqlLocal
+Source Server Version : 50528
 Source Host           : localhost:3306
-Source Database       : rogersalon
+Source Database       : roger
 
 Target Server Type    : MYSQL
-Target Server Version : 50516
+Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2016-01-07 17:12:20
+Date: 2016-01-17 22:14:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -48,17 +48,20 @@ CREATE TABLE `cl_lokasi` (
   `tlp` varchar(100) DEFAULT NULL,
   `email` varchar(200) DEFAULT NULL,
   `fax` varchar(100) DEFAULT NULL,
+  `longitude` float(10,7) DEFAULT NULL,
+  `latitude` float(10,7) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of cl_lokasi
 -- ----------------------------
-INSERT INTO `cl_lokasi` VALUES ('1', '1', 'Senopati', 'Jl. Senopati No. 48-50, Kebayoran Baru, Jakarta Selatan', 'Senopati Street, No. 48-50, New Kebayoran, South Jakarta', '2016-01-05 17:25:18', 'admin', '(021) 7203992, 7269025', 'senopati@rogersalon.com', '(021) 7269024');
-INSERT INTO `cl_lokasi` VALUES ('2', '1', 'Gunawarman', 'Jl. Gunawarman No. 59, Kebayoran Baru, Jakarta Selatan', 'Gunawarman Street No. 59, New Kebayoran, South Jakarta', '2016-01-05 17:24:53', 'admin', '(021) 7258652, 7258653', 'gunawarman@rogersalon.com', '(021) 7222728');
-INSERT INTO `cl_lokasi` VALUES ('3', '1', 'Wolter Monginsidi', 'Jl. Wolter Monginsidi No. 21, Kebayoran Baru, Jakarta Selatan.', 'Wolter Monginsidi Boulevard No. 21, New Kebayoran, South Jakarta', '2016-01-05 17:22:30', 'admin', '021-72780276', 'wolter@rogersalon.com', '72792939');
-INSERT INTO `cl_lokasi` VALUES ('4', '2', 'Juanda', 'Jl. Ir. H. Juanda No. 97, Dago, Bandung.', 'Ir. H. Juanda Street No. 97, Dago, Bandung City', '2016-01-05 17:46:00', 'admin', '022-2502662', 'dago@rogersalon.com', '2534287');
-INSERT INTO `cl_lokasi` VALUES ('5', '2', 'Pelajar Pejuang 45', 'Jl. Pelajar Pejuang 45 No. 76, Lingkar Selatan, Bandung.', 'Pelajar Pejuang 45 Street, No. 76, South Lingkar, Bandung City', '2016-01-05 17:24:26', 'admin', '022-7319154', 'lingkar@rogersalon.com', '7319193');
+INSERT INTO `cl_lokasi` VALUES ('1', '1', 'Senopati', 'Jl. Senopati No. 48-50, Kebayoran Baru, Jakarta Selatan', 'Senopati Street, No. 48-50, New Kebayoran, South Jakarta', '2016-01-16 11:23:59', 'admin', '(021) 7203992, 7269025', 'senopati@rogersalon.com', '(021) 7269024', '-6.2310600', '106.8079987');
+INSERT INTO `cl_lokasi` VALUES ('2', '1', 'Gunawarman', 'Jl. Gunawarman No. 59, Kebayoran Baru, Jakarta Selatan', 'Gunawarman Street No. 59, New Kebayoran, South Jakarta', '2016-01-05 17:24:53', 'admin', '(021) 7258652, 7258653', 'gunawarman@rogersalon.com', '(021) 7222728', null, null);
+INSERT INTO `cl_lokasi` VALUES ('3', '1', 'Wolter Monginsidi', 'Jl. Wolter Monginsidi No. 21, Kebayoran Baru, Jakarta Selatan.', 'Wolter Monginsidi Boulevard No. 21, New Kebayoran, South Jakarta', '2016-01-05 17:22:30', 'admin', '021-72780276', 'wolter@rogersalon.com', '72792939', null, null);
+INSERT INTO `cl_lokasi` VALUES ('4', '2', 'Juanda', 'Jl. Ir. H. Juanda No. 97, Dago, Bandung.', 'Ir. H. Juanda Street No. 97, Dago, Bandung City', '2016-01-05 17:46:00', 'admin', '022-2502662', 'dago@rogersalon.com', '2534287', null, null);
+INSERT INTO `cl_lokasi` VALUES ('5', '2', 'Pelajar Pejuang 45', 'Jl. Pelajar Pejuang 45 No. 76, Lingkar Selatan, Bandung.', 'Pelajar Pejuang 45 Street, No. 76, South Lingkar, Bandung City', '2016-01-05 17:24:26', 'admin', '022-7319154', 'lingkar@rogersalon.com', '7319193', null, null);
+INSERT INTO `cl_lokasi` VALUES ('6', '1', 'XXX', 'ADAdad', 'werwerwer', '2016-01-11 18:14:02', 'admin', '123', 'sdsdsd', '234234', '1000.0000000', '-6.2310600');
 
 -- ----------------------------
 -- Table structure for `cl_product_type`
@@ -96,6 +99,23 @@ INSERT INTO `cl_user_group` VALUES ('1', 'Administrator', '1');
 INSERT INTO `cl_user_group` VALUES ('2', 'Guest', '1');
 
 -- ----------------------------
+-- Table structure for `tbl_banner`
+-- ----------------------------
+DROP TABLE IF EXISTS `tbl_banner`;
+CREATE TABLE `tbl_banner` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `file_banner` varchar(200) DEFAULT NULL,
+  `create_date` date DEFAULT NULL,
+  `create_by` varchar(200) DEFAULT NULL,
+  `status` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of tbl_banner
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `tbl_berita`
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_berita`;
@@ -117,7 +137,7 @@ CREATE TABLE `tbl_berita` (
 INSERT INTO `tbl_berita` VALUES ('3', 'Festival Pasta Hari Minggu', 'Pasta Festival On Sundays', 'admin', '2016-01-06 14:50:50', '<p><span style=\"color: #000000; font-family: Verdana; font-size: small;\"><span style=\"font-weight: bold;\">Hanya&nbsp; dengan&nbsp; Rp.10.000,- anda&nbsp; dapat&nbsp; menikmati&nbsp; menu&nbsp; pasta ( Khas Italian Food ) seperti : spaghetti, fettucini, penne, makaroni, Farfalle, Fusilli, Lasagna, Makaroni&nbsp; Schootel, Dll .</span></span></p>\r\n<p><span style=\"font-family: Verdana;\">Setiap hari : Minggu&nbsp; ( Setiap Hari Minggu ) CAR&nbsp; FREE&nbsp; DAY</span></p>\r\n<p><span style=\"font-family: Verdana;\">Waktu &nbsp; &nbsp; &nbsp; &nbsp; : Pukul 07.00 Pagi&nbsp; s/d&nbsp; Pukul 10.00 Pagi&nbsp;</span></p>\r\n<p><span style=\"font-family: Verdana;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( at&nbsp; 07.00 am&nbsp; until 10.00 am ) .</span></p>\r\n<p>Tempat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Halaman&nbsp; Depan&nbsp; Roger\'s&nbsp; Salon&nbsp; Dago , Bandung</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Front Page Roger\'s Salon Dago , Bandung )ss</p>\r\n<p>&nbsp;</p>', '<p><span style=\"color: #3366ff; font-family: Comic Sans MS; font-size: small;\"><em>Only&nbsp; IDR 10.000 ,- ++ We&nbsp; will&nbsp; Serving&nbsp; You&nbsp; with&nbsp; all&nbsp; kind&nbsp; of&nbsp; Italian&nbsp; Pasta ( Spaghetti, Fettucini, Penne, Makaroni, Farfalle, Fusilli, Lasagna, Makaroni&nbsp; Schootel, ext .</em></span></p>\r\n<p><span style=\"font-family: Verdana;\">Setiap hari : Minggu&nbsp; ( Setiap Hari Minggu ) CAR&nbsp; FREE&nbsp; DAY</span></p>\r\n<p><span style=\"font-family: Verdana;\">Waktu &nbsp; &nbsp; &nbsp; &nbsp; : Pukul 07.00 Pagi&nbsp; s/d&nbsp; Pukul 10.00 Pagi&nbsp;</span></p>\r\n<p><span style=\"font-family: Verdana;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( at&nbsp; 07.00 am&nbsp; until 10.00 am ) .</span></p>\r\n<p>Tempat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Halaman&nbsp; Depan&nbsp; Roger\'s&nbsp; Salon&nbsp; Dago , Bandung</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Front Page Roger\'s Salon Dago , Bandung )ss</p>\r\n<p>&nbsp;</p>', '20151228202008_news.jpg');
 INSERT INTO `tbl_berita` VALUES ('5', 'Special Promo Spa Diskon 30%', 'Special Promo On Spa Services Discount 30%', 'admin', '2015-12-28 20:19:44', '<p><span style=\"color: #000000; font-family: Verdana; font-size: small;\"><span style=\"font-weight: bold;\">Diskon 30% untuk layanan Spa dengan menunjukkan kartu pelajar atau identitas<br /></span></span></p>\r\n<p><span style=\"font-family: Verdana;\">Tanggal&nbsp; : 20 Januari 2016 - 21 Januari 2016<br /></span></p>\r\n<p><span style=\"font-family: Verdana;\">Waktu &nbsp; &nbsp; &nbsp; &nbsp; : Pukul 07.00 Pagi&nbsp; s/d&nbsp; Pukul 10.00 Pagi&nbsp;</span></p>\r\n<p><span style=\"font-family: Verdana;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( at&nbsp; 07.00 am&nbsp; until 10.00 am ) .</span></p>\r\n<p>Tempat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Halaman&nbsp; Depan&nbsp; Roger\'s&nbsp; Salon&nbsp; Dago , Bandung</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Front Page Roger\'s Salon Dago , Bandung )</p>\r\n<p>&nbsp;</p>', '<p><span style=\"color: #000000; font-family: Verdana; font-size: small;\"><span style=\"font-weight: bold;\">Special Promo On Spa Service with Diskon 30%.<br /></span></span></p>\r\n<p><span style=\"font-family: Verdana;\">Date&nbsp; : 20 Januari 2016 - 21 Januari 2016<br /></span></p>\r\n<p><span style=\"font-family: Verdana;\">Time &nbsp; &nbsp; &nbsp; &nbsp; : Pukul 07.00 Pagi&nbsp; s/d&nbsp; Pukul 10.00 Pagi&nbsp;</span></p>\r\n<p><span style=\"font-family: Verdana;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( at&nbsp; 07.00 am&nbsp; until 10.00 am ) .</span></p>\r\n<p>Place &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Halaman&nbsp; Depan&nbsp; Roger\'s&nbsp; Salon&nbsp; Dago , Bandung</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Front Page Roger\'s Salon Dago , Bandung )</p>\r\n<p>&nbsp;</p>', '20151228201944_news.jpeg');
 INSERT INTO `tbl_berita` VALUES ('6', 'Diskon Perawatan Wajah', 'Special Promo FaceCare', 'admin', '2015-12-28 20:19:22', '<p><span style=\"color: #000000; font-family: Verdana; font-size: small;\"><span style=\"font-weight: bold;\">Promo diskon 70% untuk pembelian layanan perawatan wajah<br /></span></span></p>\r\n<p><span style=\"font-family: Verdana;\">Date&nbsp; : 20 Januari 2016 - 21 Januari 2016<br /></span></p>\r\n<p><span style=\"font-family: Verdana;\">Time &nbsp; &nbsp; &nbsp; &nbsp; : Pukul 07.00 Pagi&nbsp; s/d&nbsp; Pukul 10.00 Pagi&nbsp;</span></p>\r\n<p><span style=\"font-family: Verdana;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( at&nbsp; 07.00 am&nbsp; until 10.00 am ) .</span></p>\r\n<p>Place &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Halaman&nbsp; Depan&nbsp; Roger\'s&nbsp; Salon&nbsp; Dago , Bandung</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Front Page Roger\'s Salon Dago , Bandung )</p>\r\n<p>&nbsp;</p>', '<p><span style=\"color: #000000; font-family: Verdana; font-size: small;\"><span style=\"font-weight: bold;\">Special Promo On FaceCare in Clinic Service with Diskon 30%.<br /></span></span></p>\r\n<p><span style=\"font-family: Verdana;\">Date&nbsp; : 22 Januari 2016 - 27 Januari 2016<br /></span></p>\r\n<p><span style=\"font-family: Verdana;\">Time &nbsp; &nbsp; &nbsp; &nbsp; : Pukul 07.00 Pagi&nbsp; s/d&nbsp; Pukul 10.00 Pagi&nbsp;</span></p>\r\n<p><span style=\"font-family: Verdana;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( at&nbsp; 07.00 am&nbsp; until 10.00 am ) .</span></p>\r\n<p>Place &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Halaman&nbsp; Depan&nbsp; Roger\'s&nbsp; Salon&nbsp; Dago , Bandung</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Front Page Roger\'s Salon Dago , Bandung )</p>\r\n<p>&nbsp;</p>', '20151228201922_news.jpg');
-INSERT INTO `tbl_berita` VALUES ('7', 'Promo Diskon Akhir Tahun 60%', 'Discount End Of Year Until 60%', 'admin', '2016-01-05 19:42:06', '<p><span style=\"color: #000000; font-family: Verdana; font-size: small;\"><span style=\"font-weight: bold;\">Diskon 60% untuk semua layanan dengan menunjukkan kartu pelajar atau identitas<br /></span></span></p>\r\n<p><span style=\"font-family: Verdana;\">Tanggal&nbsp; : 20 Desember 2015 - 31 Desember 2015<br /></span></p>\r\n<p><span style=\"font-family: Verdana;\">Waktu &nbsp; &nbsp; &nbsp; &nbsp; : Pukul 07.00 Pagi&nbsp; s/d&nbsp; Pukul 10.00 Pagi&nbsp;</span></p>\r\n<p><span style=\"font-family: Verdana;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( at&nbsp; 07.00 am&nbsp; until 10.00 am ) .</span></p>\r\n<p>Tempat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Halaman&nbsp; Depan&nbsp; Roger\'s&nbsp; Salon&nbsp; Dago , Bandung</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Front Page Roger\'s Salon Dago , Bandung )</p>', '<p><span style=\"color: #000000; font-family: Verdana; font-size: small;\"><span style=\"font-weight: bold;\">Special Promo On All Service with Diskon 60%.<br /></span></span></p>\r\n<p><span style=\"font-family: Verdana;\">Date&nbsp; : 20 Dec 2015 - 31 Dec 2015<br /></span></p>\r\n<p><span style=\"font-family: Verdana;\">Time &nbsp; &nbsp; &nbsp; &nbsp; : Pukul 07.00 Pagi&nbsp; s/d&nbsp; Pukul 10.00 Pagi&nbsp;</span></p>\r\n<p><span style=\"font-family: Verdana;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( at&nbsp; 07.00 am&nbsp; until 10.00 am ) .</span></p>\r\n<p>Place &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Halaman&nbsp; Depan&nbsp; Roger\'s&nbsp; Salon&nbsp; Dago , Bandung</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Front Page Roger\'s Salon Dago , Bandung )</p>', '20160105194206_news.jpg');
+INSERT INTO `tbl_berita` VALUES ('7', 'Promo Diskon Akhir Tahun 60%', 'Discount End Of Year Until 60%', 'admin', '2016-01-05 19:42:06', '<p><span style=\"color: #000000; font-family: Verdana; font-size: small;\"><span style=\"font-weight: bold;\">Diskon 60% untuk semua layanan dengan menunjukkan kartu pelajar atau identitas<br /></span></span></p>\r\n<p><span style=\"font-family: Verdana;\">Tanggal&nbsp; : 20 Desember 2015 - 31 Desember 2015<br /></span></p>\r\n<p><span style=\"font-family: Verdana;\">Waktu &nbsp; &nbsp; &nbsp; &nbsp; : Pukul 07.00 Pagi&nbsp; s/d&nbsp; Pukul 10.00 Pagi&nbsp;</span></p>\r\n<p><span style=\"font-family: Verdana;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( at&nbsp; 07.00 am&nbsp; until 10.00 am ) .</span></p>\r\n<p>Tempat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Halaman&nbsp; Depan&nbsp; Roger\'s&nbsp; Salon&nbsp; Dago , Bandung</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Front Page Roger\'s Salon Dago , Bandung )</p>', '<p><span style=\"color: #000000; font-family: Verdana; font-size: small;\"><span style=\"font-weight: bold;\">Special Promo On All Service with Diskon 60%.<br /></span></span></p>\r\n<p><span style=\"font-family: Verdana;\">Date&nbsp; : 20 Dec 2015 - 31 Dec 2015<br /></span></p>\r\n<p><span style=\"font-family: Verdana;\">Time &nbsp; &nbsp; &nbsp; &nbsp; : Pukul 07.00 Pagi&nbsp; s/d&nbsp; Pukul 10.00 Pagi&nbsp;</span></p>\r\n<p><span style=\"font-family: Verdana;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( at&nbsp; 07.00 am&nbsp; until 10.00 am ) .</span></p>\r\n<p>Place &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Halaman&nbsp; Depan&nbsp; Roger\'s&nbsp; Salon&nbsp; Dago , Bandung</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Front Page Roger\'s Salon Dago , Bandung )</p>', '20160104110723_news.jpg');
 
 -- ----------------------------
 -- Table structure for `tbl_gallery`
@@ -260,7 +280,7 @@ CREATE TABLE `tbl_reservasi` (
   `create_date` datetime DEFAULT NULL,
   `flag` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tbl_reservasi
@@ -268,6 +288,7 @@ CREATE TABLE `tbl_reservasi` (
 INSERT INTO `tbl_reservasi` VALUES ('1', '1', 'Tri Wahyu Nugroho', 'XXSevenXX', '0819898989898', 'jenong@nongky.com', '2015-12-26 00:00:00', '2', null, '2015-12-31 07:11:20', '1');
 INSERT INTO `tbl_reservasi` VALUES ('3', '2', 'Tri Wahyu Nugrohos', 'XXSevenXXone', '0819898989898', 'jenong@nongky.com', '2015-12-26 00:00:00', '1', 'test', '2015-12-31 07:17:28', '0');
 INSERT INTO `tbl_reservasi` VALUES ('4', '2', 'vintage', 'VNT300', '0819898989898', 'sekawaniaga@gmail.com', '2015-12-29 00:00:00', '1', 'Tester', '2015-12-31 07:18:44', null);
+INSERT INTO `tbl_reservasi` VALUES ('5', '2', 'aaa', '2', '234', '234234', '2016-01-13 00:00:00', '1', 'xxxx', '2016-01-11 19:01:05', null);
 
 -- ----------------------------
 -- Table structure for `tbl_services`
@@ -354,6 +375,27 @@ CREATE TABLE `tbl_testimony` (
 -- ----------------------------
 INSERT INTO `tbl_testimony` VALUES ('1', '20160107074703_Tri Wahyu Nugroho.jpg', 'Tri Wahyu Nugroho', '<p>OKEH DAH</p>', '<p>Great Services</p>', null, null);
 INSERT INTO `tbl_testimony` VALUES ('2', '20160107075025_Hardi.jpg', 'Hardi', '<p>Mantaff Sekali.. Good Job Rogers</p>', '<p>Good Job Rogers</p>', 'admin', '2016-01-07');
+
+-- ----------------------------
+-- Table structure for `tbl_tutorial`
+-- ----------------------------
+DROP TABLE IF EXISTS `tbl_tutorial`;
+CREATE TABLE `tbl_tutorial` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `judul_ind` varchar(300) DEFAULT NULL,
+  `judul_eng` varchar(300) DEFAULT NULL,
+  `deskripsi_ind` text,
+  `deskripsi_eng` text,
+  `url_nya` varchar(200) DEFAULT NULL,
+  `create_date` date DEFAULT NULL,
+  `create_by` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of tbl_tutorial
+-- ----------------------------
+INSERT INTO `tbl_tutorial` VALUES ('2', 'Yngweee', 'Yngweee', '<p>Tessssss</p>', '<p>Tosssss</p>', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/02RRM-4A1m4\" frameborder=\"0\" allowfullscreen></iframe>', '2016-01-17', 'User Online');
 
 -- ----------------------------
 -- Table structure for `tbl_user`
