@@ -332,7 +332,7 @@ a:focus {
 }
 .navbar-middle {
     border: none;
-    background-color: #ffffff;
+    background-color: #14A79D;
 }
 .navbar-middle .navbar-brand {
     color: #333333;
@@ -355,7 +355,7 @@ a:focus {
 .navbar-middle .nav.navbar-nav li a:focus {
     border-bottom: 3px solid #1a9dd3;
     background-color: transparent !important;
-    color: #1a9dd3;
+    color: gold;
 }
 .navbar-middle .nav.navbar-nav li .dropdown-menu li a {
     border: none;
@@ -366,10 +366,11 @@ a:focus {
     background-color: #1a9dd3;
 }
 .navbar-middle .nav.navbar-nav li.active a {
-    color: #1a9dd3;
+    color: #BFD08C;
 }
 .navbar-middle .nav.navbar-nav .brand {
-    background-color: #333333;
+    background-color: #14A79D;
+	box-shadow: 0px 0px 6px 1px;
 }
 .navbar-middle .nav.navbar-nav .brand a {
     border-bottom: none;
@@ -1366,7 +1367,7 @@ header .slogan .square {
     }
     .navbar-transparent,
     .navbar-middle {
-        background-color: #ffffff;
+        *background-color: #ffffff;
     }
     .navbar-transparent .navbar-header a,
     .navbar-middle .navbar-header a {
