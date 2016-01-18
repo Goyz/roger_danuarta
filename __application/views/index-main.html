@@ -25,7 +25,6 @@
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="http://d3js.org/topojson.v1.min.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnOo-qFl3VL_r5oj_N_1RWzx7Cpq432Qc" async defer></script>
-
 	<script>
 		var host = "{$host}";
 	</script>
@@ -136,10 +135,34 @@
 
     <!-- END REVOLUTION SLIDER -->
 </header>
+<!--navigasi baru-->
+<nav id="navigation" class="navbar navbar-middle navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header visible-xs visible-sm">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+		<img class="navbar-brand" src="{$host}__assets/images/content/logo.png" href="#">
+    </div>
 
-<!-- Begin Navigation -->
-<nav id="navigation" class="navbar navbar-inverse navbar-fixed-top navbar-info-top remove-left-red" role="navigation">
-    <div class="top-info">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+			<li class="onepage"><a href="#MainHeader">Beranda</a></li>
+            <li class="onepage"><a href="#about-us">Tentang Kami</a></li>
+            <li class="onepage"><a href="#news">Berita</a></li>
+            <li class="onepage"><a href="#services">Layanan</a></li>
+            <li class="brand hidden-sm hidden-xs"><img src="{$host}__assets/images/content/logo.png" href="#"></li>
+            <li class="onepage"><a href="#gallery">Galeri</a></li>
+			<li class="onepage"><a href="#testimony">Testimoni</a></li>
+			<li class="onepage"><a href="#contact-us">Kontak Kami</a></li>
+			<li class=""><a href="{$host}news/{$nesw.id|default:1}">Tutorial</a></li>
+        </ul>
+    </div>
+	<div class="top-info">
         <div class="pull-left">
             <div class="searchWrapper">
                <a class="pull-left" href='{$host}' style='padding-top:-5px !important;margin-top:-5px; !important;'>
@@ -181,37 +204,11 @@
             </div>
         </div>
     </div>
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <!--a class="navbar-brand" href="#"><strong>Roger's</strong>Salon</a-->
-		<img src="{$host}__assets/images/content/logo.png"   class="navbar-brand" href="#">
-    </div>
-    <div class="triangle visible-md visible-lg"></div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-            <li class="onepage"><a href="#MainHeader">Beranda</a></li>
-            <li class="onepage"><a href="#about-us">Tentang Kami</a></li>
-            <li class="onepage"><a href="#news">Berita</a></li>
-            <li class="onepage"><a href="#services">Layanan</a></li>
-            <li class="onepage"><a href="#gallery">Galeri</a></li>
-			<li class="onepage"><a href="#testimony">Testimoni</a></li>
-			<li class="onepage"><a href="#contact-us">Kontak Kami</a></li>
-			<li class=""><a href="{$host}tutorial/{$nesw.id|default:1}">Tutorial</a></li>
-            <!--li><a href="blog-index.html">Blog</a></li>
-            <li><a href="elements.html">Elements</a></li>
-            <li><a href="404.html">404 Page</a></li-->
-        </ul>
-    </div>
     <!-- /.navbar-collapse -->
 </nav>
+<!--navigasi baru-->
+<!-- Begin Navigation -->
+
 <!-- End Navigation -->
 
 <div class="red-semi-color-row">
@@ -264,21 +261,10 @@
 					<div class="col-md-12">
 						<h6>{$nesw.judul_ind}</h6>
 					</div>
-					<div class="col-md-12" style="text-align:justify;">
-						<img src='{$host}__repository/berita/{$nesw.file_foto}' style='max-width:30%; height:auto; margin-bottom:5px;float:left;'>
-						<div style="margin-left:10px;float:left;">{$nesw.isi_pendek}</div>
-						
-							<div class="row">
-								<div class="col-md-12" style="margin-left:10px;float:left;">
-									<p><span class="color-font"><i class="fa fa-clock-o"></i></span> {$nesw.create_date}</p>
-								</div>
-							</div>
-						
-						<div class="row" style="margin-left:10px;float:left;">
-							<a href="{$host}news/{$nesw.id}" class="btn btn-default btn-small read-more">Lanjut Membaca</a>
-						</div>
+					<div class="col-md-12">
+						<img src='{$host}__repository/berita/{$nesw.file_foto}' style='max-width:60%; height:auto; margin-bottom:5px;'>
 					</div>
-					<!--div class="col-md-12">
+					<div class="col-md-12">
 						<div class="tags tags-blog">
 							<hr>
 							<div class="row">
@@ -288,15 +274,15 @@
 							</div>
 							<hr>
 						</div>
-					</div-->
-					<!--div class="col-md-12">
+					</div>
+					<div class="col-md-12">
 						<p>
 						{$nesw.isi_pendek}
 						</p>
-					</div-->
-					<!--div class="col-md-12">
+					</div>
+					<div class="col-md-12">
 						<a href="{$host}news/{$nesw.id}" class="btn btn-default btn-small read-more">Lanjut Membaca</a>
-					</div-->
+					</div>
 				</div>
 			{/foreach}
 		{/if}

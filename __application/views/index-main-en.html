@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="description" content=" ">
-    <meta name="author" content="CreateIT">
+    <meta name="jingga" content="jingga sinergi idea">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script src="{$host}__assets/js/modernizr.js"></script>
@@ -137,11 +137,37 @@
 </header>
 
 <!-- Begin Navigation -->
-<nav id="navigation" class="navbar navbar-inverse navbar-fixed-top navbar-info-top remove-left-red" role="navigation">
-    <div class="top-info">
+<!--navigasi baru-->
+<nav id="navigation" class="navbar navbar-middle navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header visible-xs visible-sm">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+		<img class="navbar-brand" src="{$host}__assets/images/content/logo.png" href="#">
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+			<li class="onepage"><a href="#MainHeader">Home</a></li>
+            <li class="onepage"><a href="#about-us">About Us</a></li>
+            <li class="onepage"><a href="#news">News</a></li>
+            <li class="onepage"><a href="#services">Services</a></li>
+            <li class="brand hidden-sm hidden-xs"><img src="{$host}__assets/images/content/logo.png" href="#"></li>
+            <li class="onepage"><a href="#gallery">Gallery</a></li>
+			<li class="onepage"><a href="#testimony">Testimony</a></li>
+			<li class="onepage"><a href="#contact-us">Contact Us</a></li>
+			<li class=""><a href="{$host}news/{$nesw.id|default:1}">Tutorial</a></li>
+        </ul>
+    </div>
+	<div class="top-info">
         <div class="pull-left">
             <div class="searchWrapper">
-                <a class="pull-left" href='{$host}' style='padding-top:-5px !important;margin-top:-5px; !important;'>
+               <a class="pull-left" href='{$host}' style='padding-top:-5px !important;margin-top:-5px; !important;'>
 					<img src='{$host}__assets/images/indo.png' width='80%' />
 				</a>
                 <a class="pull-left" href='{$host}en' style='padding-top:-5px !important;margin-top:-5px; !important;'>
@@ -180,39 +206,9 @@
             </div>
         </div>
     </div>
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <!--a class="navbar-brand" href="#"><strong>Roger's</strong>Salon</a-->
-		<img src="{$host}__assets/images/content/logo.png"   class="navbar-brand" href="#">
-    </div>
-    <div class="triangle visible-md visible-lg"></div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-            <li class="onepage"><a href="#MainHeader">Home</a></li>
-            <li class="onepage"><a href="#about-us">About Us</a></li>
-            <li class="onepage"><a href="#news">News</a></li>
-            <li class="onepage"><a href="#services">Services</a></li>
-            <li class="onepage"><a href="#gallery">Gallery</a></li>
-			<li class="onepage"><a href="#testimony">Testimony</a></li>
-			{*<li class="onepage"><a href="#reservation">Reservation</a></li>*}
-			<li class="onepage"><a href="#contact-us">Contact Us</a></li>
-			<li class="onepage"><a href="{$host}tutorial/{$nesw.id|default:1}">Tutorial</a></li>
-            <!--li><a href="blog-index.html">Blog</a></li>
-            <li><a href="elements.html">Elements</a></li>
-            <li><a href="404.html">404 Page</a></li-->
-        </ul>
-    </div>
     <!-- /.navbar-collapse -->
 </nav>
-<!-- End Navigation -->
+<!--navigasi baru-->
 
 <div class="red-semi-color-row">
 
@@ -264,24 +260,10 @@
 					 <div class="col-md-12">
 						<h6>{$nesw.judul_eng}</h6>
 					</div>
-					<!--div class="col-md-12">
+					<div class="col-md-12">
 						<img src='{$host}__repository/berita/{$nesw.file_foto}' style='max-width:60%; height:auto; margin-bottom:5px;'>
-					</div-->	
-					<div class="col-md-12" style="text-align:justify;">
-						<img src='{$host}__repository/berita/{$nesw.file_foto}' style='max-width:30%; height:auto; margin-bottom:5px;float:left;'>
-						<div style="margin-left:10px;float:left;">{$nesw.isi_pendek}</div>
-						
-							<div class="row">
-								<div class="col-md-12" style="margin-left:10px;float:left;">
-									<p><span class="color-font"><i class="fa fa-clock-o"></i></span> {$nesw.create_date}</p>
-								</div>
-							</div>
-						
-						<div class="row" style="margin-left:10px;float:left;">
-							<a href="{$host}news/{$nesw.id}" class="btn btn-default btn-small read-more">Continue reading</a>
-						</div>
-					</div>
-					<!--div class="col-md-12">
+					</div>					
+					<div class="col-md-12">
 						<div class="tags tags-blog">
 							<hr>
 							<div class="row">
@@ -299,7 +281,7 @@
 					</div>
 					<div class="col-md-12">
 						<a href="{$host}news/{$nesw.id}" class="btn btn-default btn-small read-more">Continue reading</a>
-					</div-->
+					</div>
 				</div>
 			{/foreach}
 		{/if}
@@ -322,6 +304,7 @@
 				<div class="col-md-4 col-sm-4">
 					<a href='{$host}services/{$serv.id}/en/{$serv.linknya}'><img src='{$host}__repository/services/{$serv.foto_icon}' width='300px' height='250px;' ></a>
 					<!--h5>{$serv.nama_service_eng}</h5-->
+					<h5><br></h5>
 				</div>
 			{/foreach}
 		{/if}	
