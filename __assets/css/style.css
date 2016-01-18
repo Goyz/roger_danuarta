@@ -7320,6 +7320,11 @@ p {
   border: 3px solid #ffffff;
   color: #ffffff;
 }
+.btn-reservasi  {
+    font-family: "vivaldi", Times, serif;
+	font-size: 50%;
+}
+
 .btn-color {
   background-color: #ce0000;
   border: 3px solid #ce0000;
