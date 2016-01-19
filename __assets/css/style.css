@@ -3668,8 +3668,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
     float: left;
   }
   .navbar-nav > li > a {
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 }
 @media (min-width: 992px) {
@@ -8014,7 +8014,7 @@ header .slogan .square {
 }
 .navbar-middle {
   border: none;
-  height: 80px;
+  height: 100px;
   margin-bottom: 0;
   text-transform: uppercase;
   background-color: #ffffff;
@@ -8061,8 +8061,8 @@ header .slogan .square {
   color: #ffffff;
 }
 .navbar-middle .nav.navbar-nav li a {
-  line-height: 50px;
-  height: 80px;
+  line-height: 10px;
+  /*height: 80px;*/
   color: #333333;
 }
 .navbar-middle .nav.navbar-nav li a:active,
@@ -8698,7 +8698,7 @@ header .slogan .square {
 }
 /* For IE8 and earlier */
 .social-unit {
-  margin-top: 40px;
+  margin-top: 0px;
 }
 .blog .blog-post {
   margin-top: 80px;
