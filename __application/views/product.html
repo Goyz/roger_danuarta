@@ -36,9 +36,34 @@
 </div>
 
 <!-- Begin Navigation -->
-<nav id="navigation" class="navbar navbar-inverse navbar-fixed-top navbar-info-top remove-left-red" role="navigation">
-    <div class="top-info">
-        <div class="pull-left">
+<nav id="navigation" class="navbar navbar-middle navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header visible-xs visible-sm">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+		<img class="navbar-brand" src="{$host}__assets/images/content/logo.png" href="#">
+    </div>
+	
+	<div class="collapse navbar-collapse">
+		<center><img src="{$host}__assets/images/content/logo.png" href="#"></center>
+	</div>
+		
+    <!-- Collect the nav links, forms, and other content for toggling -->
+     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+			{if $lang eq 'ind'}
+				<li><a href="{$host}">Beranda</a></li>
+			{else}
+				<li><a href="{$host}en">Home</a></li>
+			{/if}
+		</ul>
+    </div>
+	<div class="top-info">
+        <div class="pull-left hidden-xs hidden-sm">
             <div class="searchWrapper">
                 <a class="pull-left" href='{$host}product/ind' style='padding-top:-5px !important;margin-top:-5px; !important;'>
 					<img src='{$host}__assets/images/indo.png' width='80%' />
@@ -47,12 +72,13 @@
 					<img src='{$host}__assets/images/inggris.png' width='80%' />
 				</a>
             </div>
-		</div>
-        <div class="pull-right hidden-xs">
+            <!-- / searchWrapper -->
+        </div>
+        <div class="pull-right hidden-xs hidden-sm ">
             <div class="social">
                 <ul>
                     <li>
-                        <a href="#">
+                        <a href="http://www.facebook.com/RogersSalonClinicandSpa" target='_blank'>
                             <div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
                                  title="Facebook">
                                 <p><i class="fa fa-facebook"></i></p>
@@ -60,7 +86,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="http://www.twitter.com/RogersSalon" target='_blank'>
                             <div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
                                  title="Twitter">
                                 <p><i class="fa fa-twitter"></i></p>
@@ -68,7 +94,7 @@
                         </a>
                     </li>
 					<li>
-                        <a href="#">
+                        <a href="http://www.instagram.com/rogers.salon.clinic.spa" target='_blank'>
                             <div class="circle-btn" data-toggle="tooltip" data-placement="bottom" title="Instagram">
                                 <p><i class="fa fa-instagram"></i></p>
                             </div>
@@ -78,29 +104,11 @@
             </div>
         </div>
     </div>
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <!--a class="navbar-brand" href="#"><strong>Roger's</strong>Salon</a-->
-		<img src="{$host}__assets/images/content/logo.png"   class="navbar-brand" href="#">
-    </div>
-    <div class="triangle visible-md visible-lg"></div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="{$host}">Home</a></li>
-        </ul>
-    </div>
     <!-- /.navbar-collapse -->
 </nav>
-<!-- End Navigation -->
-<div id="head" class="container padding-small pattern-green-row">
+<!--navigasi baru-->
+
+<div id="head" class=" padding-small red-semi-color-row">
 </div>
 	<input type='hidden' id='id-atas' value='{$data_type.0.id}'>
 	<div class="red-semi-color-row">
@@ -117,34 +125,51 @@
 <footer class="jingga-semi-color-row ">
     <div class="container text-center">
         <p class="h4">Roger's<span class="light"> Salon</span></p>
-
+        <div class="social-unit">
+            <div class="container text-center">
+                <div class="social">
+					<ul>
+						<li>
+							<a class="pull-left" href='{$host}product/ind' style='padding-top:-5px !important;margin-top:-5px; !important;'>
+								<img src='{$host}__assets/images/indo.png' width='80%' />
+							</a>
+						</li>
+						<li>
+							<a class="pull-left" href='{$host}product/en' style='padding-top:-5px !important;margin-top:-5px; !important;'>
+								<img src='{$host}__assets/images/inggris.png' width='80%' />
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
         <div class="social-unit">
             <div class="container text-center">
                 <div class="social">
                     <ul>
-                        <li>
-                            <a href="#">
-                                <div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
-                                     title="Facebook">
-                                    <p><i class="fa fa-facebook"></i></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
-                                     title="Twitter">
-                                    <p><i class="fa fa-twitter"></i></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="circle-btn" data-toggle="tooltip" data-placement="bottom" title="Pinterest">
-                                    <p><i class="fa fa-pinterest"></i></p>
-                                </div>
-                            </a>
-                        </li>						
+						<li>
+							<a href="http://www.facebook.com/RogersSalonClinicandSpa" target='_blank'>
+								<div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
+									 title="Facebook">
+									<p><i class="fa fa-facebook"></i></p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="http://www.twitter.com/RogersSalon" target='_blank'>
+								<div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
+									 title="Twitter">
+									<p><i class="fa fa-twitter"></i></p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="http://www.instagram.com/rogers.salon.clinic.spa" target='_blank'>
+								<div class="circle-btn" data-toggle="tooltip" data-placement="bottom" title="Instagram">
+									<p><i class="fa fa-instagram"></i></p>
+								</div>
+							</a>
+						</li>
                     </ul>
                 </div>
             </div>

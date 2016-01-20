@@ -16,8 +16,6 @@
     <link rel="stylesheet" type="text/css" href="{$host}__assets/css/blue.css">
     <link rel="stylesheet" type="text/css" href="{$host}__assets/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="{$host}__assets/plugin/zebradate/css/default.css">
-    <link rel="stylesheet" type="text/css" href="{$host}__assets/plugin/lightgallery/css/lightgallery.css">
-    <link rel="stylesheet" type="text/css" href="{$host}__assets/plugin/lightgallery/css/demo-galery.css">
 
     <!--[if lt IE 9]>
     <script src="bootstrap/js/html5shiv.js"></script>
@@ -43,31 +41,94 @@
     <div class="rev-slider-container">
     <div id="rev2" class="rev-slider" >
     <ul>
-	
-		{foreach from=$banner item=bann}
-			<li data-transition="fade" data-slotamount="5" data-masterspeed="700" >
-				<!-- MAIN IMAGE -->
-				<img src="{$host}__repository/banner/{$bann.file_banner}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
-				 <div class="tp-caption text-right customin customout curly rev-big text-right"
-					 data-x="right"
-					 data-hoffset="-25"
-					 data-y="bottom"
-					 data-voffset="-100"
-					 data-speed="800"
-					 data-start="1500"
-					 data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-					 data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-					 data-easing="Back.easeInOut"
-					 data-endspeed="300"
-					 style="z-index: 7">
-								<!--span class="color-toska">Roger's</span> SPA <br>
-							   Salon & SPA
-								 <br/-->
-							   <a href='#reservation' class="btn btn-white btn-lg btn-reservasi">Reservasi</a>	
-				</div>
-			</li>
-		{/foreach}
-			
+    <!-- SLIDE  -->
+    <li data-transition="fade" data-slotamount="5" data-masterspeed="1000" >
+        <!-- MAIN IMAGE -->
+        <img src="{$host}__assets/images/content/revslider/background1.jpg"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
+		<div class="tp-caption text-right customin customout curly rev-big text-right"
+             data-x="center"
+             data-y="bottom"
+             data-voffset="-97"
+             data-speed="800"
+             data-start="2000"
+             data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+             data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+             data-easing="Back.easeInOut"
+             data-endspeed="300"
+             style="z-index: 7">
+                       <!--span class="color-toska">Welcome to Roger's</span><br>
+                       a great way to beauty and relaxation
+					   <br/-->
+					   <!--a class="vivaldi" href='#reservation' class="vivaldi btn">RESERVATION</a-->	 
+					   <a class="btn btn-white btn-lg btn-reservasi" href='#reservation'>Reservasi</a>
+        </div>
+    </li>
+
+    <!-- SLIDE  -->
+    <li data-transition="fade" data-slotamount="5" data-masterspeed="700" >
+        <!-- MAIN IMAGE -->
+        <img src="{$host}__assets/images/content/revslider/background2.jpg"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
+         <div class="tp-caption text-right customin customout curly rev-big text-right"
+             data-x="right"
+             data-hoffset="-25"
+             data-y="bottom"
+             data-voffset="-100"
+             data-speed="800"
+             data-start="1500"
+             data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+             data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+             data-easing="Back.easeInOut"
+             data-endspeed="300"
+             style="z-index: 7">
+                        <!--span class="color-toska">Roger's</span> SPA <br>
+                       Salon & SPA
+					     <br/-->
+					   <a href='#reservation' class="btn btn-white btn-lg btn-reservasi">Reservasi</a>	
+        </div>
+    </li>
+
+    <!-- SLIDE  -->
+    <li data-transition="fade" data-slotamount="5" data-masterspeed="700" >
+        <!-- MAIN IMAGE -->
+        <img src="{$host}__assets/images/content/revslider/background3.jpg"  alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
+         <div class="tp-caption text-right customin customout curly rev-big text-right"
+             data-x="center"
+             data-y="bottom"
+             data-voffset="-97"
+             data-speed="800"
+             data-start="2000"
+             data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+             data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+             data-easing="Back.easeInOut"
+             data-endspeed="300"
+             style="z-index: 7">
+                         <!--span class="color-toska">Roger's</span><br>
+                       Clinic & Wellness Centre
+					     <br/-->
+					   <a href='#reservation' class="btn btn-white btn-lg btn-reservasi">Reservasi</a>	
+        </div>
+    </li>
+    <!-- SLIDE  -->	
+	    <li data-transition="fade" data-slotamount="5" data-masterspeed="1000" >
+        <!-- MAIN IMAGE -->
+        <img src="{$host}__assets/images/content/revslider/background4.jpg"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
+		<div class="tp-caption text-right customin customout curly rev-big text-right"
+             data-x="center"
+             data-y="bottom"
+             data-voffset="-97"
+             data-speed="800"
+             data-start="2000"
+             data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+             data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+             data-easing="Back.easeInOut"
+             data-endspeed="300"
+             style="z-index: 7">
+                       <!--span class="color-toska">Roger's</span> Salon <br>
+                       a great way to beauty and relaxation
+					     <br/-->
+					   <a href='#reservation' class="btn btn-white btn-lg btn-reservasi">Reservasi</a>	
+        </div>
+    </li>
     </ul>
     <div class="tp-bannertimer"></div>
     </div>
@@ -87,11 +148,7 @@
         </button>
 		<img class="navbar-brand" src="{$host}__assets/images/content/logo.png" href="#">
     </div>
-	
-	<div class="collapse navbar-collapse">
-		<center><img src="{$host}__assets/images/content/logo.png" href="#"></center>
-	</div>
-		
+
     <!-- Collect the nav links, forms, and other content for toggling -->
      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
@@ -99,6 +156,7 @@
             <li class="onepage"><a href="#about-us">Tentang Kami</a></li>
             <li class="onepage"><a href="#news">Berita</a></li>
             <li class="onepage"><a href="#services">Layanan</a></li>
+            <li class="brand hidden-sm hidden-xs"><img src="{$host}__assets/images/content/logo.png" href="#"></li>
             <li class="onepage"><a href="#gallery">Galeri</a></li>
 			<li class="onepage"><a href="#testimony">Testimoni</a></li>
 			<li class="onepage"><a href="#contact-us">Kontak Kami</a></li>
@@ -106,7 +164,7 @@
         </ul>
     </div>
 	<div class="top-info">
-        <div class="pull-left hidden-xs hidden-sm">
+        <div class="pull-left">
             <div class="searchWrapper">
                <a class="pull-left" href='{$host}' style='padding-top:-5px !important;margin-top:-5px; !important;'>
 					<img src='{$host}__assets/images/indo.png' width='80%' />
@@ -117,7 +175,7 @@
             </div>
             <!-- / searchWrapper -->
         </div>
-        <div class="pull-right hidden-xs hidden-sm ">
+        <div class="pull-right hidden-xs">
             <div class="social">
                 <ul>
                     <li>
@@ -161,6 +219,7 @@
 </div>
 <div class="container">
 <div class="container blog padding-bottom-medium">
+	
 	<div class="col-md-8">
 		<div class="container">
 			<p align='justify'><strong><strong>Roger's Salon, Clinic & Spa</strong></strong> adalah tempat exclusive dan modern bernuansa artistik, mewah, megah dan berfasilitas lengkap untuk perawatan kecantikan dan relaksasi tubuh. Dilengkapi dengan peralatan modern dan yang didukung oleh tenaga-tenaga profesional di bidangnya. Tersedia pula ruang VIP bagi anda yang mengutamakan privacy dan kenyamanan tersendiri. Hanya di <strong>Roger's Salon, Clinic & Spa</strong> anda mendapatkan perawatan dari ujung rambut sampai ujung kaki yang akan mempercantik penampilan anda.</p>
@@ -173,7 +232,7 @@
 		</div>
 	</div>
 	 <div class="col-md-4">
-		<div class="container text-center">
+		<div class="container">
 			<a href='#gallery'><img src='{$host}__assets/images/rogers_salon.png' width='200px' height='150px;' style='margin-bottom:5px;'></a>
 			<br/>
 			<a href='#gallery'><img src='{$host}__assets/images/rogers_clinic.png' width='200px' height='150px;' style='margin-bottom:5px;'></a>
@@ -190,50 +249,47 @@
 
 </div>
 
-<div class="red-semi-color-row">
 
 <div id="news" class="container padding-top-small text-center chapter">
 	<h4>NEWS DAN SPECIAL PROMO @ <span class="color-font light">Roger's</span></h4>
 </div>
 <div class="container">
-	<div class="container blog padding-bottom-medium">
-		<div class="col-md-12">
-			{if $news}
-				{foreach from=$news item=nesw}
-					<div class="row blog-post">
-						<div class="col-md-12">
-							<h6>{$nesw.judul_ind}</h6>
-						</div>
-						<div class="col-md-12">
-							<img src='{$host}__repository/berita/{$nesw.file_foto}' style='max-width:60%; height:auto; margin-bottom:5px;'>
-						</div>
-						<div class="col-md-12">
-							<div class="tags tags-blog">
-								<hr>
-								<div class="row">
-									<div class="col-md-3">
-										<p><span class="color-font"><i class="fa fa-clock-o"></i></span> {$nesw.create_date}</p>
-									</div>
+<div class="container blog padding-bottom-medium">
+    <div class="col-md-12">
+		{if $news}
+			{foreach from=$news item=nesw}
+				<div class="row blog-post">
+					<div class="col-md-12">
+						<h6>{$nesw.judul_ind}</h6>
+					</div>
+					<div class="col-md-12">
+						<img src='{$host}__repository/berita/{$nesw.file_foto}' style='max-width:60%; height:auto; margin-bottom:5px;'>
+					</div>
+					<div class="col-md-12">
+						<div class="tags tags-blog">
+							<hr>
+							<div class="row">
+								<div class="col-md-3">
+									<p><span class="color-font"><i class="fa fa-clock-o"></i></span> {$nesw.create_date}</p>
 								</div>
-								<hr>
 							</div>
-						</div>
-						<div class="col-md-12">
-							<p>
-							{$nesw.isi_pendek}
-							</p>
-						</div>
-						<div class="col-md-12">
-							<a href="{$host}news/ind/{$nesw.id}" class="btn btn-default btn-small read-more">Lanjut Membaca</a>
+							<hr>
 						</div>
 					</div>
-				{/foreach}
-			{/if}
-		</div>
+					<div class="col-md-12">
+						<p>
+						{$nesw.isi_pendek}
+						</p>
+					</div>
+					<div class="col-md-12">
+						<a href="{$host}news/{$nesw.id}" class="btn btn-default btn-small read-more">Lanjut Membaca</a>
+					</div>
+				</div>
+			{/foreach}
+		{/if}
+    </div>
 
-	</div>
 </div>
-
 </div>
 
 
@@ -261,23 +317,20 @@
 
 </div>
 
-<div class="black-semi-color-row">
-
 <div id="gallery" class="container text-center padding-top-small padding-bottom-small chapter">
 	<h3> Galeri <span class="color-font light">Roger's</span></h3>
 </div>
 <!--gallery-->
 <div id="gallery" class='container text-center padding-top-small padding-bottom-medium'>
-    
-	<div class="container text-center">
+    <div class="container text-center">
         <div class="row">
             <div class="portfolioFilter">
 				{if $lokasi}
 					{foreach from=$lokasi item=kt}
 						{if $kt.id eq 3}
-							<a href="#" id='roger_{$kt.id}' onClick="loadbalancergaler('{$kt.id}');" class="current" >Roger's {$kt.lokasi}</a>
+							<a href="#" id='roger_{$kt.id}' data-filter=".{$kt.id}" class="current" >Roger's {$kt.lokasi}</a>
 						{else}
-							<a href="#" onClick="loadbalancergaler('{$kt.id}');" >Roger's {$kt.lokasi}</a>
+							<a href="#" data-filter=".{$kt.id}">Roger's {$kt.lokasi}</a>
 						{/if}
 					{/foreach}
 				{/if}	
@@ -285,13 +338,23 @@
             <!-- #galleryOptions -->
         </div>
     </div>
-	
-	<div class="container padding-bottom-small text-center">
-		<div id='galer' class="row"></div>
-	</div>
 
-		
-</div>
+    <div class="projects five">
+		{if $gallery}
+			{foreach from=$gallery item=glr}
+				<div class="project {$glr.cl_lokasi_id}">
+					<img src="{$host}__repository/gallery/{$glr.file_foto}" alt="image">
+
+					<div class="item-hover">
+						<ul class="item-icons">
+							<li><a href="{$host}__repository/gallery/{$glr.file_foto}" class="portfolio"><i class="fa fa-search"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			{/foreach}
+		{/if}					
+    </div>
+    <!-- / works -->
 
 </div>
 <!-- / gallery -->
@@ -307,7 +370,6 @@
     </div>
 </div>
 
-<div class="black-semi-color-row">
 
 <div id="testimony" class="container text-center padding-medium chapter">
     <h3>Testimonial @<span class="color-font light">Roger's</span></h3>
@@ -360,8 +422,6 @@
 	{/if}
     </div>
   </div>
-</div>
-
 </div>
 
 <div id="Parallax2" class="parallax padding-big" style="background-image: url('{$host}__repository/background/background-1.jpg')">
@@ -490,24 +550,6 @@
         <div class="social-unit">
             <div class="container text-center">
                 <div class="social">
-					<ul>
-						<li>
-						   <a class="pull-left" href='{$host}' style='padding-top:-5px !important;margin-top:-5px; !important;'>
-								<img src='{$host}__assets/images/indo.png' width='80%' />
-							</a>
-						</li>
-						<li>
-							<a class="pull-left" href='{$host}en' style='padding-top:-5px !important;margin-top:-5px; !important;'>
-								<img src='{$host}__assets/images/inggris.png' width='80%' />
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-        <div class="social-unit">
-            <div class="container text-center">
-                <div class="social">
                     <ul>
 						<li>
 							<a href="http://www.facebook.com/RogersSalonClinicandSpa" target='_blank'>
@@ -566,12 +608,7 @@
 <script src="{$host}__assets/js/classie.js"></script>
 <script src="{$host}__assets/js/masonry.js"></script>
 <script src="{$host}__assets/js/jquery.form.js"></script>
-<script src="{$host}__assets/plugin/lightgallery/js/lightgallery.js"></script>
-<script src="{$host}__assets/plugin/lightgallery/js/lg-thumbnail.js"></script>
-<script src="{$host}__assets/plugin/lightgallery/js/lg-autoplay.js"></script>
-<script src="{$host}__assets/plugin/lightgallery/js/lg-hash.js"></script>
-<script src="{$host}__assets/plugin/lightgallery/js/lg-pager.js"></script>
-<script src="{$host}__assets/plugin/lightgallery/js/jquery.mousewheel.min.js"></script>
+
 
 <script>
     jQuery(document).ready(function () {
@@ -584,13 +621,12 @@
 			scrollOffset: '-80'
 		});
     });
-	$('#tanggal').Zebra_DatePicker();
 	
 	$(window).load(function () {
 		$('#roger_3').trigger('click');
 	});
 	
-	
+	$('#tanggal').Zebra_DatePicker();
 </script>
 <script src="{$host}__assets/js/main.js"></script>
 

@@ -23,10 +23,6 @@
 
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="http://d3js.org/topojson.v1.min.js"></script>
-	{*
-	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-	<script type="text/javascript">stLight.options( { publisher: "0f73984e-4547-4da0-9537-2d1ce3da1fd7", doNotHash: false, doNotCopy: false, hashAddressBar: false } );</script>	
-	*}
 	<script type='text/javascript' src='//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js' data-shr-siteid='1fc0bad83054c4969c5bf8d344b576b6' data-cfasync='false' async='async'></script>
 	
 </head>
@@ -37,16 +33,50 @@
 
 </div>
 
-<!-- Begin Navigation -->
-<nav id="navigation" class="navbar navbar-inverse navbar-fixed-top navbar-info-top remove-left-red" role="navigation">
-    <div class="top-info">
-        <div class="pull-left">
+<!--navigasi baru-->
+<nav id="navigation" class="navbar navbar-middle navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header visible-xs visible-sm">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+		<img class="navbar-brand" src="{$host}__assets/images/content/logo.png" href="#">
+    </div>
+	
+	<div class="collapse navbar-collapse">
+		<center><img src="{$host}__assets/images/content/logo.png" href="#"></center>
+	</div>
+		
+    <!-- Collect the nav links, forms, and other content for toggling -->
+     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+		{if $lang eq 'ind'}
+			<li ><a href="{$host}">Beranda</a></li>
+		{elseif $lang eq 'en'}
+			<li ><a href="{$host}en">Home</a></li>
+		{/if}			
+        </ul>
+    </div>
+	<div class="top-info">
+        <div class="pull-left hidden-xs hidden-sm">
+            <div class="searchWrapper">
+               <a class="pull-left" href='{$host}news/ind/{$id}' style='padding-top:-5px !important;margin-top:-5px; !important;'>
+					<img src='{$host}__assets/images/indo.png' width='80%' />
+				</a>
+                <a class="pull-left" href='{$host}news/en/{$id}' style='padding-top:-5px !important;margin-top:-5px; !important;'>
+					<img src='{$host}__assets/images/inggris.png' width='80%' />
+				</a>
+            </div>
+            <!-- / searchWrapper -->
         </div>
-        <div class="pull-right hidden-xs">
+        <div class="pull-right hidden-xs hidden-sm ">
             <div class="social">
                 <ul>
                     <li>
-                        <a href="#">
+                        <a href="http://www.facebook.com/RogersSalonClinicandSpa" target='_blank'>
                             <div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
                                  title="Facebook">
                                 <p><i class="fa fa-facebook"></i></p>
@@ -54,7 +84,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="http://www.twitter.com/RogersSalon" target='_blank'>
                             <div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
                                  title="Twitter">
                                 <p><i class="fa fa-twitter"></i></p>
@@ -62,7 +92,7 @@
                         </a>
                     </li>
 					<li>
-                        <a href="#">
+                        <a href="http://www.instagram.com/rogers.salon.clinic.spa" target='_blank'>
                             <div class="circle-btn" data-toggle="tooltip" data-placement="bottom" title="Instagram">
                                 <p><i class="fa fa-instagram"></i></p>
                             </div>
@@ -72,41 +102,31 @@
             </div>
         </div>
     </div>
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <!--a class="navbar-brand" href="#"><strong>Roger's</strong>Salon</a-->
-		<img src="{$host}__assets/images/content/logo.png"   class="navbar-brand" href="#">
-    </div>
-    <div class="triangle visible-md visible-lg"></div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="{$host}">Home</a></li>
-        </ul>
-    </div>
     <!-- /.navbar-collapse -->
 </nav>
-<!-- End Navigation -->
-<div id="head" class="container padding-small pattern-green-row">
+<!--navigasi baru-->
+
+<div id="head" class="padding-small red-semi-color-row"">
 </div>
 
 {if $berita_detail}
 <div class="red-semi-color-row">
 	<div class="container padding-medium text-center chapter">
-		<h4>{$berita_detail.judul_ind}</h4>
+		{if $lang eq 'ind'}
+			<h4>{$berita_detail.judul_ind}</h4>
+		{elseif $lang eq 'en'}
+			<h4>{$berita_detail.judul_eng}</h4>
+		{/if}
 	</div>
 	<div class="container">
 		<div class="container blog padding-bottom-small">
 			<div class="col-md-6">
 				<div class="container">
-					{$berita_detail.isi_berita_ind}
+					{if $lang eq 'ind'}
+						{$berita_detail.isi_berita_ind}
+					{elseif $lang eq 'en'}
+						{$berita_detail.isi_berita_eng}
+					{/if}
 				</div>
 			</div>
 			<div class="col-md-6">
@@ -115,11 +135,6 @@
 				</div>
 			</div>
 		</div>
-		{*
-		<span class='st_facebook_large' displayText='Facebook'></span>
-		<span class='st_twitter_large' displayText='Tweet'></span>
-		*}
-		
 		<div class='shareaholic-canvas' data-app='share_buttons' data-app-id='22983681'></div>
 	</div>
 </div>
@@ -129,13 +144,22 @@
 	{foreach from=$berita_lainnya item=det}
 		<div class="brown-semi-color-row">
 			<div id="{$det.id}" class="container padding-medium text-center chapter">
+			{if $lang eq 'ind'}
 				<h4>{$det.judul_ind}</h4>
+			{elseif $lang eq 'en'}
+				<h4>{$det.judul_eng}</h4>
+			{/if}
+				
 			</div>
 			<div class="container">
 				<div class="container blog padding-bottom-small">
 					<div class="col-md-6">
 						<div class="container">
+						{if $lang eq 'ind'}
 							{$det.isi_berita_ind}
+						{elseif $lang eq 'en'}
+							{$det.isi_berita_eng}
+						{/if}
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -156,30 +180,48 @@
         <div class="social-unit">
             <div class="container text-center">
                 <div class="social">
+					<ul>
+						<li>
+						   <a class="pull-left" href='{$host}news/ind/{$id}' style='padding-top:-5px !important;margin-top:-5px; !important;'>
+								<img src='{$host}__assets/images/indo.png' width='80%' />
+							</a>
+						</li>
+						<li>
+							<a class="pull-left" href='{$host}news/en/{$id}' style='padding-top:-5px !important;margin-top:-5px; !important;'>
+								<img src='{$host}__assets/images/inggris.png' width='80%' />
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+        <div class="social-unit">
+            <div class="container text-center">
+                <div class="social">
                     <ul>
-                        <li>
-                            <a href="http://www.facebook.com/RogersSalonClinicandSpa" target='_blank' >
-                                <div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
-                                     title="Facebook">
-                                    <p><i class="fa fa-facebook"></i></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://www.twitter.com/RogersSalon" target='_blank'>
-                                <div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
-                                     title="Twitter">
-                                    <p><i class="fa fa-twitter"></i></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
+						<li>
+							<a href="http://www.facebook.com/RogersSalonClinicandSpa" target='_blank'>
+								<div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
+									 title="Facebook">
+									<p><i class="fa fa-facebook"></i></p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="http://www.twitter.com/RogersSalon" target='_blank'>
+								<div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
+									 title="Twitter">
+									<p><i class="fa fa-twitter"></i></p>
+								</div>
+							</a>
+						</li>
+						<li>
 							<a href="http://www.instagram.com/rogers.salon.clinic.spa" target='_blank'>
 								<div class="circle-btn" data-toggle="tooltip" data-placement="bottom" title="Instagram">
 									<p><i class="fa fa-instagram"></i></p>
 								</div>
 							</a>
-						</li>					
+						</li>
                     </ul>
                 </div>
             </div>
@@ -211,22 +253,14 @@
 <script src="{$host}__assets/plugin/twitter/js/jquery.tweet.js"></script>
 <script src="{$host}__assets/js/jquery.appear.js"></script>
 <script src="{$host}__assets/js/imgloaded.js"></script>
-<script src="{$host}__assets/js/gridscroll.js"></script>
 <script src="{$host}__assets/js/classie.js"></script>
 <script src="{$host}__assets/js/masonry.js"></script>
 
 
 <script>
     jQuery(document).ready(function () {
-    jQuery('body').pageScroller({
-			navigation: '#navigation .onepage',
-			sectionClass: 'chapter',
-			animationType: 'easeOutExpo',
-			animationSpeed: 750,
-			keyboardControl: true,
-			scrollOffset: '-80'
-		});
-    });
+    
+	});
 </script>
 <script src="{$host}__assets/js/main.js"></script>
 

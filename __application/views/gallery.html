@@ -1,0 +1,20 @@
+<div class="demo-gallery">
+    <ul id="lightgallery" class="list-unstyled row">
+		{foreach from=$gallery item=galer}
+			<li style='padding-left:2px !important; padding-right:2px !important;' class="col-xs-6 col-sm-4 col-md-3" data-src="{$host}__repository/gallery/{$galer.file_foto}" >
+                <a href="{$host}__repository/gallery/{$galer.file_foto}">
+                    <img class="img-responsive" src="{$host}__repository/gallery/{$galer.file_foto}" >
+                </a>
+            </li>
+		{/foreach}
+	</ul>
+</div>
+
+<script>
+	$('#lightgallery').lightGallery({
+		download:false,
+		pause:10000,
+		autoplay:true,
+		fourceAutoplay:true
+	});
+</script>

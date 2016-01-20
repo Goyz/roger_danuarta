@@ -68,9 +68,16 @@ class mhome extends CI_Model{
 			break;
 			case "gallery":
 				$sql = " 
-					SELECT A.*, B.lokasi 
+					SELECT A.*
 					FROM tbl_gallery A 
-					LEFT JOIN cl_lokasi B ON B.id = A.cl_lokasi_id
+					WHERE A.cl_lokasi_id = '".$p1."'
+				";				
+			break;
+			case "banner":
+				$sql = " 
+					SELECT A.*
+					FROM tbl_banner A 
+					WHERE A.status = '1'
 				";				
 			break;
 			case "testimony":

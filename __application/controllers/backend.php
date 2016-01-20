@@ -185,6 +185,12 @@ class backend extends CI_Controller {
 							'flag'=>1
 						);
 					break;
+					case "tbl_banner":
+						$post = array(
+							'file_banner'=> $x,
+							'status'=>1
+						);
+					break;
 				}
 				
 				if($this->mbackend->simpan_data($modul, $post)){

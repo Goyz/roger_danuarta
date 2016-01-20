@@ -16,7 +16,8 @@
     <link rel="stylesheet" type="text/css" href="{$host}__assets/css/blue.css">
     <link rel="stylesheet" type="text/css" href="{$host}__assets/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="{$host}__assets/plugin/zebradate/css/default.css">
-	
+    <link rel="stylesheet" type="text/css" href="{$host}__assets/plugin/lightgallery/css/lightgallery.css">
+    <link rel="stylesheet" type="text/css" href="{$host}__assets/plugin/lightgallery/css/demo-galery.css">
 
     <!--[if lt IE 9]>
     <script src="bootstrap/js/html5shiv.js"></script>
@@ -37,18 +38,49 @@
 
 </div>
 
-<!-- Begin Navigation -->
-<nav id="navigation" class="navbar navbar-inverse navbar-fixed-top navbar-info-top remove-left-red" role="navigation">
-    <div class="top-info">
-        <div class="pull-left">
-			<div class="searchWrapper">
-			</div>
-		</div>
-        <div class="pull-right hidden-xs">
+<nav id="navigation" class="navbar navbar-middle navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header visible-xs visible-sm">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+		<img class="navbar-brand" src="{$host}__assets/images/content/logo.png" href="#">
+    </div>
+	
+	<div class="collapse navbar-collapse">
+		<center><img src="{$host}__assets/images/content/logo.png" href="#"></center>
+	</div>
+		
+    <!-- Collect the nav links, forms, and other content for toggling -->
+     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+			{if $lang eq 'ind'}
+				<li><a href="{$host}">Beranda</a></li>
+			{else}
+				<li><a href="{$host}en">Home</a></li>
+			{/if}
+		</ul>
+    </div>
+	<div class="top-info">
+        <div class="pull-left hidden-xs hidden-sm">
+            <div class="searchWrapper">
+               <a class="pull-left" href='{$host}services/{$id}/ind/{$linknya}' style='padding-top:-5px !important;margin-top:-5px; !important;'>
+					<img src='{$host}__assets/images/indo.png' width='80%' />
+				</a>
+                <a class="pull-left" href='{$host}services/{$id}/en/{$linknya}' style='padding-top:-5px !important;margin-top:-5px; !important;'>
+					<img src='{$host}__assets/images/inggris.png' width='80%' />
+				</a>
+            </div>
+            <!-- / searchWrapper -->
+        </div>
+        <div class="pull-right hidden-xs hidden-sm ">
             <div class="social">
                 <ul>
                     <li>
-                        <a href="#">
+                        <a href="http://www.facebook.com/RogersSalonClinicandSpa" target='_blank'>
                             <div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
                                  title="Facebook">
                                 <p><i class="fa fa-facebook"></i></p>
@@ -56,7 +88,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="http://www.twitter.com/RogersSalon" target='_blank'>
                             <div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
                                  title="Twitter">
                                 <p><i class="fa fa-twitter"></i></p>
@@ -64,7 +96,7 @@
                         </a>
                     </li>
 					<li>
-                        <a href="#">
+                        <a href="http://www.instagram.com/rogers.salon.clinic.spa" target='_blank'>
                             <div class="circle-btn" data-toggle="tooltip" data-placement="bottom" title="Instagram">
                                 <p><i class="fa fa-instagram"></i></p>
                             </div>
@@ -74,62 +106,43 @@
             </div>
         </div>
     </div>
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <!--a class="navbar-brand" href="#"><strong>Roger's</strong>Salon</a-->
-		<img src="{$host}__assets/images/content/logo.png"   class="navbar-brand" href="#">
-    </div>
-    <div class="triangle visible-md visible-lg"></div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="{$host}">Home</a></li>
-        </ul>
-    </div>
     <!-- /.navbar-collapse -->
 </nav>
-<!-- End Navigation -->
-<div id="head" class="container padding-small pattern-green-row">
-</div>
+<!--navigasi baru-->
+
 
 {if $servicess.id eq 2}
+<div id="head" class="padding-small white-color-row">
+</div>
+
 <div class="white-color-row">
 {else}
+<div id="head" class="padding-small red-semi-color-row">
+</div>
+
 <div class="red-semi-color-row">
 {/if}
 
 	<div class="container padding-small">
 		<div id="" class="container padding-medium text-center chapter">
 			{if $lang eq 'ind'}
-				{* <h4>Layanan {$servicess.nama_service_ind}</h4> *}
 				<p>{$servicess.deskripsi_ind}</p>
 			{elseif $lang eq 'en'}
-				{* <h4>Services {$servicess.nama_service_eng}</h4> *}
 				<p>{$servicess.deskripsi_eng}</p>
 			{/if}
 		</div>
 		{if $foto_services}
-		<div id="gallery-{$servicess.nama_service_ind}" class='container text-center'>
-			<div class="projects five">
-				{foreach from=$foto_services item=defot}
-					<div class="project">
-						<img src="{$host}__repository/services/{$defot.file_foto}" alt="{$servicess.nama_service_ind}" width='300px' height='250px;'>
-						<div class="item-hover">
-							<ul class="item-icons">
-								<li><a href="{$host}__repository/services/{$defot.file_foto}" class="portfolio"><i class="fa fa-search"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				{/foreach}
-			</div>
-		</div>
+			<div class="demo-gallery">
+				<ul id="lightgallery" class="list-unstyled row">
+					{foreach from=$foto_services item=defot}
+						<li style='padding-left:2px !important; padding-right:2px !important;' class="col-xs-6 col-sm-4 col-md-3" data-src="{$host}__repository/services/{$defot.file_foto}" >
+							<a href="{$host}__repository/services/{$defot.file_foto}">
+								<img class="img-responsive" src="{$host}__repository/services/{$defot.file_foto}" >
+							</a>
+						</li>
+					{/foreach}
+				</ul>
+			</div>		
 		{/if}
 	</div>
 
@@ -157,34 +170,51 @@
 <footer class="jingga-semi-color-row ">
     <div class="container text-center">
         <p class="h4">Roger's<span class="light"> Salon</span></p>
-
+        <div class="social-unit">
+            <div class="container text-center">
+                <div class="social">
+					<ul>
+						<li>
+						   <a class="pull-left" href='{$host}services/{$id}/ind/{$linknya}' style='padding-top:-5px !important;margin-top:-5px; !important;'>
+								<img src='{$host}__assets/images/indo.png' width='80%' />
+							</a>
+						</li>
+						<li>
+							<a class="pull-left" href='{$host}services/{$id}/en/{$linknya}' style='padding-top:-5px !important;margin-top:-5px; !important;'>
+								<img src='{$host}__assets/images/inggris.png' width='80%' />
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
         <div class="social-unit">
             <div class="container text-center">
                 <div class="social">
                     <ul>
-                        <li>
-                            <a href="#">
-                                <div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
-                                     title="Facebook">
-                                    <p><i class="fa fa-facebook"></i></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
-                                     title="Twitter">
-                                    <p><i class="fa fa-twitter"></i></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="circle-btn" data-toggle="tooltip" data-placement="bottom" title="Pinterest">
-                                    <p><i class="fa fa-pinterest"></i></p>
-                                </div>
-                            </a>
-                        </li>						
+						<li>
+							<a href="http://www.facebook.com/RogersSalonClinicandSpa" target='_blank'>
+								<div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
+									 title="Facebook">
+									<p><i class="fa fa-facebook"></i></p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="http://www.twitter.com/RogersSalon" target='_blank'>
+								<div class="circle-btn" data-toggle="tooltip" data-placement="bottom"
+									 title="Twitter">
+									<p><i class="fa fa-twitter"></i></p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="http://www.instagram.com/rogers.salon.clinic.spa" target='_blank'>
+								<div class="circle-btn" data-toggle="tooltip" data-placement="bottom" title="Instagram">
+									<p><i class="fa fa-instagram"></i></p>
+								</div>
+							</a>
+						</li>
                     </ul>
                 </div>
             </div>
@@ -217,22 +247,26 @@
 <script src="{$host}__assets/js/jquery.appear.js"></script>
 <script src="{$host}__assets/plugin/zebradate/js/zebra_datepicker.js"></script>
 <script src="{$host}__assets/js/imgloaded.js"></script>
-<script src="{$host}__assets/js/gridscroll.js"></script>
 <script src="{$host}__assets/js/classie.js"></script>
 <script src="{$host}__assets/js/masonry.js"></script>
 <script src="{$host}__assets/js/jquery.form.js"></script>
+<script src="{$host}__assets/plugin/lightgallery/js/lightgallery.js"></script>
+<script src="{$host}__assets/plugin/lightgallery/js/lg-thumbnail.js"></script>
+<script src="{$host}__assets/plugin/lightgallery/js/lg-autoplay.js"></script>
+<script src="{$host}__assets/plugin/lightgallery/js/lg-hash.js"></script>
+<script src="{$host}__assets/plugin/lightgallery/js/lg-pager.js"></script>
+<script src="{$host}__assets/plugin/lightgallery/js/jquery.mousewheel.min.js"></script>
+
 
 <script>
     jQuery(document).ready(function () {
-    jQuery('body').pageScroller({
-			navigation: '#navigation .onepage',
-			sectionClass: 'chapter',
-			animationType: 'easeOutExpo',
-			animationSpeed: 750,
-			keyboardControl: true,
-			scrollOffset: '-80'
+		$('#lightgallery').lightGallery({
+			download:false,
+			pause:10000,
+			autoplay:true,
+			fourceAutoplay:true
 		});
-    });
+	});
 	$('#tanggal').Zebra_DatePicker();
 </script>
 <script src="{$host}__assets/js/main.js"></script>

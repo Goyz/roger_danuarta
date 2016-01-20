@@ -23,8 +23,9 @@ class home extends CI_Controller {
 		$news = $this->mhome->getdata('berita_home', 'result_array');
 		$kota = $this->mhome->getdata('kota', 'result_array');
 		$lokasi = $this->mhome->getdata('lokasi', 'result_array');
-		$gallery = $this->mhome->getdata('gallery', 'result_array');
+		//$gallery = $this->mhome->getdata('gallery', 'result_array');
 		$testimony = $this->mhome->getdata('testimony', 'result_array');
+		$banner = $this->mhome->getdata('banner', 'result_array');
 		
 		foreach($news as $k=>$v){
 			$news[$k]['isi_pendek'] = $this->lib->cutstring( $v['isi_berita_ind'], 500);
@@ -40,8 +41,9 @@ class home extends CI_Controller {
 		$this->smarty->assign('news', $news);
 		$this->smarty->assign('kota', $kota);
 		$this->smarty->assign('lokasi', $lokasi);
-		$this->smarty->assign('gallery', $gallery);
+		//$this->smarty->assign('gallery', $gallery);
 		$this->smarty->assign('testimony', $testimony);
+		$this->smarty->assign('banner', $banner);
 		$this->smarty->assign('lang', 'ind');
 		
 		$this->smarty->display('index-main.html');
@@ -54,7 +56,7 @@ class home extends CI_Controller {
 		$lokasi = $this->mhome->getdata('lokasi', 'result_array');
 		$gallery = $this->mhome->getdata('gallery', 'result_array');
 		$testimony = $this->mhome->getdata('testimony', 'result_array');
-
+		$banner = $this->mhome->getdata('banner', 'result_array');
 		
 		foreach($news as $k=>$v){
 			$news[$k]['isi_pendek'] = $this->lib->cutstring( $v['isi_berita_eng'] , 500);
@@ -72,6 +74,7 @@ class home extends CI_Controller {
 		$this->smarty->assign('lokasi', $lokasi);
 		$this->smarty->assign('gallery', $gallery);
 		$this->smarty->assign('testimony', $testimony);		
+		$this->smarty->assign('banner', $banner);		
 		$this->smarty->assign('lang', 'en');
 		
 		$this->smarty->display('index-main-en.html');
@@ -88,17 +91,34 @@ class home extends CI_Controller {
 				
 				$this->smarty->assign('servicess', $servicess);
 				$this->smarty->assign('foto_services', $foto_services);
+				$this->smarty->assign('id', $p1);
 				$this->smarty->assign('lang', $p2);
+				$this->smarty->assign('linknya', $p3);
 				$this->smarty->assign('lokasi', $lokasi);
 				$this->smarty->assign('services', $services);				
 			break;
 			case "news":
 				$content = "news.html";
-				$berita_detail = $this->mhome->getdata('berita_detail', 'row_array', $p1);
-				$berita_lainnya = $this->mhome->getdata('berita_lainnya', 'result_array', $p1);
+				$lang = $p1;
+				$berita_detail = $this->mhome->getdata('berita_detail', 'row_array', $p2);
+				$berita_lainnya = $this->mhome->getdata('berita_lainnya', 'result_array', $p2);
 				
 				$this->smarty->assign('berita_detail', $berita_detail);
 				$this->smarty->assign('berita_lainnya', $berita_lainnya);
+				$this->smarty->assign('lang', $lang);
+				$this->smarty->assign('id', $p2);
+			break;
+			case "gallery":
+				$cl_lokasi = $this->input->post('idp');
+				$gallery = $this->mhome->getdata('gallery', 'result_array', $cl_lokasi);
+				$this->smarty->assign('gallery', $gallery);			
+				
+				$content = $this->smarty->fetch('gallery.html');
+				$kembalian = array(
+					'konten' => $content
+				);
+				echo json_encode($kembalian);
+				exit;
 			break;
 			case "tutorial":
 				$content = "tutorial.html";

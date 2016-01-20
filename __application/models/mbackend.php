@@ -67,6 +67,18 @@ class mbackend extends CI_Model{
 					return $this->result_query($sql,'row_array');
 				}
 			break;			
+			case "tbl_banner":
+				$sql = " 
+					SELECT A.*
+					FROM tbl_banner A 
+				";
+				
+				if($p1=='edit'){
+					$sql .=" WHERE A.id=".$p2;
+					return $this->result_query($sql,'row_array');
+				}
+			break;
+			
 			
 			case "cl_kota":
 			case "tbl_kota":
@@ -396,6 +408,37 @@ class mbackend extends CI_Model{
 					}
 				}
 			break;
+			case "tbl_banner_header":
+				return 1;
+				exit;
+			break;
+			case "tbl_banner":
+				$path = '__repository/banner/';
+				$this->lib->makedir($path);
+				
+				if($sts_crud=='delete'){
+					$foto = $this->db->get_where('tbl_banner', array('id'=>$id) )->row_array();
+					if($foto['file_banner'] != ""){
+						$this->hapus_foto_satu($path.$foto['file_banner']);
+					}
+				}
+				
+				$data['create_date']=date('Y-m-d H:i:s');
+				$data['create_by']=$this->auth['nama_user'];
+			break;
+			case "tbl_banner_confirm":
+				$table = 'tbl_banner';
+				$sts_crud = 'edit';
+				
+				if($data['confirm'] == 'ok'){
+					$data['status'] = 1;
+				}elseif($data['confirm'] == 'notok'){
+					$data['status'] = 0;
+				}
+				
+				unset($data['confirm']);
+			break;
+			
 			case "tbl_testimony":
 				$path = '__repository/testimony/';
 				$this->lib->makedir($path);

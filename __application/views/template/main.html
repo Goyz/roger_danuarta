@@ -10,10 +10,19 @@
 	{assign var=button_reservation value="false"}
 {/if}
 
-{if $main eq 'gallery'}{assign var=buton2 value="true"}
+{if $main eq 'gallery'}
+	{assign var=buton2 value="true"}
 	{assign var=buton value="false"}
 {else}
 	{assign var=buton2 value="false"}
+{/if}
+
+{if $main eq 'banner'}
+	{assign var=buton_banner value="true"}
+	{assign var=buton value="false"}	
+	{assign var=buton2 value="false"}	
+{else}
+	{assign var=buton_banner value="false"}
 {/if}
 
 {include file='template/grid.html' main={$main} mod={$mod} button={$buton}  button_2={$buton2}  }
