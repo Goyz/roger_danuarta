@@ -331,7 +331,7 @@ function initmap() {
     });
 };
 */
-
+/*
 function loadScript() {
     "use strict";
     var script = document.createElement('script');
@@ -341,7 +341,7 @@ function loadScript() {
 };
 
 window.onload = loadScript;
-
+*/
 // End Gmap3 Maps
 
 //Begin Flex Slider
@@ -764,5 +764,13 @@ function prd(ixx, lang){
 	$.post(host+'product-detail', { 'idp':idp, 'lang':lang }, function(resp){
 		var response = $.parseJSON(resp);
 		$('#detail_product').html(response.konten).removeClass("loading");
+	} );
+}
+
+function loadbalancergaler(xy){
+	$('#galer').empty().addClass("loading");
+	$.post(host+'gallery', { 'idp':xy }, function(resp){
+		var response = $.parseJSON(resp);
+		$('#galer').html(response.konten).removeClass("loading");
 	} );
 }

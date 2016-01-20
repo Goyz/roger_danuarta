@@ -611,6 +611,11 @@ header .slogan .square {
     background-color: #ffffff;
     color: #000000;
 }
+.black-semi-color-row {
+    background-color: #191919;
+    color: #ffffff;
+}
+
 .pattern-green-row {
     background-image: url("../images/floral-pattern.jpg");
 	background-repeat: repeat;

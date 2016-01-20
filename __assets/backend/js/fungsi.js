@@ -250,6 +250,29 @@ function genGrid(modnya, divnya, lebarnya, tingginya){
 				{field:'create_date',title:'Tgl. Submit',width:200, halign:'center',align:'center'}
 			]
 		break;
+		case "banner":
+			judulnya = "List Banner Slideshow";
+			urlnya = "tbl_banner";
+			fitnya = true;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			pagesizeboy = 50;
+			kolom[modnya] = [	
+				{field:'file_foto',title:'Foto',width:200, halign:'center',align:'center',
+					formatter: function(value,row,index){
+						return "<img src='"+host+"__repository/banner/"+row.file_banner+"' width='100px' style='height:60px !important'>";
+					}
+				},
+				{field:'status',title:'Status',width:150, halign:'center',align:'left',
+					formatter: function(value,row,index){
+						if(row.status == '1'){
+							return "<font color='green'>Slide Tampil</font>";
+						}else{
+							return "<font color='red'>Slide Tidak Tampil</font>";
+						}
+					}
+				},				
+			]
+		break;		
 		
 		case "kota":
 			judulnya = "List Cabang Kota";
@@ -468,6 +491,17 @@ function kumpulAction(type, p1, p2, p3, p4, p5){
 					$.messager.alert('Roger Salon',"Failed Confirm",'error');
 				}
 				$('#grid_reservasi').datagrid('reload');	
+			} );
+		break;
+		case "banner":
+			grid = $('#grid_banner').datagrid('getSelected');
+			$.post(host+'backend/simpan_data/tbl_banner_confirm', { 'id':grid.id, 'confirm':p1 }, function(rsp){
+				if(rsp == 1){
+					$.messager.alert('Roger Salon',"OK",'info');
+				}else{
+					$.messager.alert('Roger Salon',"Gagal",'error');
+				}
+				$('#grid_banner').datagrid('reload');	
 			} );
 		break;
 		case "hapus_produk":
