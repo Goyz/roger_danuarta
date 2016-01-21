@@ -103,7 +103,7 @@
             <li class="onepage"><a href="#gallery">Gallery</a></li>
 			<li class="onepage"><a href="#testimony">Testimony</a></li>
 			<li class="onepage"><a href="#contact-us">Contact Us</a></li>
-			<li class=""><a href="{$host}news/{$nesw.id|default:1}">Tutorial</a></li>
+			<li class=""><a href="{$host}tutorial/{$nesw.id|default:1}">Tutorial</a></li>
         </ul>
     </div>
 	<div class="top-info">
@@ -204,7 +204,10 @@
 							<h6>{$nesw.judul_eng}</h6>
 						</div>
 						<div class="col-md-12">
-							<img src='{$host}__repository/berita/{$nesw.file_foto}' style='max-width:60%; height:auto; margin-bottom:5px;'>
+							<img src='{$host}__repository/berita/{$nesw.file_foto}' style='max-width:20%; height:auto; margin-bottom:5px;margin-right:10px;float:left;'>
+							<p>
+							{$nesw.isi_pendek}
+							</p>
 						</div>					
 						<div class="col-md-12">
 							<div class="tags tags-blog">
@@ -217,11 +220,13 @@
 								<hr>
 							</div>
 						</div>
+						{*
 						<div class="col-md-12">
 							<p>
 							{$nesw.isi_pendek}
 							</p>
 						</div>
+						*}
 						<div class="col-md-12">
 							<a href="{$host}news/en/{$nesw.id}" class="btn btn-default btn-small read-more">Continue reading</a>
 						</div>
