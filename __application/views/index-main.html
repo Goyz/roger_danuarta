@@ -59,7 +59,7 @@
 					 data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
 					 data-easing="Back.easeInOut"
 					 data-endspeed="300"
-					 style="z-index: 7">
+					 style="z-index: 9999">
 								<!--span class="color-toska">Roger's</span> SPA <br>
 							   Salon & SPA
 								 <br/-->
@@ -94,6 +94,7 @@
 		
     <!-- Collect the nav links, forms, and other content for toggling -->
      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	 <strong>
         <ul class="nav navbar-nav">
 			<li class="onepage"><a href="#MainHeader">Beranda</a></li>
             <li class="onepage"><a href="#about-us">Tentang Kami</a></li>
@@ -104,6 +105,7 @@
 			<li class="onepage"><a href="#contact-us">Kontak Kami</a></li>
 			<li class=""><a href="{$host}tutorial/{$nesw.id|default:1}">Tutorial</a></li>
         </ul>
+	 </strong>
     </div>
 	<div class="top-info">
         <div class="pull-left hidden-xs hidden-sm">
@@ -157,19 +159,19 @@
 <div class="red-semi-color-row">
 
 <div id="about-us" class="container padding-medium text-center chapter">
-	<h4>Selamat Datang di <span class="color-font light">Roger's</span></h4>
+	<h4>Selamat Datang di <span class="color-font light ">Roger's</span></h4>
 </div>
 <div class="container">
 <div class="container blog padding-bottom-medium">
 	<div class="col-md-8">
 		<div class="container">
-			<p align='justify'><strong><strong>Roger's Salon, Clinic & Spa</strong></strong> adalah tempat exclusive dan modern bernuansa artistik, mewah, megah dan berfasilitas lengkap untuk perawatan kecantikan dan relaksasi tubuh. Dilengkapi dengan peralatan modern dan yang didukung oleh tenaga-tenaga profesional di bidangnya. Tersedia pula ruang VIP bagi anda yang mengutamakan privacy dan kenyamanan tersendiri. Hanya di <strong>Roger's Salon, Clinic & Spa</strong> anda mendapatkan perawatan dari ujung rambut sampai ujung kaki yang akan mempercantik penampilan anda.</p>
+			<p align='justify'><strong class="rogers_font">Roger's</strong><strong> Salon, Clinic & Spa</strong> adalah tempat exclusive dan modern bernuansa artistik, mewah, megah dan berfasilitas lengkap untuk perawatan kecantikan dan relaksasi tubuh. Dilengkapi dengan peralatan modern dan yang didukung oleh tenaga-tenaga profesional di bidangnya. Tersedia pula ruang VIP bagi anda yang mengutamakan privacy dan kenyamanan tersendiri. Hanya di <strong class="rogers_font">Roger's</strong><strong> Salon, Clinic & Spa</strong> anda mendapatkan perawatan dari ujung rambut sampai ujung kaki yang akan mempercantik penampilan anda.</p>
 			<p align='justify'>Anda juga bisa mendapatkan perawatan kulit dan cara penanggulanggannya seperti membuat kulit menjadi segar dan muda kembali, mengencangkan kulit, menghilangkan jerawat dan kerutan, mengecilkan pori-pori, dll</p>
 			<p align='justify'>Kami menawarkan rangkaian perawatan kecantikan wajah dan tubuh seperti facial treatment, face & bodylifting, contouring, slimming, firming detox, dsb. Juga tersedia sinar therapy untuk meremajakan kulit anda. Semua perawatan tersebut dilakukan dan didukung dalam ruangan clinic kami yang tenang dan nyaman.</p>
-			<p align='justify'><strong>Roger's Salon, Clinic & Spa</strong> juga dilengkapi dengan fasilitas wellness center berupa studio senam yang nyaman yang mendukung anda untuk menjaga kebugaran tubuh anda melalui beragam pilihan kelas latihan seperti aerobik, pilates, salsa, line dance, yoga dan sebagainya.
+			<p align='justify'><strong class="rogers_font">Roger's</strong><strong> Salon, Clinic & Spa</strong> juga dilengkapi dengan fasilitas wellness center berupa studio senam yang nyaman yang mendukung anda untuk menjaga kebugaran tubuh anda melalui beragam pilihan kelas latihan seperti aerobik, pilates, salsa, line dance, yoga dan sebagainya.
 			<p align='justify'>Dilengkapi dengan cafe yang menyajikan paduan kenikmatan dan kehangatan dalam suasana nyaman dan santai yang akan ditemani oleh berbagai menu masakan Indonesia seperti nasi goreng, nasi pecel ayam, bihun goreng, nasi soto ayam, gado-gado dll, yang pasti akan menggugah selera anda. Khusus untuk Cafe Roger's Dago-Bandung tersedia menu internasional yang lengkap.</p>
-			<p align='justify'><strong>Roger's Salon, Clinic & Spa</strong> bekerja sama dengan Wash Up Laundry yang menyediakan jasa laundry dan dry cleaning bagi anda yang mengutamakan faktor kualitas, kecepatan dan pelayanan terbaik.
-			Percayakan seluruh perawatan kecantikan wajah dan tubuh anda hanya <strong>Roger's Salon, Clinic & Spa</strong> karena <strong>Roger's Salon, Clinic & Spa</strong> is a great way to beauty and relaxation. </p>
+			<p align='justify'><strong class="rogers_font">Roger's</strong><strong> Salon, Clinic & Spa</strong> bekerja sama dengan Wash Up Laundry yang menyediakan jasa laundry dan dry cleaning bagi anda yang mengutamakan faktor kualitas, kecepatan dan pelayanan terbaik.
+			Percayakan seluruh perawatan kecantikan wajah dan tubuh anda hanya <strong class="rogers_font">Roger's</strong><strong> Salon, Clinic & Spa</strong> karena <strong class="rogers_font">Roger's</strong><strong> Salon, Clinic & Spa</strong> is a great way to beauty and relaxation. </p>
 		</div>
 	</div>
 	 <div class="col-md-4">
@@ -254,6 +256,7 @@
 				<div class="col-md-4 col-sm-4">
 					<a href='{$host}services/{$serv.id}/ind/{$serv.linknya}'><img src='{$host}__repository/services/{$serv.foto_icon}' width='300px' height='250px;' ></a>
 					<!--h5>{$serv.nama_service_ind}</h5-->
+					<h5><br></h5>
 				</div>
 			{/foreach}
 		{/if}	
@@ -490,7 +493,7 @@
 
 <footer class="jingga-semi-color-row ">
     <div class="container text-center">
-        <p class="h4">Roger's<span class="light"> Salon</span></p>
+        <p class="rogers_font2">Roger's<span class=" h4 light"> Salon</span>
 
         <div class="social-unit">
             <div class="container text-center">
